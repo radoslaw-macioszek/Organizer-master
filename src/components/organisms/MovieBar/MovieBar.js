@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import styled from 'styled-components';
+import Heading from '../../atoms/Heading/Heading';
+
+const StyledTopRatedMovies = styled.div`
+  display: flex;
+  overflow: scroll;
+  width: 38vw;
+  padding: 1.5rem;
+  border-top: 1px solid ${({ theme }) => theme.grey100};
+
+  height: 33vh;
+`;
+
+const StyledHeading = styled(Heading)`
+  font-size: 2rem;
+`;
+
+const MovieBar = ({ children, page }) => {
+  return (
+    <div>
+      <StyledHeading>Top rated movies</StyledHeading>
+      <StyledTopRatedMovies>{children}</StyledTopRatedMovies>
+    </div>
+  );
+};
+
+export default MovieBar;
