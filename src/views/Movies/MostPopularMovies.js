@@ -18,7 +18,7 @@ const StyledImage = styled.img`
 const StyledMovieRow = styled.div`
   display: flex;
   position: relative;
-  top: -185px;
+  top: -215px;
   justify-content: center;
 `;
 
@@ -59,16 +59,9 @@ const FlipContainer = styled.div`
   height: 20vh;
   width: 10vw;
 
-
-  /* ${Flipper} {
-    transform-origin: 100% 11.5vh;
-  } */
-
   &:hover ${Flipper} {
     transform: rotateY(-180deg) scale(1.1) translateX(9%);
-    /* transform: rotateX(-180deg); */
     z-index: 999;
-    /* top: -50px; */
   }
 `;
 
@@ -90,17 +83,13 @@ const Back = styled(Front)`
   background-color: ${({ theme }) => theme.movies};
   z-index: 1;
   transform: rotateY(180deg);
-  /* transform: rotateX(180deg); */
 `;
 
 //
 
 const StyledParagraph = styled.span`
   font-size: 11px;
-  /* text-align: center; */
-  /* font-weight: bold; */
-  margin: 0 10px 5px;
-  /* padding-left: 10px; */
+  margin: 0 10px 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,10 +98,9 @@ const StyledParagraph = styled.span`
 const StyledSpan = styled.span`
   font-size: 13px;
   margin: 0 0 2px;
-  /* padding: 0; */
 `;
 const StyledDateParagraph = styled.span`
-  margin: 4px 10px 5px;
+  margin: 4px 10px 1px;
   font-size: 11px;
 `;
 
@@ -143,8 +131,8 @@ const StyledCardButton = styled.button`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 `;
 
-const TopRatedMovies = ({ openModal }) => {
-  const name = 'Top rated movies';
+const MostPopularMovies = ({ openModal }) => {
+  const name = 'Most popular movies';
   const movie = 'movie';
 
   const dispatch = useDispatch();
@@ -152,16 +140,19 @@ const TopRatedMovies = ({ openModal }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage, setMoviesPerPage] = useState(4);
 
-  const topRatedMovies = useSelector((state) => state.moviesReducer.top);
+  const mostPopularMovies = useSelector((state) => state.moviesReducer.popular);
+  const mostPopular1 = useSelector((state) => state.moviesReducer);
+  console.log('check', mostPopular1);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-  const currentMovies = topRatedMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+  const currentMovies = mostPopularMovies.slice(indexOfFirstMovie, indexOfLastMovie);
 
-  const allPage = Math.ceil(topRatedMovies.length / moviesPerPage);
+  const allPage = Math.ceil(mostPopularMovies.length / moviesPerPage);
   //
   // details
   const [movieId, setMovieId] = useState(null);
+  console.log(movieId);
 
   const handleClick = (id) => {
     setMovieId(id);
@@ -216,4 +207,4 @@ const TopRatedMovies = ({ openModal }) => {
   );
 };
 
-export default TopRatedMovies;
+export default MostPopularMovies;

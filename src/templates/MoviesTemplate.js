@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import withContext from '../hoc/withContext';
 
@@ -58,9 +58,9 @@ const StyledButtonIcon = styled(ButtonIcon)`
   z-index: 1000000;
 `;
 
-const MoviesTemplate = ({ pageContext, children }) => {
+const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
   const [barVisible, setBarVisibility] = useState(false);
-
+  console.log(modalOpen);
   return (
     <UserPageTemplate>
       <>
@@ -77,7 +77,6 @@ const MoviesTemplate = ({ pageContext, children }) => {
           <StyledButtonIcon onClick={() => setBarVisibility(!barVisible)} activecolor={pageContext}>
             Find new movie!
           </StyledButtonIcon>
-          {/* <NewItemBar handleClose={this.handleBarToggle} isVisible={barVisible} /> */}
         </StyledWrapper>
       </>
     </UserPageTemplate>

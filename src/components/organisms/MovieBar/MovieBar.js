@@ -11,7 +11,7 @@ const StyledTopRatedMovies = styled.div`
   padding: 1.5rem;
   border-top: 1px solid ${({ theme }) => theme.grey100};
 
-  height: 33vh;
+  height: 28vh;
 `;
 
 const StyledHeading = styled(Heading)`
@@ -21,7 +21,7 @@ const StyledHeading = styled(Heading)`
 const MovieBar = ({ children, page }) => {
   return (
     <div>
-      <StyledHeading>Top rated movies</StyledHeading>
+      <StyledHeading>{page}</StyledHeading>
       <StyledTopRatedMovies>{children}</StyledTopRatedMovies>
     </div>
   );

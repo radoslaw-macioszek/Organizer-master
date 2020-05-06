@@ -5,6 +5,11 @@ import styled from 'styled-components';
 import Modal from '../components/molecules/Modal/Modal';
 
 import TopRatedMovies from './Movies/TopRatedMovies';
+import MostPopularMovies from './Movies/MostPopularMovies';
+import TopRatedSeries from './Movies/TopRatedSeries';
+import MostPopularSeries from './Movies/MostPopularSeries';
+import WeekPopularSeries from './Movies/WeekPopularSeries';
+import WeekPopularMovies from './Movies/WeekPopularMovies';
 
 const StyledMovieColumn = styled.div`
   grid-row: span 6;
@@ -47,11 +52,13 @@ const Movies = () => {
     <MoviesTemplate>
       <StyledMovieColumn>xx</StyledMovieColumn>
       <TopRatedMovies openModal={openModal} />
-      <div>Popular series</div>
-      <div>popularne dzisiaj? nowosci ?</div>
-      <div>Top rated series</div>
-      <div>popular series</div>
-      <div>popularne dzisiaj? nowosci ?</div>
+      <MostPopularMovies openModal={openModal} />
+      <WeekPopularMovies openModal={openModal} />
+
+      <TopRatedSeries openModal={openModal} />
+      <MostPopularSeries openModal={openModal} />
+      <WeekPopularSeries openModal={openModal} />
+
       {isModalOpen && (
         <div ref={node}>
           <Modal />

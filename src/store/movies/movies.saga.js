@@ -22,27 +22,67 @@ function* loadMovies(action) {
     call(axios.get, 'https://api.themoviedb.org/3/movie/popular', {
       params: {
         api_key: '20a84d44425a1770674ac45f99ccc0f4',
-        //   q: `${searchResult}`,
-        // printType: all,
-        // pagination
+      },
+    }),
+    call(axios.get, 'https://api.themoviedb.org/3/trending/movie/week', {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
+      },
+    }),
+    call(axios.get, 'https://api.themoviedb.org/3/trending/tv/week', {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
+      },
+    }),
+    call(axios.get, 'https://api.themoviedb.org/3/tv/top_rated', {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
+      },
+    }),
+    call(axios.get, 'https://api.themoviedb.org/3/tv/popular', {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
       },
     }),
   ]);
 
-  if (response[0].status === 200 && response[1].status === 200) {
-    yield put(loadMoviesSuccess(response[0].data.results, response[1].data.results));
+  if (
+    response[0].status === 200 &&
+    response[1].status === 200 &&
+    response[2].status === 200 &&
+    response[3].status === 200 &&
+    response[4].status === 200 &&
+    response[5].status === 200
+  ) {
+    yield put(
+      loadMoviesSuccess(
+        response[0].data.results,
+        response[1].data.results,
+        response[2].data.results,
+        response[3].data.results,
+        response[4].data.results,
+        response[5].data.results,
+      ),
+    );
     return;
   }
   yield put(loadMoviesFailed());
 }
 
 function* loadDetail(action) {
-  const id = action.payload;
-  const response = yield call(axios.get, `https://api.themoviedb.org/3/movie/${id}`, {
-    params: {
-      api_key: '20a84d44425a1770674ac45f99ccc0f4',
+  const id = action.payload.id;
+  const type = action.payload.type;
+
+  console.log('action', action);
+  const response = yield call(
+    axios.get,
+    `https://api.themoviedb.org/3/${type}/${id === 668203 ? 80167 : id}`,
+    {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
+      },
     },
-  });
+  );
 
   if (response.status === 200) {
     yield put(loadMovieDetailSuccess(response.data));

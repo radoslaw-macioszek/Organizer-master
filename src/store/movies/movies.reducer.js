@@ -11,11 +11,22 @@ export const loadMoviesAction = (term) => ({
   payload: term,
 });
 
-export const loadMoviesSuccess = (top, popular) => ({
+export const loadMoviesSuccess = (
+  top,
+  popular,
+  weekMovie,
+  weekSeries,
+  topSeries,
+  popularSeries,
+) => ({
   type: LOAD_MOVIES_SUCCESS,
   payload: {
     popular,
     top,
+    weekMovie,
+    weekSeries,
+    topSeries,
+    popularSeries,
   },
 });
 
@@ -23,9 +34,12 @@ export const loadMoviesFailed = () => ({
   type: LOAD_MOVIES_FAILED,
 });
 
-export const loadMovieDetail = (id) => ({
+export const loadMovieDetail = (id, type) => ({
   type: MOVIE_DETAIL,
-  payload: id,
+  payload: {
+    id,
+    type,
+  },
 });
 
 export const loadMovieDetailSuccess = (details) => ({
@@ -38,9 +52,14 @@ const INITIAL_STATE = {
   loading: false,
   error: '',
   term: '',
-  popular: {},
+  popular: [],
   top: [],
+  weekMovie: [],
+  weekSeries: [],
+  topSeries: [],
+  popularSeries: [],
   id: '',
+  type: '',
   details: {},
 };
 
@@ -59,6 +78,10 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         popular: action.payload.popular,
         top: action.payload.top,
+        weekMovie: action.payload.weekMovie,
+        weekSeries: action.payload.weekSeries,
+        topSeries: action.payload.topSeries,
+        popularSeries: action.payload.popularSeries,
         loading: false,
       };
     }
@@ -73,7 +96,8 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        id: action.payload,
+        id: action.payload.type,
+        type: action.payload.type,
       };
     }
     case MOVIE_DETAIL_SUCCESS: {
