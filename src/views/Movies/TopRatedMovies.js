@@ -8,23 +8,23 @@ import MovieBar from '../../components/organisms/MovieBar/MovieBar';
 import { loadMovieDetail } from '../../store/movies/movies.reducer';
 
 const StyledImage = styled.img`
-  height: 20vh;
-  width: 8.5vw;
+  height: 18vh;
+  width: 7.5vw;
   border-radius: 5px;
 `;
 
 const StyledMovieRow = styled.div`
   display: flex;
   position: relative;
-  top: -185px;
+  top: -215px;
   justify-content: center;
 `;
 
 const StyledButton = styled.button`
-  height: 23vh;
+  height: 21vh;
   width: 4vw;
   position: absolute;
-  right: -75px;
+  right: -50px;
   top: 51px;
   background-color: ${({ theme }) => theme.greyTransparent};
   border: none;
@@ -40,7 +40,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLeftButton = styled(StyledButton)`
-  left: -85px;
+  left: -70px;
 `;
 
 // obracanie karty
@@ -54,25 +54,19 @@ const Flipper = styled.div`
 
 const FlipContainer = styled.div`
   perspective: 1000px;
-  height: 20vh;
-  width: 10vw;
-
-
-  /* ${Flipper} {
-    transform-origin: 100% 11.5vh;
-  } */
+  height: 18vh;
+  width: 8vw;
+  margin-right: 5px;
 
   &:hover ${Flipper} {
-    transform: rotateY(-180deg) scale(1.1) translateX(9%);
-    /* transform: rotateX(-180deg); */
+    transform: rotateY(-180deg) scale(1.1) translateX(6%);
     z-index: 999;
-    /* top: -50px; */
   }
 `;
 
 const Front = styled.div`
-  height: 20vh;
-  width: 8vw;
+  height: 18vh;
+  width: 7.5vw;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 
   backface-visibility: hidden;
@@ -88,17 +82,13 @@ const Back = styled(Front)`
   background-color: ${({ theme }) => theme.movies};
   z-index: 1;
   transform: rotateY(180deg);
-  /* transform: rotateX(180deg); */
 `;
 
 //
 
 const StyledParagraph = styled.span`
   font-size: 11px;
-  /* text-align: center; */
-  /* font-weight: bold; */
-  margin: 0 10px 5px;
-  /* padding-left: 10px; */
+  margin: 0 10px 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,10 +97,9 @@ const StyledParagraph = styled.span`
 const StyledSpan = styled.span`
   font-size: 13px;
   margin: 0 0 2px;
-  /* padding: 0; */
 `;
 const StyledDateParagraph = styled.span`
-  margin: 4px 10px 5px;
+  margin: 4px 10px 1px;
   font-size: 11px;
 `;
 

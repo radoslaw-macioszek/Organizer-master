@@ -10,8 +10,8 @@ import MovieBar from '../../components/organisms/MovieBar/MovieBar';
 import { loadMovieDetail } from '../../store/movies/movies.reducer';
 
 const StyledImage = styled.img`
-  height: 20vh;
-  width: 8.5vw;
+  height: 18vh;
+  width: 7.5vw;
   border-radius: 5px;
 `;
 
@@ -23,10 +23,10 @@ const StyledMovieRow = styled.div`
 `;
 
 const StyledButton = styled.button`
-  height: 23vh;
+  height: 21vh;
   width: 4vw;
   position: absolute;
-  right: -75px;
+  right: -50px;
   top: 51px;
   background-color: ${({ theme }) => theme.greyTransparent};
   border: none;
@@ -42,7 +42,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLeftButton = styled(StyledButton)`
-  left: -85px;
+  left: -70px;
 `;
 
 // obracanie karty
@@ -56,18 +56,19 @@ const Flipper = styled.div`
 
 const FlipContainer = styled.div`
   perspective: 1000px;
-  height: 20vh;
-  width: 10vw;
+  height: 18vh;
+  width: 8vw;
+  margin-right: 5px;
 
   &:hover ${Flipper} {
-    transform: rotateY(-180deg) scale(1.1) translateX(9%);
+    transform: rotateY(-180deg) scale(1.1) translateX(6%);
     z-index: 999;
   }
 `;
 
 const Front = styled.div`
-  height: 20vh;
-  width: 8vw;
+  height: 18vh;
+  width: 7.5vw;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 
   backface-visibility: hidden;

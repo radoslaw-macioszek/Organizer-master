@@ -11,8 +11,8 @@ const StyledWrapper = styled.div`
   right: 0;
   margin: 0 auto;
   transform: translateY(-50%);
-  width: 40vw;
-  height: 60vh;
+  width: 35vw;
+  height: 65vh;
   background-color: white;
   box-shadow: 0 20px 40px -10px rgba(#818181, 0.5);
   border: 2px solid ${({ theme }) => theme.movies};
@@ -27,7 +27,7 @@ const StyledWrapper = styled.div`
 
 const StyledTopWrapper = styled.div`
   display: flex;
-  padding: 5px;
+  padding: 10px 5px;
   height: 32vh;
   padding-right: 15px;
 `;
@@ -35,10 +35,11 @@ const StyledTopWrapper = styled.div`
 const StyledDetails = styled.div`
   flex-direction: column;
   width: 100%;
+  padding-right: 10px;
 `;
 
 const StyledImage = styled.img`
-  height: 29vh;
+  height: 28vh;
   width: 12.5vw;
   border-radius: 5px;
   margin: 10px;
@@ -47,13 +48,13 @@ const StyledImage = styled.img`
 
 const StyledTitle = styled.p`
   font-size: 25px;
-  margin: 25px 0 20px;
+  margin: 10px 0 20px;
   text-align: left;
   font-weight: bold;
 `;
 
 const StyledSeriesTitle = styled(StyledTitle)`
-  margin: 25px 0 8px;
+  margin: 10px 0 8px;
 `;
 
 const StyledSubTitle = styled.p`
@@ -89,7 +90,7 @@ const StyledBottomWrapper = styled.div`
   font-size: 16px;
   height: 26vh;
   text-align: justify;
-  padding: 0px 30px 10px;
+  padding: 10px 30px 10px;
   line-height: 1.5;
 `;
 

@@ -32,7 +32,9 @@ const StyledLeftSide = styled.div`
 
   height: 180vh;
   overflow: scroll;
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.movies};
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 `;
 
 const StyledScroll = styled.div`
@@ -60,7 +62,7 @@ function useOnClickOutside(node, handler) {
 }
 //
 const Movies = () => {
-  const title = 'My list of movies';
+  const title = 'My list to watch';
   const [isModalOpen, setModal] = useState(false);
 
   const openModal = () => {
@@ -74,6 +76,9 @@ const Movies = () => {
   return (
     <MoviesTemplate>
       <StyledScroll>
+        <button>Movies</button>
+        <button>Series</button>
+
         {title}
         <StyledLeftSide>
           <MainMovieColumn />

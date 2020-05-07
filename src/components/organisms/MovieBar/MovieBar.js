@@ -6,11 +6,11 @@ import Heading from '../../atoms/Heading/Heading';
 const StyledTopRatedMovies = styled.div`
   display: flex;
   overflow: scroll;
-  width: 38vw;
+  width: 35vw;
   padding: 1.5rem;
   border-top: 1px solid ${({ theme }) => theme.grey100};
 
-  height: 28vh;
+  height: 25vh;
 `;
 
 const StyledHeading = styled(Heading)`
