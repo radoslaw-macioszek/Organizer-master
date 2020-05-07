@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { takeLatest, put, call, select, all } from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import {
   LOAD_MOVIES,
   loadMoviesSuccess,
@@ -10,13 +10,19 @@ import {
 
 function* loadMovies(action) {
   const searchMoviesResult = action.payload;
+  console.log(action);
   const response = yield all([
+    call(axios.get, 'https://api.themoviedb.org/3/search/movie', {
+      params: {
+        api_key: '20a84d44425a1770674ac45f99ccc0f4',
+        query: `${searchMoviesResult}`,
+        // printType: all,
+        // pagination
+      },
+    }),
     call(axios.get, 'https://api.themoviedb.org/3/movie/top_rated', {
       params: {
         api_key: '20a84d44425a1770674ac45f99ccc0f4',
-        //   q: `${searchResult}`,
-        // printType: all,
-        // pagination
       },
     }),
     call(axios.get, 'https://api.themoviedb.org/3/movie/popular', {
@@ -52,7 +58,8 @@ function* loadMovies(action) {
     response[2].status === 200 &&
     response[3].status === 200 &&
     response[4].status === 200 &&
-    response[5].status === 200
+    response[5].status === 200 &&
+    response[6].status === 200
   ) {
     yield put(
       loadMoviesSuccess(
@@ -62,6 +69,7 @@ function* loadMovies(action) {
         response[3].data.results,
         response[4].data.results,
         response[5].data.results,
+        response[6].data.results,
       ),
     );
     return;
@@ -70,10 +78,8 @@ function* loadMovies(action) {
 }
 
 function* loadDetail(action) {
-  const id = action.payload.id;
-  const type = action.payload.type;
+  const { id, type } = action.payload;
 
-  console.log('action', action);
   const response = yield call(
     axios.get,
     `https://api.themoviedb.org/3/${type}/${id === 668203 ? 80167 : id}`,

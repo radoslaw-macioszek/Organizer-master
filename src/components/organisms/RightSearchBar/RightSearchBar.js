@@ -73,7 +73,7 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
     }
   }, [dispatch, bookLoading, pageContext]);
 
-  return (
+  return pageContext === 'books' ? (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
       <Heading>Books</Heading>
       <StyledForm onSubmit={handleSubmit}>
@@ -86,9 +86,20 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
         />
       </StyledForm>
       <StyledBookArea>{children}</StyledBookArea>
-      {/* <StyledButton type="submit" activecolor={pageContext}>
-        Add book
-      </StyledButton> */}
+    </StyledWrapper>
+  ) : (
+    <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
+      <Heading>Movies</Heading>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledInput
+          type="text"
+          placeholder="Find movie"
+          autoComplete="off"
+          value={searchPhrase}
+          onChange={handleChange}
+        />
+      </StyledForm>
+      <StyledBookArea>{children}</StyledBookArea>
     </StyledWrapper>
   );
 };

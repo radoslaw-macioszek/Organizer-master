@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import MoviesTemplate from '../templates/MoviesTemplate';
 import styled from 'styled-components';
 import Modal from '../components/molecules/Modal/Modal';
+
+import MoviesTemplate from '../templates/MoviesTemplate';
 
 import TopRatedMovies from './Movies/TopRatedMovies';
 import MostPopularMovies from './Movies/MostPopularMovies';
@@ -11,11 +11,33 @@ import MostPopularSeries from './Movies/MostPopularSeries';
 import WeekPopularSeries from './Movies/WeekPopularSeries';
 import WeekPopularMovies from './Movies/WeekPopularMovies';
 
-const StyledMovieColumn = styled.div`
-  grid-row: span 6;
-`;
+import MainMovieColumn from './Movies/MainMovieColumn';
 
 // zamykanie modala po kliknieciu poza modal
+
+const StyledRightSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  margin-left: 130px;
+`;
+
+const StyledLeftSide = styled.div`
+  width: 41vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+
+  padding: 10px;
+
+  height: 180vh;
+  overflow: scroll;
+  border: 1px solid black;
+`;
+
+const StyledScroll = styled.div`
+  border-radius: 5px;
+`;
 
 function useOnClickOutside(node, handler) {
   useEffect(() => {
@@ -38,6 +60,7 @@ function useOnClickOutside(node, handler) {
 }
 //
 const Movies = () => {
+  const title = 'My list of movies';
   const [isModalOpen, setModal] = useState(false);
 
   const openModal = () => {
@@ -50,20 +73,27 @@ const Movies = () => {
   //
   return (
     <MoviesTemplate>
-      <StyledMovieColumn>xx</StyledMovieColumn>
-      <TopRatedMovies openModal={openModal} />
-      <MostPopularMovies openModal={openModal} />
-      <WeekPopularMovies openModal={openModal} />
+      <StyledScroll>
+        {title}
+        <StyledLeftSide>
+          <MainMovieColumn />
+        </StyledLeftSide>
+      </StyledScroll>
+      <StyledRightSide>
+        <TopRatedMovies openModal={openModal} />
+        <MostPopularMovies openModal={openModal} />
+        <WeekPopularMovies openModal={openModal} />
 
-      <TopRatedSeries openModal={openModal} />
-      <MostPopularSeries openModal={openModal} />
-      <WeekPopularSeries openModal={openModal} />
+        <TopRatedSeries openModal={openModal} />
+        <MostPopularSeries openModal={openModal} />
+        <WeekPopularSeries openModal={openModal} />
 
-      {isModalOpen && (
-        <div ref={node}>
-          <Modal />
-        </div>
-      )}
+        {isModalOpen && (
+          <div ref={node}>
+            <Modal />
+          </div>
+        )}
+      </StyledRightSide>
     </MoviesTemplate>
   );
 };

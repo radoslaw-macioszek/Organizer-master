@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import Heading from '../../components/atoms/Heading/Heading';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import MovieBar from '../../components/organisms/MovieBar/MovieBar';
-
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 import { loadMovieDetail } from '../../store/movies/movies.reducer';
 
@@ -26,7 +24,7 @@ const StyledButton = styled.button`
   height: 23vh;
   width: 4vw;
   position: absolute;
-  right: -40px;
+  right: -75px;
   top: 51px;
   background-color: ${({ theme }) => theme.greyTransparent};
   border: none;
@@ -42,7 +40,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLeftButton = styled(StyledButton)`
-  left: -43px;
+  left: -85px;
 `;
 
 // obracanie karty
@@ -138,14 +136,13 @@ const TopRatedSeries = ({ openModal }) => {
   const dispatch = useDispatch();
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
-  const [moviesPerPage, setMoviesPerPage] = useState(4);
+  const [moviesPerPage] = useState(4);
 
   const mostPopularMovies = useSelector((state) => state.moviesReducer.topSeries);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
   const currentSeries = mostPopularMovies.slice(indexOfFirstMovie, indexOfLastMovie);
-  console.log(currentSeries);
 
   const allPage = Math.ceil(mostPopularMovies.length / moviesPerPage);
   //
@@ -179,10 +176,12 @@ const TopRatedSeries = ({ openModal }) => {
                 <Back>
                   <StyledHeader>{movie.name}</StyledHeader>
                   <StyledParagraph>
-                    Average rate: <StyledSpan>{movie.vote_average}</StyledSpan>
+                    Average rate:
+                    <StyledSpan>{movie.vote_average}</StyledSpan>
                   </StyledParagraph>
                   <StyledParagraph>
-                    Popularity: <StyledSpan>{movie.popularity}</StyledSpan>
+                    Popularity:
+                    <StyledSpan>{movie.popularity}</StyledSpan>
                   </StyledParagraph>
                   <StyledDateParagraph>
                     Release date:

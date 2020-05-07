@@ -12,6 +12,7 @@ export const loadMoviesAction = (term) => ({
 });
 
 export const loadMoviesSuccess = (
+  data,
   top,
   popular,
   weekMovie,
@@ -21,6 +22,7 @@ export const loadMoviesSuccess = (
 ) => ({
   type: LOAD_MOVIES_SUCCESS,
   payload: {
+    data,
     popular,
     top,
     weekMovie,
@@ -48,7 +50,7 @@ export const loadMovieDetailSuccess = (details) => ({
 });
 
 const INITIAL_STATE = {
-  data: {},
+  data: [],
   loading: false,
   error: '',
   term: '',
@@ -76,6 +78,7 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
     case LOAD_MOVIES_SUCCESS: {
       return {
         ...state,
+        data: action.payload.data,
         popular: action.payload.popular,
         top: action.payload.top,
         weekMovie: action.payload.weekMovie,

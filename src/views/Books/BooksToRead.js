@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
-import Book from '../Book/Book';
+import Book from './Book';
 
 const FirstColumn = styled.div`
   grid-row: span 2;

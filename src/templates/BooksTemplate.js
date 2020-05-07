@@ -5,9 +5,9 @@ import UserPageTemplate from './UserPageTemplate';
 import BookTemplate from './bookTemplate';
 
 import Books from '../views/Books';
-import BooksToRead from '../components/molecules/BooksToRead/BooksToRead';
-import BooksRead from '../components/molecules/BooksRead/BooksRead';
-import BooksFavorite from '../components/molecules/BooksFavorite/BooksFavorite';
+import BooksToRead from '../views/Books/BooksToRead';
+import BooksRead from '../views/Books/BooksRead';
+import BooksFavorite from '../views/Books/BooksFavorite';
 
 const BooksTemplate = () => {
   return (

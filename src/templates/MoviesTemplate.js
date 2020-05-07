@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import withContext from '../hoc/withContext';
+import SearchedMovies from '../views/Movies/SearchedMovies';
 
 import UserPageTemplate from './UserPageTemplate';
 import RightSearchBar from '../components/organisms/RightSearchBar/RightSearchBar';
@@ -11,7 +12,7 @@ import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
 
 const StyledWrapper = styled.div`
-  padding: 25px 100px 25px 70px;
+  padding: 25px 30px 25px 70px;
   position: relative;
 `;
 
@@ -33,11 +34,12 @@ const StyledPageHeader = styled.div`
 `;
 
 const StyledGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  display: flex;
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
+  /* grid-template-rows: repeat(6, 1fr); */
 
-  grid-gap: 15px;
+  /* grid-gap: 15px; */
 `;
 
 // position fixed, zeby nawet przy scrollowaniu byl w tym samym miejscu
@@ -60,7 +62,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
 const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
   const [barVisible, setBarVisibility] = useState(false);
-  console.log(modalOpen);
+
   return (
     <UserPageTemplate>
       <>
@@ -70,10 +72,12 @@ const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>6 {pageContext}</StyledParagraph>
+            <StyledParagraph>{`6 ${pageContext}`}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
-          <RightSearchBar isVisible={barVisible} />
+          <RightSearchBar isVisible={barVisible}>
+            <SearchedMovies />
+          </RightSearchBar>
           <StyledButtonIcon onClick={() => setBarVisibility(!barVisible)} activecolor={pageContext}>
             Find new movie!
           </StyledButtonIcon>

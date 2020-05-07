@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import Heading from '../../atoms/Heading/Heading';
-import Button from '../../atoms/Button/Button';
-import Paragraph from '../../atoms/Paragraph/Paragraph';
-import withContext from '../../../hoc/withContext';
-import Input from '../../../components/atoms/Input/Input';
+import Heading from '../../components/atoms/Heading/Heading';
+import Button from '../../components/atoms/Button/Button';
+import Paragraph from '../../components/atoms/Paragraph/Paragraph';
+import withContext from '../../hoc/withContext';
+import Input from '../../components/atoms/Input/Input';
 
-import Stars from '../../atoms/Stars/Stars';
+import Stars from '../../components/atoms/Stars/Stars';
 import { FiCheck } from 'react-icons/fi';
 
 import {
@@ -17,7 +17,7 @@ import {
   addToFavorite,
   addPosition,
   addToReaded,
-} from '../../../store/NATitems/NATitems.reducer';
+} from '../../store/NATitems/NATitems.reducer';
 
 const DateInfo = styled(Paragraph)`
   margin: 0 0 5px 12px;

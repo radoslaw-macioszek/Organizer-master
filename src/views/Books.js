@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import withContext from '../hoc/withContext';
@@ -112,7 +112,6 @@ const StyledAddButton = styled.button`
 const Books = ({ pageContext }) => {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.booksReducer.data);
-  const check = useSelector((state) => state.natReducer);
 
   const [barVisible, setBarVisibility] = useState(false);
 
@@ -138,8 +137,8 @@ const Books = ({ pageContext }) => {
 
             const values = {
               id: book.id,
-              title: title,
-              description: description,
+              title,
+              description,
               created: '13 days ago',
               image: `${imageLinks ? imageLinks.smallThumbnail : image}`,
             };
@@ -153,7 +152,9 @@ const Books = ({ pageContext }) => {
                 <StyledDescription>
                   <StyledImage src={imageLinks ? imageLinks.smallThumbnail : image} alt="book" />
                   <StyledToolTip>
-                    Description: <hr /> {description}
+                    Description:
+                    <hr />
+                    {description}
                   </StyledToolTip>
                 </StyledDescription>
                 <StyledDetails>
@@ -161,11 +162,13 @@ const Books = ({ pageContext }) => {
                   <p>by {authors ? authors.map((auth) => `${auth}, `) : '-'}</p>
 
                   <StyledParagraph>
-                    Category: {categories ? categories.map((cat) => `${cat}, `) : ' '}
+                    Category:
+                    {categories ? categories.map((cat) => `${cat}, `) : ' '}
                   </StyledParagraph>
                   <StyledParagraph>
-                    Average rating: {averageRating ? averageRating : '-'}, Pages: {pageCount},
-                    Language: {language.toUpperCase()}
+                    Average rating:
+                    {averageRating ? averageRating : '-'}, Pages: {pageCount}, Language:{' '}
+                    {language.toUpperCase()}
                   </StyledParagraph>
                   <StyledLink href={previewLink}>Check Book</StyledLink>
                 </StyledDetails>
