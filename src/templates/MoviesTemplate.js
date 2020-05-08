@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import withContext from '../hoc/withContext';
 import SearchedMovies from '../views/Movies/SearchedMovies';
@@ -60,6 +61,36 @@ const StyledButtonIcon = styled(ButtonIcon)`
   z-index: 1000000;
 `;
 
+const StyledLink = styled.a`
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+  margin-right: 2px;
+  /* background-color: ${({ theme }) => theme.greyTransparent}; */
+  background-color: ${({ theme }) => theme.movies};
+
+  padding: 15px 30px;
+  font-weight: bold;
+
+  &:hover {
+    /* background: ${({ theme }) => theme.grey300Transparent}; */
+    color: ${({ theme }) => theme.movies};
+    border: 1px solid ${({ theme }) => theme.movies};
+
+  background-color: ${({ theme }) => theme.greyTransparent};
+
+    border-bottom: 4px solid ${({ theme }) => theme.movies};
+  }
+`;
+
+const StyledCategory = styled.div`
+  display: flex;
+  /* justify-content: center; */
+  margin: 0px 150px 50px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.movies};
+  border-radius: 5px;
+`;
+
 const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
   const [barVisible, setBarVisibility] = useState(false);
 
@@ -67,6 +98,14 @@ const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
     <UserPageTemplate>
       <>
         <StyledWrapper>
+          <StyledCategory>
+            <StyledLink as={Link} to="/movies">
+              Movies
+            </StyledLink>
+            <StyledLink as={Link} to="/series">
+              Series
+            </StyledLink>
+          </StyledCategory>
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">

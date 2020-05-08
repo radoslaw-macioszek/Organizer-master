@@ -8,13 +8,14 @@ const StyledTopRatedMovies = styled.div`
   overflow: scroll;
   width: 35vw;
   padding: 1.5rem;
-  border-top: 1px solid ${({ theme }) => theme.grey100};
+  border-top: 1px solid ${({ theme }) => theme.movies};
 
   height: 25vh;
 `;
 
 const StyledHeading = styled(Heading)`
   font-size: 2rem;
+  text-align: center;
 `;
 
 const MovieBar = ({ children, page }) => {

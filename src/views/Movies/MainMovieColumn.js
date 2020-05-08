@@ -1,8 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import Button from '../../components/atoms/Button/Button';
+
+import { addToWatched, removeItem } from '../../store/NATitems/NATitems.reducer';
 
 const StyledMovieColumn = styled.div`
   display: flex;
@@ -13,7 +15,7 @@ const StyledMovieColumn = styled.div`
 `;
 
 const DateInfo = styled.p`
-  margin: 0 0 5px 12px;
+  margin: 0 0 8px 12px;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
@@ -33,7 +35,24 @@ const StyledImage = styled.img`
 `;
 
 const MainMovieColumn = () => {
-  const check = useSelector((state) => state.moviesReducer.data);
+  const dispatch = useDispatch();
+  const [checked, setChecked] = useState(false);
+  console.log(checked);
+
+  //   const check = useSelector((state) => state.moviesReducer.data);
+  const check = useSelector((state) => state.natReducer.movies);
+
+  const checking = useSelector((state) => state.natReducer);
+
+  console.log('reducer', checking);
+
+  // looknac!
+  const handleChange = (id, title, path) => {
+    setChecked(true);
+    dispatch(removeItem('movies', id));
+    dispatch(addToWatched(id, title, path));
+    setChecked(false);
+  };
 
   const image =
     'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg';
@@ -41,16 +60,16 @@ const MainMovieColumn = () => {
   return check.map((item) => (
     <StyledMovieColumn>
       <DateInfo>Added: 13/12/2019</DateInfo>
-      <DateInfo>Watched: 13/12/2019</DateInfo>
-      <StyledImage
-        src={
-          item.poster_path === null ? image : `https://image.tmdb.org/t/p/w500${item.poster_path}`
-        }
-        alt="book"
-      />
+      <StyledImage src={item.path === null ? image : item.path} alt="book" />
 
       <ButtonsWrapper>
-        <Button secondary>Add to Favorite</Button>
+        <input
+          type="checkbox"
+          value={checked}
+          id="watched"
+          onChange={() => handleChange(item.id, item.title, item.path)}
+        />
+        <label>Watched</label>
 
         <Button secondary>REMOVE</Button>
       </ButtonsWrapper>

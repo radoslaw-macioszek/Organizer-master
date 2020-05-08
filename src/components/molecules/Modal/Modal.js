@@ -129,9 +129,7 @@ const Modal = () => {
                   <p>
                     {hours}h {minutes} min.
                   </p>
-                  <p>
-                    lang. {details.original_language && details.original_language.toUpperCase()}
-                  </p>
+                  <p>{details.original_language && details.original_language.toUpperCase()}</p>
                   <p>{details.adult === false ? '' : '18+'}</p>
                 </StyledVages>
                 <StyledGenres>

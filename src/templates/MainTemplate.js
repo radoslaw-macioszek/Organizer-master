@@ -29,7 +29,7 @@ class MainTemplate extends React.Component {
   // prevProps i prevState to dwa argumenty didUpdate. Zostaly podane ze wzgledu na zapetlanie sie bez nich w naszym przypadku.
 
   setCurrentPage = (prevState = '') => {
-    const pageTypes = ['twitters', 'articles', 'notes', 'books', 'movies'];
+    const pageTypes = ['twitters', 'articles', 'notes', 'books', 'movies', 'series'];
     // propsy wyciagniete z withRouter'a. v
     const {
       location: { pathname },

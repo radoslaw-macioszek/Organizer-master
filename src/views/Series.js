@@ -1,16 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from '../components/molecules/Modal/Modal';
+import { Link } from 'react-router-dom';
 
 import MoviesTemplate from '../templates/MoviesTemplate';
 import Heading from '../components/atoms/Heading/Heading';
 
 import TopRatedMovies from './Movies/TopRatedMovies';
 import MostPopularMovies from './Movies/MostPopularMovies';
+import TopRatedSeries from './Movies/TopRatedSeries';
+import MostPopularSeries from './Movies/MostPopularSeries';
+import WeekPopularSeries from './Movies/WeekPopularSeries';
 import WeekPopularMovies from './Movies/WeekPopularMovies';
 
 import MainMovieColumn from './Movies/MainMovieColumn';
-import WatchedMovies from './Movies/WatchedMovies';
 
 // zamykanie modala po kliknieciu poza modal
 
@@ -29,42 +32,20 @@ const StyledLeftSide = styled.div`
 
   padding: 10px;
 
-  height: 90vh;
+  height: 100vh;
   overflow: scroll;
   border-top: 1px solid ${({ theme }) => theme.movies};
   border-left: 1px solid ${({ theme }) => theme.movies};
-
   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-`;
-
-const StyledBottomSide = styled(StyledLeftSide)`
-  height: 69vh;
-  width: 84vw;
-  grid-template-columns: repeat(6, 1fr);
-  padding: 20px;
 `;
 
 const StyledScroll = styled.div`
   border-radius: 5px;
 `;
+
 const StyledHeading = styled(Heading)`
-  font-size: 2.4rem;
-  text-align: center;
-`;
-
-const StyledTop = styled.div`
-  display: flex;
-`;
-
-const StyledBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledWhole = styled.div`
-  display: flex;
-  flex-direction: column;
+  font-size: 2rem;
 `;
 
 function useOnClickOutside(node, handler) {
@@ -87,10 +68,8 @@ function useOnClickOutside(node, handler) {
   }, [node, handler]);
 }
 //
-const Movies = () => {
-  const title = 'List of movies to watch';
-  const title2 = 'List of watched movies';
-
+const Series = () => {
+  const title = 'My list of series to watch';
   const [isModalOpen, setModal] = useState(false);
 
   const openModal = () => {
@@ -103,34 +82,29 @@ const Movies = () => {
   //
   return (
     <MoviesTemplate>
-      <StyledWhole>
-        <StyledTop>
-          <StyledScroll>
-            <StyledHeading>{title}</StyledHeading>
-            <StyledLeftSide>
-              <MainMovieColumn />
-            </StyledLeftSide>
-          </StyledScroll>
-          <StyledRightSide>
-            <TopRatedMovies openModal={openModal} />
-            <MostPopularMovies openModal={openModal} />
-            <WeekPopularMovies openModal={openModal} />
-            {isModalOpen && (
-              <div ref={node}>
-                <Modal />
-              </div>
-            )}
-          </StyledRightSide>
-        </StyledTop>
-        <StyledBottom>
-          <StyledHeading style={{ marginTop: '100px' }}>{title2}</StyledHeading>
-          <StyledBottomSide>
-            <WatchedMovies />
-          </StyledBottomSide>
-        </StyledBottom>
-      </StyledWhole>
+      <StyledScroll>
+        <StyledHeading>{title}</StyledHeading>
+        <StyledLeftSide>
+          <MainMovieColumn />
+        </StyledLeftSide>
+      </StyledScroll>
+      <StyledRightSide>
+        {/* <TopRatedMovies openModal={openModal} />
+        <MostPopularMovies openModal={openModal} />
+        <WeekPopularMovies openModal={openModal} /> */}
+
+        <TopRatedSeries openModal={openModal} />
+        <MostPopularSeries openModal={openModal} />
+        <WeekPopularSeries openModal={openModal} />
+
+        {isModalOpen && (
+          <div ref={node}>
+            <Modal />
+          </div>
+        )}
+      </StyledRightSide>
     </MoviesTemplate>
   );
 };
 
-export default Movies;
+export default Series;

@@ -4,6 +4,7 @@ const theme = {
   articles: 'hsl(106, 47%, 64%)',
   books: 'hsla(360, 73%, 60%)',
   movies: 'hsla(30, 68%, 70%)',
+  series: 'hsla(30, 68%, 70%)',
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%)',
   grey300: 'hsl(0, 0%, 50%)',

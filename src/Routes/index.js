@@ -10,6 +10,7 @@ const routes = {
   books: '/books',
   book: '/book/:id',
   movies: '/movies',
+  series: '/series',
 };
 
 export default routes;

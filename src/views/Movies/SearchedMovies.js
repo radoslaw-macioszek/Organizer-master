@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
+
+import { addToMovieList } from '../../store/NATitems/NATitems.reducer';
 
 const StyledBookWrapper = styled.div`
   display: flex;
@@ -126,6 +128,7 @@ const StyledSpan = styled.span`
 `;
 
 const SearchedMovies = () => {
+  const dispatch = useDispatch();
   const searchedMovies = useSelector((state) => state.moviesReducer.data);
   console.log('serched', searchedMovies);
 
@@ -197,7 +200,22 @@ const SearchedMovies = () => {
               <StyledSpan>language:</StyledSpan>
               {movie.original_language.toUpperCase()}
             </StyledParagraph>
-            <StyledAddButton>+ Add to your movie list</StyledAddButton>
+            <StyledAddButton
+              onClick={() =>
+                dispatch(
+                  addToMovieList(
+                    movie.id,
+                    movie.title,
+                    `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                    movie.vote_average,
+                    movie.popularity,
+                    movie.release_date,
+                  ),
+                )
+              }
+            >
+              + Add to your movie list
+            </StyledAddButton>
           </StyledDetails>
         </StyledBookWrapper>
       ))}

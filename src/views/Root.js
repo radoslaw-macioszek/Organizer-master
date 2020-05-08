@@ -8,11 +8,10 @@ import DetailsPage from './DetailsPage';
 import Notes from './Notes';
 import Twitters from './Twitters';
 import Articles from './Articles';
-import Books from './Books';
 import Movies from './Movies';
 import routes from '../Routes';
 import BooksTemplate from '../templates/BooksTemplate';
-import Modal from '../components/molecules/Modal/Modal';
+import Series from './Series';
 
 const Root = () => {
   return (
@@ -29,6 +28,7 @@ const Root = () => {
             <Route path={routes.article} component={DetailsPage} />
             <Route path={routes.books} component={BooksTemplate} />
             <Route path={routes.movies} component={Movies} />
+            <Route path={routes.series} component={Series} />
             <Route path={routes.login} />
           </Switch>
         </MainTemplate>

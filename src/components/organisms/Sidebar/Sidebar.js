@@ -59,7 +59,12 @@ const Sidebar = ({ pageContext }) => (
     <StyledIcon as={NavLink} to="/notes" icon={penIcon} activeclass="active" />
     <StyledIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
     <StyledIcon as={NavLink} to="/articles" small="true" icon={bulbIcon} activeclass="active" />
-    <StyledIcon as={NavLink} to="/movies" icon={tvIcon} activeclass="active" />
+    <StyledIcon
+      as={NavLink}
+      to={pageContext === 'series' ? '/series' : '/movies'}
+      icon={tvIcon}
+      activeclass="active"
+    />
 
     <StyledIcon as={NavLink} to="/books" icon={bookIcon} activeclass="active" />
     <StyledLogout>
@@ -76,7 +81,7 @@ const Sidebar = ({ pageContext }) => (
 );
 
 Sidebar.propTypes = {
-  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles', 'books', 'movies']),
+  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles', 'books', 'movies', 'series']),
 };
 
 Sidebar.defaultProps = {

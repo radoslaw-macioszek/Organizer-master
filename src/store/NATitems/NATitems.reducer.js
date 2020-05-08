@@ -5,6 +5,8 @@ export const ADD_ITEM = `${name}/ADD_ITEM`;
 export const ADD_TO_FAVORITE = `${name}/ADD_TO_FAVORITE`;
 export const ADD_TO_READED = `${name}/ADD_TO_READED`;
 export const ADD_POSITION = `${name}/ADD_POSITION`;
+export const ADD_TO_WATCHED = `${name}/ADD_TO_WATCHED`;
+export const ADD_TO_MOVIE_LIST = `${name}/ADD_TO_MOVIE_LIST`;
 
 export const removeItem = (itemType, id) => {
   return {
@@ -50,6 +52,24 @@ export const addPosition = (id, position) => {
   return {
     type: 'ADD_POSITION',
     payload: { id, position },
+  };
+};
+
+export const addToWatched = (id, title, path) => {
+  return {
+    type: 'ADD_TO_WATCHED',
+    payload: {
+      item: { id, title, path },
+    },
+  };
+};
+
+export const addToMovieList = (id, title, path, rate, popularity, date) => {
+  return {
+    type: 'ADD_TO_MOVIE_LIST',
+    payload: {
+      item: { id, title, path, rate, popularity, date },
+    },
   };
 };
 
@@ -200,6 +220,42 @@ const INITIAL_STATE = {
       title: 'The asdasdas Games',
     },
   ],
+  movies: [
+    {
+      id: 254375,
+      title: 'Hector and the Search for Happiness',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 10000,
+      date: 13 / 12 / 2019,
+    },
+    {
+      id: 41131,
+      title: 'The Search',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 10000,
+      date: 13 / 12 / 2019,
+    },
+  ],
+  watchedMovies: [
+    {
+      id: 1,
+      title: 'The Hungeeeeeeer Games',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 10000,
+      date: 13 / 12 / 2019,
+    },
+    {
+      id: 8,
+      title: 'The asdasdassdasdkalsd Games',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 10000,
+      date: 13 / 12 / 2019,
+    },
+  ],
 };
 
 const natReducer = (state = INITIAL_STATE, action) => {
@@ -235,6 +291,16 @@ const natReducer = (state = INITIAL_STATE, action) => {
             item.id === action.payload.id ? (item.position = action.payload.position) : ' ',
           ),
         ],
+      };
+    case 'ADD_TO_WATCHED':
+      return {
+        ...state,
+        ['watchedMovies']: [...state['watchedMovies'], action.payload.item],
+      };
+    case 'ADD_TO_MOVIE_LIST':
+      return {
+        ...state,
+        ['movies']: [...state['movies'], action.payload.item],
       };
     default:
       return state;
