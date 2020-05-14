@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
+
+import { addToMovieList } from '../../../store/NATitems/NATitems.reducer';
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -11,8 +12,8 @@ const StyledWrapper = styled.div`
   right: 0;
   margin: 0 auto;
   transform: translateY(-50%);
-  width: 35vw;
-  height: 65vh;
+  width: 39vw;
+  height: 75vh;
   background-color: white;
   box-shadow: 0 20px 40px -10px rgba(#818181, 0.5);
   border: 2px solid ${({ theme }) => theme.movies};
@@ -101,9 +102,19 @@ const StyledParagraph = styled.p`
   font-size: 15px;
 `;
 
+const StyledAddButton = styled.button`
+  position: absolute;
+  bottom: 1vh;
+  right: 15px;
+  padding: 6px 6px;
+  font-size: 11px;
+  border-radius: 5px;
+`;
+
 const Modal = () => {
+  const dispatch = useDispatch();
+
   const details = useSelector((state) => state.moviesReducer.details);
-  console.log(details);
   const type = useSelector((state) => state.moviesReducer.type);
   // console.log('det', detailssss);
 
@@ -156,6 +167,22 @@ const Modal = () => {
               <hr />
               {details.overview}
             </StyledBottomWrapper>
+            <StyledAddButton
+              onClick={() =>
+                dispatch(
+                  addToMovieList(
+                    details.id,
+                    details.title,
+                    `https://image.tmdb.org/t/p/w500${details.poster_path}`,
+                    details.vote_average,
+                    details.popularity,
+                    details.release_date,
+                  ),
+                )
+              }
+            >
+              + Add to your movie list
+            </StyledAddButton>
           </div>
         ) : (
           <div>

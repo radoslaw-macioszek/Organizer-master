@@ -7,7 +7,7 @@ import Book from './Book';
 const ThirdColumn = styled.div`
   height: 50vh;
   position: relative;
-  top: -75px;
+  top: 50px;
 `;
 const StyledParagraph = styled.p`
   font-size: 30px;

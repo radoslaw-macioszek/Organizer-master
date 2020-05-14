@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import GlobalStyle from '../theme/GlobalStyle';

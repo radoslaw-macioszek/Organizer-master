@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Heading from '../../components/atoms/Heading/Heading';
 import Button from '../../components/atoms/Button/Button';
 import Paragraph from '../../components/atoms/Paragraph/Paragraph';
@@ -102,18 +101,6 @@ const StyledPosition = styled.div`
   margin-bottom: 20px;
 `;
 
-const StyledNumber = styled.div`
-  /* background-color: white; */
-  /* display: inline-block; */
-  position: absolute;
-  left: 30px;
-  top: 25px;
-  font-size: 35px;
-  color: white;
-  padding-right: 18px;
-  border-right: 1px solid white;
-`;
-
 const StyledButton = styled(Button)`
   position: absolute;
   top: 23px;
@@ -178,7 +165,7 @@ const Book = ({ title, description, created, id, pageContext, image, cardType, r
     if (value !== null) {
       dispatch(addPosition(id, value));
     }
-  }, [dispatch, value]);
+  }, [dispatch, value, id]);
 
   return (
     <div>
@@ -256,6 +243,3 @@ const Book = ({ title, description, created, id, pageContext, image, cardType, r
 };
 
 export default withContext(Book);
-
-{
-}

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
@@ -39,9 +39,8 @@ const StyledLeftButton = styled(StyledButton)`
 
 const MostPopularSeries = ({ openModal }) => {
   const name = 'Most popular series in this week';
-  const series = 'tv';
+  const tv = 'tv';
 
-  const dispatch = useDispatch();
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
@@ -62,16 +61,17 @@ const MostPopularSeries = ({ openModal }) => {
       </StyledButton>
       <MovieBar page={name}>
         {currentSeries &&
-          currentSeries.map((movie) => (
+          currentSeries.map((series) => (
             <FlipAnimation
-              id={movie.id}
-              path={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              title={movie.title}
-              rate={movie.vote_average}
-              popularity={movie.popularity}
-              date={movie.release_date}
+              key={series.id}
+              id={series.id}
+              path={`https://image.tmdb.org/t/p/w500${series.poster_path}`}
+              title={series.name}
+              rate={series.vote_average}
+              popularity={series.popularity}
+              date={series.first_air_date}
               openModal={openModal}
-              name={series}
+              name={tv}
             />
           ))}
       </MovieBar>

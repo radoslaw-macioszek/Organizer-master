@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';
@@ -8,7 +7,7 @@ import Heading from '../../atoms/Heading/Heading';
 import { connect } from 'react-redux';
 import { addItem as addItemAction } from '../../../actions';
 
-import { Formik, Form, Fields, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};

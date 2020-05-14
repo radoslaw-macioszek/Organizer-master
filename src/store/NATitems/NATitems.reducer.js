@@ -238,6 +238,24 @@ const INITIAL_STATE = {
       date: 13 / 12 / 2019,
     },
   ],
+  series: [
+    {
+      id: 100,
+      title: 'I am not an Animal',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 8,
+      popularity: 5000,
+      date: 13 / 12 / 2019,
+    },
+    {
+      id: 2734,
+      title: '"Law & Order: Special Victims Unit"',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 8000,
+      date: 13 / 12 / 2019,
+    },
+  ],
   watchedMovies: [
     {
       id: 1,
@@ -253,6 +271,24 @@ const INITIAL_STATE = {
       path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
       rate: 6,
       popularity: 10000,
+      date: 13 / 12 / 2019,
+    },
+  ],
+  watchedSeries: [
+    {
+      id: 100,
+      title: 'I am not an Animal',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 8,
+      popularity: 5000,
+      date: 13 / 12 / 2019,
+    },
+    {
+      id: 2734,
+      title: '"Law & Order: Special Victims Unit"',
+      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      rate: 6,
+      popularity: 8000,
       date: 13 / 12 / 2019,
     },
   ],

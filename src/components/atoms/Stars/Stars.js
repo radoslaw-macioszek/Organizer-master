@@ -23,6 +23,7 @@ const Stars = () => {
         return (
           <label>
             <StyledInput
+              key={ratingValue}
               type="radio"
               name="rating"
               value={ratingValue}

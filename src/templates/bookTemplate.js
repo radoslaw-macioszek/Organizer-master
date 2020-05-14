@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import withContext from '../hoc/withContext';
 
@@ -39,6 +40,7 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const BookTemplate = ({ pageContext, children }) => {
+  const bookCount = useSelector((state) => state.natReducer.books);
   return (
     <StyledWrapper>
       <StyledPageHeader>
@@ -46,7 +48,9 @@ const BookTemplate = ({ pageContext, children }) => {
         <StyledHeading big as="h1">
           {pageContext}
         </StyledHeading>
-        <StyledParagraph>6 {pageContext}</StyledParagraph>
+        <StyledParagraph>
+          {bookCount.length} {pageContext}
+        </StyledParagraph>
       </StyledPageHeader>
       <StyledGrid>{children}</StyledGrid>
     </StyledWrapper>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import styled, { css } from 'styled-components';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
+
+// import withContext from '../../../hoc/withContext';
 
 import { loadMovieDetail } from '../../../store/movies/movies.reducer';
 
@@ -13,7 +15,7 @@ const Flipper = styled.div`
 
 const FlipContainer = styled.div`
   perspective: 1000px;
-  height: 18vh;
+  height: 19vh;
   width: 8vw;
   margin-right: 5px;
 
@@ -24,7 +26,7 @@ const FlipContainer = styled.div`
 `;
 
 const Front = styled.div`
-  height: 18vh;
+  height: 19vh;
   width: 7.5vw;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 
@@ -41,35 +43,36 @@ const Back = styled(Front)`
   background-color: ${({ theme }) => theme.movies};
   z-index: 1;
   transform: rotateY(180deg);
+  /* height: 100%; */
 `;
 
 const StyledParagraph = styled.span`
-  font-size: 11px;
-  margin: 0 10px 2px;
+  font-size: 10px;
+  margin: 0 10px 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const StyledSpan = styled.span`
-  font-size: 13px;
-  margin: 0 0 2px;
+  font-size: 12px;
+  margin: 0;
 `;
 const StyledDateParagraph = styled.span`
-  margin: 4px 10px 1px;
-  font-size: 11px;
+  margin: 0 10px;
+  font-size: 10px;
 `;
 
 const StyledDate = styled.p`
   text-align: center;
-  font-size: 13px;
-  margin: 4px 0 2px;
+  font-size: 12px;
+  margin: 0;
 `;
 
 const StyledHeader = styled.h6`
   padding: 0 10px 10px;
   margin-top: 15px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.4;
   margin-bottom: 10px;
   text-align: center;
@@ -88,11 +91,12 @@ const StyledCardButton = styled.button`
 `;
 
 const StyledImage = styled.img`
-  height: 18vh;
+  height: 19vh;
   width: 7.5vw;
   border-radius: 5px;
 `;
-const FlipAnimation = ({ children, id, title, path, rate, popularity, date, openModal, name }) => {
+
+const FlipAnimation = ({ id, title, path, rate, popularity, date, openModal, name }) => {
   const dispatch = useDispatch();
 
   const [movieId, setMovieId] = useState(null);
@@ -106,7 +110,7 @@ const FlipAnimation = ({ children, id, title, path, rate, popularity, date, open
     if (movieId) {
       dispatch(loadMovieDetail(movieId, name));
     }
-  }, [dispatch, movieId]);
+  }, [dispatch, movieId, name]);
 
   return (
     <FlipContainer>

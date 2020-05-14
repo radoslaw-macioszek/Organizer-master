@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -91,8 +93,10 @@ const StyledCategory = styled.div`
   border-radius: 5px;
 `;
 
-const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
+const MoviesTemplate = ({ pageContext, children }) => {
   const [barVisible, setBarVisibility] = useState(false);
+  const moviesLength = useSelector((state) => state.natReducer.movies);
+  const seriesLength = useSelector((state) => state.natReducer.series);
 
   return (
     <UserPageTemplate>
@@ -111,7 +115,11 @@ const MoviesTemplate = ({ pageContext, children, modalOpen }) => {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>{`6 ${pageContext}`}</StyledParagraph>
+            <StyledParagraph>
+              {pageContext === 'movies'
+                ? `${moviesLength.length} ${pageContext}`
+                : `${seriesLength.length} ${pageContext}`}
+            </StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <RightSearchBar isVisible={barVisible}>

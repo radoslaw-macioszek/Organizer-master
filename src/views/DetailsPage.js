@@ -1,7 +1,5 @@
 import React from 'react';
 import DetailsTemplate from '../templates/DetailsTemplate';
-import routes from '../Routes';
-import withContext from '../hoc/withContext';
 
 ///////////////////////////////////////////////////////////////////////////
 

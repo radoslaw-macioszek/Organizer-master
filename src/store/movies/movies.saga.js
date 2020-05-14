@@ -10,7 +10,6 @@ import {
 
 function* loadMovies(action) {
   const searchMoviesResult = action.payload;
-  console.log(action);
   const response = yield all([
     call(axios.get, 'https://api.themoviedb.org/3/search/movie', {
       params: {

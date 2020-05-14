@@ -10,7 +10,7 @@ const StyledTopRatedMovies = styled.div`
   padding: 1.5rem;
   border-top: 1px solid ${({ theme }) => theme.movies};
 
-  height: 25vh;
+  height: 26.5vh;
 `;
 
 const StyledHeading = styled(Heading)`

@@ -8,12 +8,6 @@ const FirstColumn = styled.div`
   grid-row: span 2;
 `;
 
-const StyledParagraph = styled.p`
-  font-size: 30px;
-  font-family: serif;
-  margin-top: 0;
-`;
-
 const StyledContent = styled.div`
   /* padding: 10px 10px 150px 10px; */
   border-radius: 5px;
@@ -26,7 +20,6 @@ const BookToRead = () => {
   // propsy przekazane do Book,
   return (
     <FirstColumn>
-      <StyledParagraph>To Read: </StyledParagraph>
       <StyledContent>
         {check.map((book) => (
           <Book

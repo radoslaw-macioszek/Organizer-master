@@ -27,9 +27,11 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
 const StyledBookWrapper = styled.div`
   display: flex;
-  margin: 10px 10px 30px;
+  margin: 10px 10px 35px;
 
   position: relative;
+  height: 20vh;
+  border-bottom: 1px solid ${({ theme }) => theme.grey200};
 `;
 
 const StyledDetails = styled.div`
@@ -41,7 +43,7 @@ const StyledDetails = styled.div`
 
 const StyledImage = styled.img`
   height: 16vh;
-  width: 6vw;
+  width: 7vw;
 `;
 
 const StyledDescription = styled.div`
@@ -61,7 +63,7 @@ const StyledToolTip = styled.span`
   position: absolute;
   width: 30vw;
   top: 140%;
-  left: 380%;
+  left: 300%;
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
@@ -69,10 +71,12 @@ const StyledToolTip = styled.span`
 
   ${StyledDescription}:hover & {
     visibility: visible;
+    border: 2px solid ${({ theme }) => theme.books};
 
     transform: translate(-50%, -50%);
     opacity: 1;
-    background-color: ${({ theme }) => theme.grey200};
+    background-color: white;
+    text-align: justify;
     z-index: 999999999999999999;
   }
 `;
@@ -93,6 +97,9 @@ const StyledLink = styled.a`
   margin-top: 12px;
   background-color: ${({ theme }) => theme.grey200};
   color: ${({ theme }) => theme.grey300};
+  position: absolute;
+  right: 0;
+  bottom: 35px;
 `;
 
 const StyledParagraph = styled.p`
@@ -167,7 +174,7 @@ const Books = ({ pageContext }) => {
                   </StyledParagraph>
                   <StyledParagraph>
                     Average rating:
-                    {averageRating ? averageRating : '-'}, Pages: {pageCount}, Language:{' '}
+                    {averageRating ? averageRating : '-'}, Pages: {pageCount}, Language:
                     {language.toUpperCase()}
                   </StyledParagraph>
                   <StyledLink href={previewLink}>Check Book</StyledLink>

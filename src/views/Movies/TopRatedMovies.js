@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
@@ -38,9 +38,8 @@ const StyledLeftButton = styled(StyledButton)`
 
 const TopRatedMovies = ({ openModal }) => {
   const name = 'Top rated movies';
-  const movie = 'movie';
+  const type = 'movie';
 
-  const dispatch = useDispatch();
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
@@ -62,6 +61,7 @@ const TopRatedMovies = ({ openModal }) => {
         {currentMovies &&
           currentMovies.map((movie) => (
             <FlipAnimation
+              key={movie.id}
               id={movie.id}
               path={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               title={movie.title}
@@ -69,7 +69,7 @@ const TopRatedMovies = ({ openModal }) => {
               popularity={movie.popularity}
               date={movie.release_date}
               openModal={openModal}
-              name={movie}
+              name={type}
             />
           ))}
       </MovieBar>

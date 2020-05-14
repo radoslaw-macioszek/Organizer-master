@@ -7,11 +7,12 @@ import { addToMovieList } from '../../store/NATitems/NATitems.reducer';
 
 const StyledBookWrapper = styled.div`
   display: flex;
-  margin: 10px 10px 30px;
+  margin: 10px 10px 30px 0;
   border-radius: 5px;
 
   position: relative;
   box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.3);
+  width: 35vw;
 `;
 
 const StyledDetails = styled.div`
@@ -49,9 +50,9 @@ const StyledToolTip = styled.span`
   font-weight: 300;
   padding: 30px 30px 60px;
   position: absolute;
-  width: 30vw;
+  width: 25vw;
   top: 100%;
-  left: 250%;
+  left: 200%;
   opacity: 0;
   transform: translate(-50%, -50%);
   transition: all 0.4s ease;
@@ -72,7 +73,7 @@ const StyledToolTip = styled.span`
 
 const StyledTitle = styled.h3`
   font-size: 25px;
-  margin-top: 0;
+  margin-top: 3px;
   margin-bottom: 20px;
 `;
 
@@ -84,7 +85,7 @@ const StyledParagraph = styled.p`
 const StyledAddButton = styled.button`
   position: absolute;
   bottom: 1vh;
-  left: 0;
+  right: 15px;
   padding: 6px 6px;
   font-size: 11px;
   border-radius: 5px;
@@ -130,7 +131,6 @@ const StyledSpan = styled.span`
 const SearchedMovies = () => {
   const dispatch = useDispatch();
   const searchedMovies = useSelector((state) => state.moviesReducer.data);
-  console.log('serched', searchedMovies);
 
   const image =
     'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg';
@@ -138,7 +138,7 @@ const SearchedMovies = () => {
   return (
     <>
       {searchedMovies.map((movie) => (
-        <StyledBookWrapper>
+        <StyledBookWrapper key={movie.id}>
           <StyledDescription>
             <StyledImage
               src={

@@ -8,7 +8,6 @@ import { loadMoviesAction } from '../../../store/movies/movies.reducer';
 
 import Input from '../../atoms/Input/Input';
 import Heading from '../../atoms/Heading/Heading';
-import Button from '../../atoms/Button/Button';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -23,7 +22,7 @@ const StyledWrapper = styled.div`
   right: 0;
   top: 0;
   height: 100vh;
-  width: 900px;
+  width: 800px;
   background-color: white;
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
@@ -39,10 +38,6 @@ const StyledInput = styled(Input)`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: ${({ activecolor, theme }) => theme[activecolor]};
 `;
 
 const StyledBookArea = styled.div`
@@ -71,7 +66,7 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
     } else if (pageContext === 'movies') {
       dispatch(loadMoviesAction(searchPhrase));
     }
-  }, [dispatch, bookLoading, pageContext]);
+  }, [dispatch, bookLoading, pageContext, searchPhrase]);
 
   return pageContext === 'books' ? (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>

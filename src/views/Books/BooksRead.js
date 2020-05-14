@@ -8,7 +8,7 @@ const SecondColumn = styled.div`
   height: 50vh;
   display: grid;
   position: relative;
-  top: -120px;
+  top: 20px;
 `;
 
 const StyledParagraph = styled.p`
@@ -37,7 +37,7 @@ const BooksRead = () => {
         {check
           ? check.map((book, i) => (
               <Book
-                key={i}
+                key={book.id}
                 id={book.id}
                 cardType="readedBooks"
                 title={book.title}

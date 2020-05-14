@@ -96,7 +96,7 @@ const Movies = () => {
   const openModal = () => {
     setModal(true);
   };
-  // do modala + ref w divie (mozna go jeszcze przekazac przez inna nazwe niz ref badz forward ref'a)
+  // do modala + ref w divie (mozna go jeszcze przekazac przez inna nazwe niz ref badz forward ref)
   const node = useRef();
 
   useOnClickOutside(node, () => setModal(false));
@@ -108,7 +108,7 @@ const Movies = () => {
           <StyledScroll>
             <StyledHeading>{title}</StyledHeading>
             <StyledLeftSide>
-              <MainMovieColumn />
+              <MainMovieColumn openModal={openModal} />
             </StyledLeftSide>
           </StyledScroll>
           <StyledRightSide>
@@ -125,7 +125,7 @@ const Movies = () => {
         <StyledBottom>
           <StyledHeading style={{ marginTop: '100px' }}>{title2}</StyledHeading>
           <StyledBottomSide>
-            <WatchedMovies />
+            <WatchedMovies openModal={openModal} />
           </StyledBottomSide>
         </StyledBottom>
       </StyledWhole>
