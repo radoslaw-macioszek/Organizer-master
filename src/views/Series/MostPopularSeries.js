@@ -10,7 +10,7 @@ import FlipAnimation from '../../components/molecules/FlipAnimation/FlipAnimatio
 const StyledMovieRow = styled.div`
   display: flex;
   position: relative;
-  top: 100px;
+  top: 50px;
   justify-content: center;
 `;
 
@@ -38,14 +38,14 @@ const StyledLeftButton = styled(StyledButton)`
 `;
 
 const MostPopularSeries = ({ openModal }) => {
-  const name = 'Most popular series in this week';
+  const name = 'Most popular series';
   const tv = 'tv';
 
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
 
-  const mostPopularMovies = useSelector((state) => state.moviesReducer.weekSeries);
+  const mostPopularMovies = useSelector((state) => state.moviesReducer.popularSeries);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;

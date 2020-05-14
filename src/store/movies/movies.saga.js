@@ -9,12 +9,13 @@ import {
 } from './movies.reducer';
 
 function* loadMovies(action) {
-  const searchMoviesResult = action.payload;
+  const { term, type } = action.payload;
+
   const response = yield all([
-    call(axios.get, 'https://api.themoviedb.org/3/search/movie', {
+    call(axios.get, `https://api.themoviedb.org/3/search/${type}`, {
       params: {
         api_key: '20a84d44425a1770674ac45f99ccc0f4',
-        query: `${searchMoviesResult}`,
+        query: `${term}`,
         // printType: all,
         // pagination
       },

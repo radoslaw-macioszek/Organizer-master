@@ -24,6 +24,8 @@ const StyledWrapper = styled.div`
   /* box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3); */
   /* box-shadow: 65px 10px 300px 360px rgba(0,0,0,0.3); */
   box-shadow: 60px 80px 20px -10px rgba(0, 0, 0, 0.3);
+
+  transition: all 5s ease;
 `;
 
 const StyledTopWrapper = styled.div`
@@ -112,6 +114,8 @@ const StyledAddButton = styled.button`
 `;
 
 const Modal = () => {
+  const series = 'series';
+  const movies = 'movies';
   const dispatch = useDispatch();
 
   const details = useSelector((state) => state.moviesReducer.details);
@@ -177,6 +181,7 @@ const Modal = () => {
                     details.vote_average,
                     details.popularity,
                     details.release_date,
+                    movies,
                   ),
                 )
               }
@@ -235,6 +240,23 @@ const Modal = () => {
               <hr />
               {details.overview}
             </StyledBottomWrapper>
+            <StyledAddButton
+              onClick={() =>
+                dispatch(
+                  addToMovieList(
+                    details.id,
+                    details.name,
+                    `https://image.tmdb.org/t/p/w500${details.poster_path}`,
+                    details.vote_average,
+                    details.popularity,
+                    details.first_air_date,
+                    series,
+                  ),
+                )
+              }
+            >
+              + Add to your series list
+            </StyledAddButton>
           </div>
         ))}
     </StyledWrapper>

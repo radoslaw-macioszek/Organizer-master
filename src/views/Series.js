@@ -5,9 +5,9 @@ import Modal from '../components/molecules/Modal/Modal';
 import MoviesTemplate from '../templates/MoviesTemplate';
 import Heading from '../components/atoms/Heading/Heading';
 
-import TopRatedSeries from './Movies/TopRatedSeries';
-import MostPopularSeries from './Movies/MostPopularSeries';
-import WeekPopularSeries from './Movies/WeekPopularSeries';
+import TopRatedSeries from './Series/TopRatedSeries';
+import MostPopularSeries from './Series/MostPopularSeries';
+import WeekPopularSeries from './Series/WeekPopularSeries';
 
 import MainMovieColumn from './Movies/MainMovieColumn';
 import WatchedMovies from './Movies/WatchedMovies';

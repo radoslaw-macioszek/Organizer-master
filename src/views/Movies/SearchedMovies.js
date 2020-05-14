@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaStar } from 'react-icons/fa';
+import withContext from '../../hoc/withContext';
 
 import { addToMovieList } from '../../store/NATitems/NATitems.reducer';
 
@@ -128,7 +129,9 @@ const StyledSpan = styled.span`
   font-size: 16px;
 `;
 
-const SearchedMovies = () => {
+const SearchedMovies = ({ pageContext }) => {
+  const series = 'series';
+  const movies = 'movies';
   const dispatch = useDispatch();
   const searchedMovies = useSelector((state) => state.moviesReducer.data);
 
@@ -137,85 +140,126 @@ const SearchedMovies = () => {
 
   return (
     <>
-      {searchedMovies.map((movie) => (
-        <StyledBookWrapper key={movie.id}>
+      {searchedMovies.map((item) => (
+        <StyledBookWrapper key={item.id}>
           <StyledDescription>
             <StyledImage
               src={
-                movie.poster_path === null
+                item.poster_path === null
                   ? image
-                  : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                  : `https://image.tmdb.org/t/p/w500${item.poster_path}`
               }
               alt="book"
             />
             <StyledToolTip>
               <StyledToolTipImage
                 src={
-                  movie.poster_path === null
+                  item.poster_path === null
                     ? image
-                    : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                    : `https://image.tmdb.org/t/p/w500${item.poster_path}`
                 }
                 alt="book"
               />
               <StyledDetails>
-                <StyledTitle>{movie.title}</StyledTitle>
+                <StyledTitle>{pageContext === 'movies' ? item.title : item.name}</StyledTitle>
                 <StyledVages>
                   <p>
-                    <FaStar color={'#ffc107'} /> {movie.vote_average}
+                    <FaStar color={'#ffc107'} /> {item.vote_average}
                   </p>
                   <StyledColumn>
                     Votes:
-                    <span>{movie.vote_count}</span>
+                    <span>{item.vote_count}</span>
                   </StyledColumn>
-                  <p>{movie.release_date && movie.release_date.slice(0, 4)}</p>
+                  <p>
+                    {pageContext === 'movies'
+                      ? item.release_date && item.release_date.slice(0, 4)
+                      : item.first_air_date && item.first_air_date.slice(0, 4)}
+                  </p>
                   <StyledColumn>
                     Popularity:
-                    <span>{movie.popularity}</span>
+                    <span>{item.popularity}</span>
                   </StyledColumn>
-                  <p>{movie.original_language.toUpperCase()}</p>
+                  <p>{item.original_language.toUpperCase()}</p>
                 </StyledVages>
                 <hr />
-                <StyledDescription>{movie.overview}</StyledDescription>
+                <StyledDescription>{item.overview}</StyledDescription>
               </StyledDetails>
             </StyledToolTip>
           </StyledDescription>
           <StyledDetails>
-            <StyledTitle>{movie.title}</StyledTitle>
+            <StyledTitle>{pageContext === 'movies' ? item.title : item.name}</StyledTitle>
 
             <StyledParagraph>
               <StyledSpan>
                 <FaStar color={'#ffc107'} /> rate:
               </StyledSpan>
-              {movie.vote_average}
+              {item.vote_average}
             </StyledParagraph>
             <StyledParagraph>
               <StyledSpan>votes:</StyledSpan>
-              {movie.vote_count}
+              {item.vote_count}
             </StyledParagraph>
             <StyledParagraph>
               <StyledSpan>popularity:</StyledSpan>
-              {movie.popularity}
+              {item.popularity}
             </StyledParagraph>
             <StyledParagraph>
               <StyledSpan>language:</StyledSpan>
-              {movie.original_language.toUpperCase()}
+              {item.original_language.toUpperCase()}
             </StyledParagraph>
-            <StyledAddButton
+            {pageContext === 'movies' ? (
+              <StyledAddButton
+                onClick={() =>
+                  dispatch(
+                    addToMovieList(
+                      item.id,
+                      item.title,
+                      `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                      item.vote_average,
+                      item.popularity,
+                      item.release_date,
+                      movies,
+                    ),
+                  )
+                }
+              >
+                + Add to your movie list
+              </StyledAddButton>
+            ) : (
+              <StyledAddButton
+                onClick={() =>
+                  dispatch(
+                    addToMovieList(
+                      item.id,
+                      item.name,
+                      `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                      item.vote_average,
+                      item.popularity,
+                      item.first_air_date,
+                      series,
+                    ),
+                  )
+                }
+              >
+                + Add to your movie list
+              </StyledAddButton>
+            )}
+            {/* <StyledAddButton
               onClick={() =>
                 dispatch(
                   addToMovieList(
-                    movie.id,
-                    movie.title,
-                    `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                    movie.vote_average,
-                    movie.popularity,
-                    movie.release_date,
+                    item.id,
+                    item.title,
+                    `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                    item.vote_average,
+                    item.popularity,
+                    item.release_date,
                   ),
                 )
               }
             >
               + Add to your movie list
-            </StyledAddButton>
+            </StyledAddButton> */}
           </StyledDetails>
         </StyledBookWrapper>
       ))}
@@ -223,4 +267,4 @@ const SearchedMovies = () => {
   );
 };
 
-export default SearchedMovies;
+export default withContext(SearchedMovies);

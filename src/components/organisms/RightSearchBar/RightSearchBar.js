@@ -60,11 +60,30 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
     event.preventDefault();
   };
 
+  // const StyledOverlap = styled.div`
+  //   border-bottom: 1px solid ${({ theme }) => theme.movies};
+  // `;
+
+  // const StyledOverlapButton = styled.button`
+  //   font-size: 15px;
+  //   padding: 5px 10px;
+  //   margin-right: 2px;
+  //   border: 1px solid ${({ theme }) => theme.movies};
+
+  //   &:hover {
+  //     background-color: ${({ theme }) => theme.movies};
+  //     color: black;
+  //     font-weight: bold;
+  //   }
+  // `;
+
   useEffect(() => {
-    if (pageContext === 'books') {
+    if (pageContext === 'books' && searchPhrase !== '') {
       dispatch(loadBooksAction(searchPhrase));
-    } else if (pageContext === 'movies') {
-      dispatch(loadMoviesAction(searchPhrase));
+    } else if (pageContext === 'movies' && searchPhrase !== '') {
+      dispatch(loadMoviesAction(searchPhrase, 'movie'));
+    } else if (pageContext === 'series' && searchPhrase !== '') {
+      dispatch(loadMoviesAction(searchPhrase, 'tv'));
     }
   }, [dispatch, bookLoading, pageContext, searchPhrase]);
 
@@ -78,20 +97,26 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
           autoComplete="off"
           value={searchPhrase}
           onChange={handleChange}
+          onClick={() => setSearchPhrase('')}
         />
       </StyledForm>
       <StyledBookArea>{children}</StyledBookArea>
     </StyledWrapper>
   ) : (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
-      <Heading>Movies</Heading>
+      {/* <StyledOverlap>
+        <StyledOverlapButton>Movies</StyledOverlapButton>
+        <StyledOverlapButton>Series</StyledOverlapButton>
+      </StyledOverlap> */}
+      <Heading>{pageContext === 'movies' ? 'Movies' : 'Series'}</Heading>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           type="text"
-          placeholder="Find movie"
+          placeholder="Search movie"
           autoComplete="off"
           value={searchPhrase}
           onChange={handleChange}
+          onClick={() => setSearchPhrase('')}
         />
       </StyledForm>
       <StyledBookArea>{children}</StyledBookArea>

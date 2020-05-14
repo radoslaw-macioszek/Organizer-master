@@ -55,20 +55,20 @@ export const addPosition = (id, position) => {
   };
 };
 
-export const addToWatched = (id, title, path) => {
+export const addToWatched = (id, title, path, watched) => {
   return {
     type: 'ADD_TO_WATCHED',
     payload: {
-      item: { id, title, path },
+      item: { id, title, path, watched },
     },
   };
 };
 
-export const addToMovieList = (id, title, path, rate, popularity, date) => {
+export const addToMovieList = (id, title, path, rate, popularity, date, type) => {
   return {
     type: 'ADD_TO_MOVIE_LIST',
     payload: {
-      item: { id, title, path, rate, popularity, date },
+      item: { id, title, path, rate, popularity, date, type },
     },
   };
 };
@@ -240,7 +240,7 @@ const INITIAL_STATE = {
   ],
   series: [
     {
-      id: 100,
+      id: 1000,
       title: 'I am not an Animal',
       path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
       rate: 8,
@@ -248,7 +248,7 @@ const INITIAL_STATE = {
       date: 13 / 12 / 2019,
     },
     {
-      id: 2734,
+      id: 2735,
       title: '"Law & Order: Special Victims Unit"',
       path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
       rate: 6,
@@ -331,12 +331,12 @@ const natReducer = (state = INITIAL_STATE, action) => {
     case 'ADD_TO_WATCHED':
       return {
         ...state,
-        ['watchedMovies']: [...state['watchedMovies'], action.payload.item],
+        [action.payload.item.watched]: [...state[action.payload.item.watched], action.payload.item],
       };
     case 'ADD_TO_MOVIE_LIST':
       return {
         ...state,
-        ['movies']: [...state['movies'], action.payload.item],
+        [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
       };
     default:
       return state;

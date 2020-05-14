@@ -10,7 +10,7 @@ import FlipAnimation from '../../components/molecules/FlipAnimation/FlipAnimatio
 const StyledMovieRow = styled.div`
   display: flex;
   position: relative;
-  top: 50px;
+  top: 100px;
   justify-content: center;
 `;
 
@@ -37,15 +37,15 @@ const StyledLeftButton = styled(StyledButton)`
   left: -70px;
 `;
 
-const MostPopularSeries = ({ openModal }) => {
-  const name = 'Most popular series';
+const WeekPopularSeries = ({ openModal }) => {
+  const name = 'Most popular series in this week';
   const tv = 'tv';
 
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
 
-  const mostPopularMovies = useSelector((state) => state.moviesReducer.popularSeries);
+  const mostPopularMovies = useSelector((state) => state.moviesReducer.weekSeries);
 
   const indexOfLastMovie = currentPage * moviesPerPage;
   const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
@@ -66,7 +66,7 @@ const MostPopularSeries = ({ openModal }) => {
               key={series.id}
               id={series.id}
               path={`https://image.tmdb.org/t/p/w500${series.poster_path}`}
-              title={series.title}
+              title={series.name}
               rate={series.vote_average}
               popularity={series.popularity}
               date={series.first_air_date}
@@ -84,4 +84,4 @@ const MostPopularSeries = ({ openModal }) => {
   );
 };
 
-export default MostPopularSeries;
+export default WeekPopularSeries;

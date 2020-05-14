@@ -57,10 +57,10 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
   const checkSeries = useSelector((state) => state.natReducer.series);
 
   // looknac!
-  const handleChange = (id, title, path, changeType) => {
+  const handleChange = (id, title, path, changeType, watched) => {
     setChecked(true);
     dispatch(removeItem(changeType, id));
-    dispatch(addToWatched(id, title, path));
+    dispatch(addToWatched(id, title, path, watched));
     setChecked(false);
   };
 
@@ -103,7 +103,9 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
               type="checkbox"
               value={checked}
               id="watched"
-              onChange={() => handleChange(item.id, item.title, item.path, 'movies')}
+              onChange={() =>
+                handleChange(item.id, item.title, item.path, 'movies', 'watchedMovies')
+              }
             />
             <label>Watched</label>
 
@@ -127,7 +129,9 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
               type="checkbox"
               value={checked}
               id="watched"
-              onChange={() => handleChange(item.id, item.title, item.path, 'series')}
+              onChange={() =>
+                handleChange(item.id, item.title, item.path, 'series', 'watchedSeries')
+              }
             />
             <label>Watched</label>
 

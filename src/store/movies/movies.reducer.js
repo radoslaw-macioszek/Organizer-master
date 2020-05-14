@@ -6,9 +6,9 @@ export const LOAD_MOVIES_FAILED = `${name}/LOAD_MOVIES_FAILED`;
 export const MOVIE_DETAIL = `${name}/MOVIE_DETAIL`;
 export const MOVIE_DETAIL_SUCCESS = `${name}/MOVIE_DETAIL_SUCCESS`;
 
-export const loadMoviesAction = (term) => ({
+export const loadMoviesAction = (term, type) => ({
   type: LOAD_MOVIES,
-  payload: term,
+  payload: { term, type },
 });
 
 export const loadMoviesSuccess = (
@@ -70,7 +70,8 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
     case LOAD_MOVIES: {
       return {
         ...state,
-        term: action.payload,
+        term: action.payload.term,
+        type: action.payload.type,
         loading: true,
         error: '',
       };
