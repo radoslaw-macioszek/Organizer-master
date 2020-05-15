@@ -15,7 +15,8 @@ import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
 
 const StyledWrapper = styled.div`
-  padding: 25px 30px 25px 70px;
+  padding: 25px 30px 25px;
+  margin-left: 40px;
   position: relative;
 `;
 
@@ -102,14 +103,14 @@ const MoviesTemplate = ({ pageContext, children }) => {
     <UserPageTemplate>
       <>
         <StyledWrapper>
-          <StyledCategory>
+          {/* <StyledCategory>
             <StyledLink as={Link} to="/movies">
               Movies
             </StyledLink>
             <StyledLink as={Link} to="/series">
               Series
             </StyledLink>
-          </StyledCategory>
+          </StyledCategory> */}
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">

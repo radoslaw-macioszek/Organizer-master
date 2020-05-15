@@ -12,6 +12,7 @@ import Movies from './Movies';
 import routes from '../Routes';
 import BooksTemplate from '../templates/BooksTemplate';
 import Series from './Series';
+import ToDo from './ToDo';
 
 const Root = () => {
   return (
@@ -20,6 +21,7 @@ const Root = () => {
         <MainTemplate>
           <Switch>
             <Route exact path={routes.home} render={() => <Redirect to="/notes" />} />
+            <Route exact path={routes.todos} component={ToDo} />
             <Route exact path={routes.notes} component={Notes} />
             <Route path={routes.note} component={DetailsPage} />
             <Route exact path={routes.twitters} component={Twitters} />

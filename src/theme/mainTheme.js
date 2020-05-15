@@ -6,6 +6,7 @@ const theme = {
   movies: 'hsla(30, 68%, 70%)',
   series: 'hsla(30, 68%, 70%)',
   moviesBold: 'hsla(30, 68%, 40%)',
+  todos: 'hsla(282, 39%, 68%)',
 
   grey100: 'hsl(0, 0%, 96%)',
   grey200: 'hsl(0, 0%, 90%)',

@@ -8,7 +8,7 @@ const Logo = styled.div`
   background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size: 40%;
+  background-size: 90%;
   border: none;
   /* background-color: ${({ active }) => (active ? 'white' : 'transparent')}; */
 `;

@@ -42,7 +42,7 @@ const StyledDetails = styled.div`
 `;
 
 const StyledImage = styled.img`
-  height: 28vh;
+  height: 29vh;
   width: 12.5vw;
   border-radius: 5px;
   margin: 10px;
@@ -93,7 +93,7 @@ const StyledBottomWrapper = styled.div`
   font-size: 16px;
   height: 26vh;
   text-align: justify;
-  padding: 10px 30px 10px;
+  padding: 32px 30px 10px;
   line-height: 1.5;
 `;
 

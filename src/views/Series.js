@@ -50,6 +50,7 @@ const StyledScroll = styled.div`
 
 const StyledHeading = styled(Heading)`
   font-size: 2rem;
+  text-align: center;
 `;
 
 const StyledTop = styled.div`
