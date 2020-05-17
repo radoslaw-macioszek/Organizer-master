@@ -74,6 +74,29 @@ export const addToMovieList = (id, title, path, rate, popularity, date, type) =>
 };
 
 const INITIAL_STATE = {
+  todos: [
+    {
+      id: 1,
+      title: 'Clean whole apartment',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '13/12/2019',
+    },
+    {
+      id: 2,
+      title: 'Do loundry',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '1 day',
+    },
+    {
+      id: 3,
+      title: 'find job',
+      content:
+        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
+      created: '5 days',
+    },
+  ],
   twitters: [
     {
       id: 1,

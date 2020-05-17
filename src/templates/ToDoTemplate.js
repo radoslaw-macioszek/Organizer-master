@@ -95,9 +95,7 @@ const ToDoTemplate = ({ children, pageContext }) => {
             </StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
-          <NewItemBar isVisible={barVisible}>
-            <SearchedMovies />
-          </NewItemBar>
+          <NewItemBar isVisible={barVisible}>{/* <SearchedMovies /> */}</NewItemBar>
           <StyledButtonIcon
             icon={plusIcon}
             onClick={() => setBarVisibility(!barVisible)}

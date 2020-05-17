@@ -21,8 +21,6 @@ const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme }) => theme.movies};
   border-radius: 10px;
   z-index: 99999;
-  /* box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.3); */
-  /* box-shadow: 65px 10px 300px 360px rgba(0,0,0,0.3); */
   box-shadow: 60px 80px 20px -10px rgba(0, 0, 0, 0.3);
 
   transition: all 5s ease;

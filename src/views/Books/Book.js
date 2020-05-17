@@ -53,7 +53,7 @@ const StyledHeader = styled.div`
 `;
 
 const StyledImage = styled.img`
-  height: 16vh;
+  height: 18vh;
   min-width: 6vw;
   margin-left: 10px;
   border-radius: 2px;
@@ -64,19 +64,17 @@ const StyledHeading = styled(Heading)`
   margin: 0 20px 8px 10px;
   font-size: 20px;
   background-color: ${({ theme }) => theme.books};
-  padding: 16px;
+  padding: 20px 0;
   border-radius: 10px 10px 3px 3px;
   text-align: center;
   display: flex;
-  /* color: white; */
 
   justify-content: center;
-  /* width: 100%; */
 `;
 
 const StyledFavoriteHeading = styled(StyledHeading)`
   width: 100%;
-  padding-left: 50px;
+  padding-left: 20px;
   font-size: 18px;
   background-color: white;
   border-left: 1px solid hsla(360, 73%, 50%);
@@ -88,12 +86,11 @@ const StyledFavoriteHeading = styled(StyledHeading)`
 
 const StyledReadedHeading = styled(StyledHeading)`
   margin: 0 20px 2px 10px;
-
+  padding-left: 20px;
   width: 100%;
-  font-size: 14px;
+  font-size: 15px;
   justify-content: flex-start;
   border-radius: 10px;
-  /* color: white; */
 `;
 
 const StyledPosition = styled.div`

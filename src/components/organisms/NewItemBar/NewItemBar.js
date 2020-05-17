@@ -48,11 +48,29 @@ const StyledForm = styled(Form)`
   flex-direction: column;
 `;
 
+const StyledForLabel = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledLabel = styled.label`
+  font-size: 11px;
+  margin: 20px 0 -20px 20px;
+  color: ${({ theme }) => theme.grey300};
+`;
+
 const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => (
   <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
     <Heading big>Create new {pageContext}</Heading>
     <Formik
-      initialValues={{ title: '', content: '', twitterName: '', articleUrl: '', created: '' }}
+      initialValues={{
+        title: '',
+        content: '',
+        twitterName: '',
+        articleUrl: '',
+        created: `${new Date().toLocaleDateString()}`,
+        date: '',
+      }}
       onSubmit={(values) => {
         addItem(pageContext, values);
         handleClose();
@@ -87,6 +105,19 @@ const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => (
               onBlur={handleBlur}
               value={values.articleUrl}
             />
+          )}
+          {pageContext === 'todos' && (
+            <StyledForLabel>
+              <StyledLabel htmlFor="date">Set date: (date and time):</StyledLabel>
+              <StyledInput
+                type="datetime-local"
+                name="date"
+                placeholder="Set date"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.date}
+              />
+            </StyledForLabel>
           )}
           <StyledTextArea
             as="textarea"

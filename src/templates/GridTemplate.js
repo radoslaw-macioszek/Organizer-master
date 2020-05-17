@@ -93,7 +93,15 @@ class GridTemplate extends React.Component {
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageContext: PropTypes.oneOf(['notes', 'twitters', 'articles', 'books', 'movies', 'series']),
+  pageContext: PropTypes.oneOf([
+    'notes',
+    'twitters',
+    'articles',
+    'books',
+    'movies',
+    'series',
+    'todos',
+  ]),
 };
 
 GridTemplate.defaultProps = {

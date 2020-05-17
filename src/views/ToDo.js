@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import ToDoTemplate from '../templates/ToDoTemplate';
 
@@ -7,8 +8,8 @@ const StyledColumn = styled.div`
   border-left: 1px solid ${({ theme }) => theme.grey200};
 
   text-align: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `;
 
 const StyledHeader = styled.h3`
@@ -17,8 +18,8 @@ const StyledHeader = styled.h3`
   padding: 15px 0 10px;
   margin-top: 0;
   background-color: ${({ theme }) => theme.todos};
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   display: flex;
   flex-direction: column;
@@ -30,50 +31,37 @@ const StyledSpan = styled.span`
 `;
 
 const ToDo = () => {
+  const todos = useSelector((state) => state.natReducer.todos);
+  console.log(todos);
+  const arrayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const days = Array(7).fill(0);
+
+  const currentDate = new Date().toLocaleDateString();
+  const currentDay = currentDate.toString().slice(0, 2) * 1;
+  const currentMonth = currentDate.toString().slice(3, 5) * 1;
+  const currentYear = currentDate.toString().slice(6) * 1;
+  const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
   return (
     <ToDoTemplate>
-      <StyledColumn>
-        <StyledHeader>
-          Monday
-          <StyledSpan>13 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Tuesday
-          <StyledSpan>14 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Wednesday
-          <StyledSpan>15 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Thursday
-          <StyledSpan>16 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Friday
-          <StyledSpan>17 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Saturday
-          <StyledSpan>18 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
-      <StyledColumn>
-        <StyledHeader>
-          Sunday
-          <StyledSpan>13 / 12 / 2019</StyledSpan>
-        </StyledHeader>
-      </StyledColumn>
+      {days.map((column, i) => {
+        const day = new Date().getDay();
+        let numb = day + i;
+        const res = numb > 6 ? numb - 7 : numb;
+
+        const bottomDate =
+          currentDay + i > daysInMonth ? currentDay + i - daysInMonth : currentDay + i;
+
+        return (
+          <StyledColumn key={i}>
+            <StyledHeader>
+              {arrayNames[res]}
+              <StyledSpan>
+                {bottomDate} / {currentMonth} / {currentYear}
+              </StyledSpan>
+            </StyledHeader>
+          </StyledColumn>
+        );
+      })}
     </ToDoTemplate>
   );
 };
