@@ -81,6 +81,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '13/12/2019',
+      date: '2020-05-18T02:00',
     },
     {
       id: 2,
@@ -88,6 +89,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '1 day',
+      date: '2020-05-19T12:00',
     },
     {
       id: 3,
@@ -95,6 +97,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '5 days',
+      date: '2020-05-19T13:00',
     },
   ],
   twitters: [
@@ -247,7 +250,8 @@ const INITIAL_STATE = {
     {
       id: 254375,
       title: 'Hector and the Search for Happiness',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -255,7 +259,8 @@ const INITIAL_STATE = {
     {
       id: 41131,
       title: 'The Search',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -265,7 +270,8 @@ const INITIAL_STATE = {
     {
       id: 1000,
       title: 'I am not an Animal',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 8,
       popularity: 5000,
       date: 13 / 12 / 2019,
@@ -273,7 +279,8 @@ const INITIAL_STATE = {
     {
       id: 2735,
       title: '"Law & Order: Special Victims Unit"',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,
@@ -283,7 +290,8 @@ const INITIAL_STATE = {
     {
       id: 1,
       title: 'The Hungeeeeeeer Games',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -291,7 +299,8 @@ const INITIAL_STATE = {
     {
       id: 8,
       title: 'The asdasdassdasdkalsd Games',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -301,7 +310,8 @@ const INITIAL_STATE = {
     {
       id: 100,
       title: 'I am not an Animal',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 8,
       popularity: 5000,
       date: 13 / 12 / 2019,
@@ -309,7 +319,8 @@ const INITIAL_STATE = {
     {
       id: 2734,
       title: '"Law & Order: Special Victims Unit"',
-      path: 'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg',
+      path:
+        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,

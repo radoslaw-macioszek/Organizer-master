@@ -62,7 +62,7 @@ const StyledToolTip = styled.span`
   padding: 30px 30px 60px;
   position: absolute;
   width: 30vw;
-  top: 140%;
+  top: 100%;
   left: 300%;
   opacity: 0;
   transform: translate(-50%, -50%);
@@ -84,6 +84,13 @@ const StyledToolTip = styled.span`
 const StyledTitle = styled.h3`
   margin-top: -8px;
   margin-bottom: -10px;
+`;
+
+const StyledToolTipTitle = styled.p`
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 30px;
 `;
 
 const StyledLink = styled.a`
@@ -159,6 +166,7 @@ const Books = ({ pageContext }) => {
                 <StyledDescription>
                   <StyledImage src={imageLinks ? imageLinks.smallThumbnail : image} alt="book" />
                   <StyledToolTip>
+                    <StyledToolTipTitle>{title}</StyledToolTipTitle>
                     Description:
                     <hr />
                     {description}

@@ -59,82 +59,88 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.grey300};
 `;
 
-const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => (
-  <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
-    <Heading big>Create new {pageContext}</Heading>
-    <Formik
-      initialValues={{
-        title: '',
-        content: '',
-        twitterName: '',
-        articleUrl: '',
-        created: `${new Date().toLocaleDateString()}`,
-        date: '',
-      }}
-      onSubmit={(values) => {
-        addItem(pageContext, values);
-        handleClose();
-      }}
-    >
-      {({ values, handleChange, handleBlur }) => (
-        <StyledForm>
-          <StyledInput
-            type="text"
-            name="title"
-            placeholder="title"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.title}
-          />
-          {pageContext === 'twitters' && (
+const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => {
+  const today = new Date().toLocaleDateString();
+  const min = `${today.slice(6, 10)}-${today.slice(3, 5)}-${today.slice(0, 2)}T00:00`;
+
+  return (
+    <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
+      <Heading big>Create new {pageContext}</Heading>
+      <Formik
+        initialValues={{
+          title: '',
+          content: '',
+          twitterName: '',
+          articleUrl: '',
+          created: `${new Date().toLocaleDateString()}`,
+          date: '',
+        }}
+        onSubmit={(values) => {
+          addItem(pageContext, values);
+          handleClose();
+        }}
+      >
+        {({ values, handleChange, handleBlur }) => (
+          <StyledForm autoComplete="off">
             <StyledInput
               type="text"
-              name="twitterName"
-              placeholder="Account Name eg. rad-mac"
+              name="title"
+              placeholder="title"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.twitterName}
+              value={values.title}
             />
-          )}
-          {pageContext === 'articles' && (
-            <StyledInput
-              type="text"
-              name="articleUrl"
-              placeholder="link"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.articleUrl}
-            />
-          )}
-          {pageContext === 'todos' && (
-            <StyledForLabel>
-              <StyledLabel htmlFor="date">Set date: (date and time):</StyledLabel>
+            {pageContext === 'twitters' && (
               <StyledInput
-                type="datetime-local"
-                name="date"
-                placeholder="Set date"
+                type="text"
+                name="twitterName"
+                placeholder="Account Name eg. rad-mac"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.date}
+                value={values.twitterName}
               />
-            </StyledForLabel>
-          )}
-          <StyledTextArea
-            as="textarea"
-            placeholder="Text.."
-            name="content"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.content}
-          />
-          <StyledButton type="submit" activecolor={pageContext}>
-            Add note
-          </StyledButton>
-        </StyledForm>
-      )}
-    </Formik>
-  </StyledWrapper>
-);
+            )}
+            {pageContext === 'articles' && (
+              <StyledInput
+                type="text"
+                name="articleUrl"
+                placeholder="link"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.articleUrl}
+              />
+            )}
+            {pageContext === 'todos' && (
+              <StyledForLabel>
+                <StyledLabel htmlFor="date">Set date: (date and time):</StyledLabel>
+                <StyledInput
+                  type="datetime-local"
+                  name="date"
+                  placeholder="Set date"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.date}
+                  min={min}
+                />
+              </StyledForLabel>
+            )}
+            <StyledTextArea
+              as="textarea"
+              placeholder="Text.."
+              name="content"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.content}
+            />
+            <StyledButton type="submit" activecolor={pageContext}>
+              Add note
+            </StyledButton>
+          </StyledForm>
+        )}
+      </Formik>
+    </StyledWrapper>
+  );
+};
 
 const mapDispatchToProps = (dispatch) => ({
   addItem: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import UserPageTemplate from './UserPageTemplate';
@@ -33,6 +34,7 @@ const StyledParagraph = styled(Paragraph)`
 
 const StyledPageHeader = styled.div`
   margin: 25px 0 50px;
+  position: relative;
 `;
 
 const StyledGrid = styled.div`
@@ -56,29 +58,27 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 `;
 
-const StyledLink = styled.a`
-  color: black;
-  text-decoration: none;
-  font-size: 25px;
-  margin-right: 2px;
-  background-color: ${({ theme }) => theme.movies};
+const StyledDoneContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 14vh;
+  width: 55%;
+  border: 3px solid ${({ theme }) => theme.todos};
+  border-radius: 10px;
+`;
 
-  padding: 15px 30px;
+const StyledP = styled.p`
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 5px;
+  margin-top: 0;
   font-weight: bold;
-
-  &:hover {
-    color: ${({ theme }) => theme.movies};
-    border: 1px solid ${({ theme }) => theme.movies};
-
-    background-color: ${({ theme }) => theme.greyTransparent};
-
-    border-bottom: 4px solid ${({ theme }) => theme.movies};
-  }
 `;
 
 const ToDoTemplate = ({ children, pageContext }) => {
   const [barVisible, setBarVisibility] = useState(false);
-  // const todoLength = useSelector((state) => state.natReducer.movies);
+  const todoLength = useSelector((state) => state.natReducer.todos);
 
   return (
     <UserPageTemplate>
@@ -89,10 +89,10 @@ const ToDoTemplate = ({ children, pageContext }) => {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledParagraph>
-              {/* {`${moviesLength.length} ${pageContext}`} */}
-              {`${pageContext}`}
-            </StyledParagraph>
+            <StyledDoneContainer>
+              <StyledP>Recently comleted</StyledP>
+            </StyledDoneContainer>
+            <StyledParagraph>{`${todoLength.length} ${pageContext}`}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <NewItemBar isVisible={barVisible}>{/* <SearchedMovies /> */}</NewItemBar>
