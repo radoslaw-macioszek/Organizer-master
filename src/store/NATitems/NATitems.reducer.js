@@ -7,6 +7,7 @@ export const ADD_TO_READED = `${name}/ADD_TO_READED`;
 export const ADD_POSITION = `${name}/ADD_POSITION`;
 export const ADD_TO_WATCHED = `${name}/ADD_TO_WATCHED`;
 export const ADD_TO_MOVIE_LIST = `${name}/ADD_TO_MOVIE_LIST`;
+export const ADD_TO_DONE = `${name}/ADD_TO_DONE`;
 
 export const removeItem = (itemType, id) => {
   return {
@@ -73,6 +74,15 @@ export const addToMovieList = (id, title, path, rate, popularity, date, type) =>
   };
 };
 
+export const addToDone = (id, title, date, content, type, fullDate) => {
+  return {
+    type: 'ADD_TO_DONE',
+    payload: {
+      item: { id, title, date, content, type, fullDate },
+    },
+  };
+};
+
 const INITIAL_STATE = {
   todos: [
     {
@@ -100,6 +110,7 @@ const INITIAL_STATE = {
       date: '2020-05-19T13:00',
     },
   ],
+  done: [],
   twitters: [
     {
       id: 1,
@@ -260,7 +271,7 @@ const INITIAL_STATE = {
       id: 41131,
       title: 'The Search',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1467991521834-fb8e202c7074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -280,7 +291,7 @@ const INITIAL_STATE = {
       id: 2735,
       title: '"Law & Order: Special Victims Unit"',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1467991521834-fb8e202c7074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,
@@ -291,7 +302,7 @@ const INITIAL_STATE = {
       id: 1,
       title: 'The Hungeeeeeeer Games',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1582189587033-17c59adf24ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -300,7 +311,7 @@ const INITIAL_STATE = {
       id: 8,
       title: 'The asdasdassdasdkalsd Games',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1576438112307-db9c736ff392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80',
       rate: 6,
       popularity: 10000,
       date: 13 / 12 / 2019,
@@ -311,7 +322,7 @@ const INITIAL_STATE = {
       id: 100,
       title: 'I am not an Animal',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1582189587033-17c59adf24ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80',
       rate: 8,
       popularity: 5000,
       date: 13 / 12 / 2019,
@@ -320,7 +331,7 @@ const INITIAL_STATE = {
       id: 2734,
       title: '"Law & Order: Special Victims Unit"',
       path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+        'https://images.unsplash.com/photo-1576438112307-db9c736ff392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,
@@ -374,6 +385,11 @@ const natReducer = (state = INITIAL_STATE, action) => {
       };
     default:
       return state;
+    case 'ADD_TO_DONE':
+      return {
+        ...state,
+        [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
+      };
   }
 };
 

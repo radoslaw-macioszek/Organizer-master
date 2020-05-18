@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ToDoTemplate from '../templates/ToDoTemplate';
 
 import withContext from '../hoc/withContext';
-import { removeItem } from '../store/NATitems/NATitems.reducer';
+import { removeItem, addToDone } from '../store/NATitems/NATitems.reducer';
 
 const StyledColumn = styled.div`
   border-right: 1px solid ${({ theme }) => theme.grey200};
@@ -101,7 +101,11 @@ const ToDo = ({ pageContext }) => {
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
-    console.log(id);
+    dispatch(removeItem('todos', id));
+  };
+
+  const handleAdd = (id, title, time, content, type, fullDate) => {
+    dispatch(addToDone(id, title, time, content, type, fullDate));
     dispatch(removeItem('todos', id));
   };
 
@@ -161,7 +165,13 @@ the set hour has passed"
                   </StyledDoneTitle>
                   <StyledContent>{todo.content}</StyledContent>
                   <StyledButtonWrapper>
-                    <button>done</button>
+                    <button
+                      onClick={() =>
+                        handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
+                      }
+                    >
+                      done
+                    </button>
                     <button onClick={() => handleClick(todo.id)}>remove</button>
                   </StyledButtonWrapper>
                 </StyledWrapper>
@@ -172,7 +182,13 @@ the set hour has passed"
                   {/* <StyledContent active={activeClass}>{todo.content}</StyledContent> */}
                   <StyledContent>{todo.content}</StyledContent>
                   <StyledButtonWrapper>
-                    <button>done</button>
+                    <button
+                      onClick={() =>
+                        handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
+                      }
+                    >
+                      done
+                    </button>
                     <button onClick={() => handleClick(todo.id)}>remove</button>
                   </StyledButtonWrapper>
                 </StyledWrapper>

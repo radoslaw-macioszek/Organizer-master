@@ -66,17 +66,43 @@ const StyledDoneContainer = styled.div`
   width: 55%;
   border: 3px solid ${({ theme }) => theme.todos};
   border-radius: 10px;
+
+  overflow: scroll;
 `;
 
 const StyledP = styled.p`
   position: absolute;
   bottom: 100%;
+  left: 45%;
   margin-bottom: 5px;
   margin-top: 0;
   font-weight: bold;
 `;
 
+const StyledDate = styled.span`
+  margin-right: 5px;
+`;
+
+const StyledTitle = styled.span`
+  margin-right: 5px;
+  font-weight: bold;
+`;
+
+const StyledDone = styled.p`
+  margin-top: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledFont = styled.div`
+  font-size: 14px;
+`;
+
 const ToDoTemplate = ({ children, pageContext }) => {
+  const done = useSelector((state) => state.natReducer.done);
+  done.sort((a, b) => (a.fullDate > b.fullDate ? 1 : -1));
+
   const [barVisible, setBarVisibility] = useState(false);
   const todoLength = useSelector((state) => state.natReducer.todos);
 
@@ -89,8 +115,23 @@ const ToDoTemplate = ({ children, pageContext }) => {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
+            <StyledP>Recently comleted</StyledP>
             <StyledDoneContainer>
-              <StyledP>Recently comleted</StyledP>
+              {done &&
+                done.map((item) => (
+                  <div>
+                    <StyledDone>
+                      <StyledFont>
+                        <StyledDate>{item.date}</StyledDate>
+                        <StyledDate>{item.fullDate}</StyledDate>
+                      </StyledFont>
+                      <div>
+                        <StyledTitle>{item.title}</StyledTitle>
+                        {item.content}
+                      </div>
+                    </StyledDone>
+                  </div>
+                ))}
             </StyledDoneContainer>
             <StyledParagraph>{`${todoLength.length} ${pageContext}`}</StyledParagraph>
           </StyledPageHeader>
