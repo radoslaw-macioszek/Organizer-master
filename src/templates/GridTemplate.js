@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import UserPageTemplate from './UserPageTemplate';
@@ -34,8 +35,9 @@ const StyledPageHeader = styled.div`
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: ${({ activePage }) => (activePage === 'twitters' ? '10px' : '85px')};
+  grid-template-columns: ${({ activePage }) =>
+    activePage === 'twitters' ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
+  grid-gap: ${({ activePage }) => (activePage === 'twitters' ? '40px' : '85px')};
   /* grid-gap: 85px; */
 `;
 
@@ -54,43 +56,112 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 `;
 
-class GridTemplate extends React.Component {
-  state = {
-    barVisible: false,
+//
+
+const StyledDoneContainer = styled.div`
+  position: absolute;
+  right: 2%;
+  top: 12%;
+  height: 14vh;
+  width: 55%;
+  border: 3px solid ${({ theme }) => theme.twitters};
+  border-radius: 10px;
+
+  overflow: scroll;
+`;
+
+const StyledP = styled.p`
+  position: absolute;
+  bottom: 88%;
+  left: 45%;
+  margin-bottom: 5px;
+  margin-top: 0;
+  font-weight: bold;
+`;
+
+const StyledDone = styled.div`
+  margin-top: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledSpan = styled.span`
+  color: ${({ theme }) => theme.grey300};
+  min-width: 6vw;
+  display: inline-flex;
+  font-size: 16px;
+`;
+
+const StyledParagraf = styled.p`
+  display: inline-flex;
+  width: 100%;
+  margin: 2px 0;
+  font-size: 15px;
+`;
+
+const GridTemplate = ({ children, pageContext }) => {
+  const details = useSelector((state) => state.natReducer.twitterDetails);
+  console.log(details);
+
+  const [barVisible, setBarVisible] = useState(false);
+
+  const typeLength = useSelector((state) => state.natReducer);
+
+  const handleBarToggle = () => {
+    setBarVisible(!barVisible);
   };
-
-  handleBarToggle = () => {
-    this.setState((prevState) => ({
-      barVisible: !prevState.barVisible,
-    }));
-  };
-
-  render() {
-    const { children, pageContext } = this.props;
-    const { barVisible } = this.state;
-
-    return (
-      <UserPageTemplate pageType={pageContext}>
-        <StyledWrapper>
-          <StyledPageHeader>
-            <Input search placeholder="Search" />
-            <StyledHeading big as="h1">
-              {pageContext}
-            </StyledHeading>
-            <StyledParagraph>6 {pageContext}</StyledParagraph>
-          </StyledPageHeader>
-          <StyledGrid activePage={pageContext}>{children}</StyledGrid>
-          <StyledButtonIcon
-            onClick={this.handleBarToggle}
-            icon={plusIcon}
-            activecolor={pageContext}
-          />
-          <NewItemBar handleClose={this.handleBarToggle} isVisible={barVisible} />
-        </StyledWrapper>
-      </UserPageTemplate>
-    );
-  }
-}
+  return (
+    <UserPageTemplate pageType={pageContext}>
+      <StyledWrapper>
+        <StyledPageHeader>
+          <Input search placeholder="Search" />
+          <StyledHeading big as="h1">
+            {pageContext}
+          </StyledHeading>
+          <StyledParagraph>
+            {typeLength[pageContext].length} {pageContext}
+          </StyledParagraph>
+          {pageContext === 'twitters' ? (
+            <>
+              <StyledP>Account details</StyledP>
+              <StyledDoneContainer>
+                {details &&
+                  details.map((item) => (
+                    <div key={item.id}>
+                      <StyledDone>
+                        <StyledParagraf>
+                          <StyledSpan>added:</StyledSpan>
+                          {item.date}
+                        </StyledParagraf>
+                        <StyledParagraf>
+                          <StyledSpan>account:</StyledSpan>
+                          {item.name}
+                        </StyledParagraf>
+                        <StyledParagraf>
+                          <StyledSpan>title:</StyledSpan>
+                          {item.title}
+                        </StyledParagraf>
+                        <StyledParagraf>
+                          <StyledSpan>content:</StyledSpan>
+                          {item.content}
+                        </StyledParagraf>
+                      </StyledDone>
+                    </div>
+                  ))}
+              </StyledDoneContainer>
+            </>
+          ) : (
+            ''
+          )}
+        </StyledPageHeader>
+        <StyledGrid activePage={pageContext}>{children}</StyledGrid>
+        <StyledButtonIcon onClick={handleBarToggle} icon={plusIcon} activecolor={pageContext} />
+        <NewItemBar handleClose={handleBarToggle} isVisible={barVisible} />
+      </StyledWrapper>
+    </UserPageTemplate>
+  );
+};
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,

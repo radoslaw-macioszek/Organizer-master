@@ -97,7 +97,7 @@ const StyledButtonWrapper = styled.div`
 
 //
 
-const ToDo = ({ pageContext }) => {
+const ToDo = ({ pageContext, actualDate }) => {
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
@@ -126,70 +126,63 @@ const ToDo = ({ pageContext }) => {
   //
   return (
     <ToDoTemplate>
-      {days.map((column, i) => {
-        const today = new Date().getDay();
-        const actualDayToday = new Date().getDate();
-        const numb = today + i;
-        const result = numb > 6 ? numb - 7 : numb;
-        //
-        const bottomHeaderDate =
-          currentDay + i > daysInMonth ? currentDay + i - daysInMonth : currentDay + i;
+      <>
+        {days.map((column, i) => {
+          const today = new Date().getDay();
+          const numb = today + i;
+          const result = numb > 6 ? numb - 7 : numb;
+          //
+          const bottomHeaderDate =
+            currentDay + i > daysInMonth ? currentDay + i - daysInMonth : currentDay + i;
 
-        const fullDayDate = `${bottomHeaderDate}.${currentMonth}.${currentYear}`;
+          const fullDayDate = `${bottomHeaderDate}.${currentMonth}.${currentYear}`;
+          return (
+            <StyledColumn key={i}>
+              <StyledHeader>
+                {arrayNames[result]}
+                <StyledSpan>{fullDayDate}</StyledSpan>
+              </StyledHeader>
+              {todos.map((todo) => {
+                const day = todo.date && todo.date.slice(8, 10);
+                const month = todo.date && todo.date.slice(5, 7);
+                const year = todo.date && todo.date.slice(0, 4);
+                const fullDate = `${day}.${month}.${year}`;
+                const time = todo.date && todo.date.slice(11, 16);
 
-        // actualDay
+                const actual = new Date();
+                const actualTime =
+                  (actual.getHours() < 10 ? '0' + actual.getHours() : actual.getHours()) +
+                  ':' +
+                  (actual.getMinutes() < 10 ? '0' + actual.getMinutes() : actual.getMinutes());
 
-        const actualDay = `${actualDayToday}.${currentMonth}.${currentYear}`;
-        console.log(actualDay);
-
-        return (
-          <StyledColumn key={i}>
-            <StyledHeader>
-              {arrayNames[result]}
-              <StyledSpan>{fullDayDate}</StyledSpan>
-            </StyledHeader>
-            {todos.map((todo) => {
-              const day = todo.date && todo.date.slice(8, 10);
-              const month = todo.date && todo.date.slice(5, 7);
-              const year = todo.date && todo.date.slice(0, 4);
-              const fullDate = `${day}.${month}.${year}`;
-              const time = todo.date && todo.date.slice(11, 16);
-
-              const actual = new Date();
-              const actualTime =
-                (actual.getHours() < 10 ? '0' + actual.getHours() : actual.getHours()) +
-                ':' +
-                (actual.getMinutes() < 10 ? '0' + actual.getMinutes() : actual.getMinutes());
-
-              return fullDate === fullDayDate ? (
-                <StyledWrapper key={todo.id}>
-                  <StyledTime>{time}</StyledTime>
-                  {actualDay === fullDayDate && actualTime > time ? (
-                    <StyledDoneTitle data-tool-tip="the set hour has passed">
-                      {todo.title}
-                    </StyledDoneTitle>
-                  ) : (
-                    <StyledTitle>{todo.title}</StyledTitle>
-                  )}
-                  <StyledContent>{todo.content}</StyledContent>
-                  <StyledButtonWrapper>
-                    <button
-                      onClick={() =>
-                        handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
-                      }
-                    >
-                      done
-                    </button>
-                    <button onClick={() => handleClick(todo.id)}>remove</button>
-                  </StyledButtonWrapper>
-                </StyledWrapper>
-              ) : (
-                ' '
-              );
-            })}
-          </StyledColumn>
-        );
-      })}
+                return fullDate === fullDayDate ? (
+                  <StyledWrapper key={todo.id}>
+                    <StyledTime>{time}</StyledTime>
+                    {actualDate === fullDayDate && actualTime > time ? (
+                      <StyledDoneTitle>{todo.title}</StyledDoneTitle>
+                    ) : (
+                      <StyledTitle>{todo.title}</StyledTitle>
+                    )}
+                    <StyledContent>{todo.content}</StyledContent>
+                    <StyledButtonWrapper>
+                      <button
+                        onClick={() =>
+                          handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
+                        }
+                      >
+                        done
+                      </button>
+                      <button onClick={() => handleClick(todo.id)}>remove</button>
+                    </StyledButtonWrapper>
+                  </StyledWrapper>
+                ) : (
+                  ' '
+                );
+              })}
+            </StyledColumn>
+          );
+        })}
+      </>
     </ToDoTemplate>
   );
 };

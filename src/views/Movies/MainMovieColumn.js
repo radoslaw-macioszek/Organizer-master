@@ -65,7 +65,7 @@ const StyledToolTip = styled.p`
     bottom: 0;
     left: -1.5%;
     transform: scale(0);
-    transition: transform ease-out 50ms, bottom ease-out 150ms;
+    transition: transform ease-out 150ms, bottom ease-out 150ms;
     width: 103%;
     backface-visibility: hidden;
   }

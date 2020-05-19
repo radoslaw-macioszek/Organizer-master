@@ -82,7 +82,7 @@ const DetailsTemplate = ({ pageContext, title, content, articleUrl, twitterName,
       )}
 
       {pageContext === 'twitters' && (
-        <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
+        <StyledAvatar src={`https://api.adorable.io/avatars/161/${twitterName}@adorable.io`} />
       )}
       <StyledButton as={Link} to={`/${pageContext}`} activecolor={pageContext}>
         CLOSE / SAVE

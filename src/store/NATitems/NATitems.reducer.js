@@ -8,6 +8,7 @@ export const ADD_POSITION = `${name}/ADD_POSITION`;
 export const ADD_TO_WATCHED = `${name}/ADD_TO_WATCHED`;
 export const ADD_TO_MOVIE_LIST = `${name}/ADD_TO_MOVIE_LIST`;
 export const ADD_TO_DONE = `${name}/ADD_TO_DONE`;
+export const TWITTER_DETAILS = `${name}/TWITTER_DETAILS`;
 
 export const removeItem = (itemType, id) => {
   return {
@@ -83,6 +84,15 @@ export const addToDone = (id, title, date, content, type, fullDate) => {
   };
 };
 
+export const twitterDetails = (id, title, date, content, type, name) => {
+  return {
+    type: 'TWITTER_DETAILS',
+    payload: {
+      item: { id, title, date, content, type, name },
+    },
+  };
+};
+
 const INITIAL_STATE = {
   todos: [
     {
@@ -111,13 +121,14 @@ const INITIAL_STATE = {
     },
   ],
   done: [],
+  twitterDetails: [],
   twitters: [
     {
       id: 1,
       title: 'Hello Roman',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '1 day',
+      created: '15.05.2020',
       twitterName: 'hello_roman',
     },
     {
@@ -125,7 +136,7 @@ const INITIAL_STATE = {
       title: 'Redux guy',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '1 day',
+      created: '18.05.2020',
       twitterName: 'dan_abramov',
     },
     {
@@ -133,7 +144,7 @@ const INITIAL_STATE = {
       title: 'React router stuff',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '5 days',
+      created: '19.05.2020',
       twitterName: 'mjackson',
     },
     {
@@ -141,7 +152,7 @@ const INITIAL_STATE = {
       title: 'Super animacje!',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '10 days',
+      created: '19.05.2020',
       twitterName: 'sarah_edo',
     },
   ],
@@ -152,7 +163,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       articleUrl: 'https://youtube.com/',
-      created: '1 day',
+      created: '13.05.2020',
     },
     {
       id: 2,
@@ -160,7 +171,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       articleUrl: 'https://youtube.com/',
-      created: '1 day',
+      created: '14.05.2020',
     },
     {
       id: 3,
@@ -168,7 +179,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       articleUrl: 'https://youtube.com/',
-      created: '5 days',
+      created: '19.05.2020',
     },
     {
       id: 4,
@@ -176,7 +187,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       articleUrl: 'https://youtube.com/',
-      created: '10 days',
+      created: '19.05.2020',
     },
   ],
   notes: [
@@ -185,28 +196,28 @@ const INITIAL_STATE = {
       title: 'Wake me up when Vue ends',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '1 day',
+      created: '10.05.2020',
     },
     {
       id: 2,
       title: 'Como es An Gular?',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '1 day',
+      created: '18.05.2020',
     },
     {
       id: 3,
       title: 'Du bist Reactish',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '5 days',
+      created: '19.05.2020',
     },
     {
       id: 4,
       title: 'Reactuj się kto moze!',
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
-      created: '10 days',
+      created: '19.05.2020',
     },
   ],
   books: [
@@ -215,7 +226,7 @@ const INITIAL_STATE = {
       title: 'Harry Potter and the Classical World',
       description:
         'J.K. Rowling has drawn deeply from classical sources to inform and color her Harry Potter novels, with allusions ranging from the obvious to the obscure. “Fluffy,” the vicious three-headed dog in Harry Potter and the Sorcerer’s Stone, is clearly a repackaging of Cerberus, the hellhound of Greek and Roman mythology. But the significance of Rowling’s quotation from Aeschylus at the front of Harry Potter and the Deathly Hallows is a matter of speculation. Her use of classical material is often presented with irony and humor. This extensive analysis of the Harry Potter series examines Rowling’s wide range of allusion to classical characters and themes and her varied use of classical languages. Chapters discuss Harry and Narcissus, Dumbledore’s many classical predecessors, Lord Voldemort’s likeness to mythical figures, and magic in Harry Potter and classical antiquity—among many topics.',
-      created: '10 days ago',
+      created: '17.05.2020',
       image: 'https://images-eu.ssl-images-amazon.com/images/I/51UZPLqSveL.jpg',
     },
     {
@@ -223,7 +234,7 @@ const INITIAL_STATE = {
       title: 'The Lord of the Rings',
       description:
         'A PBS Great American Read Top 100 Pick One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them In ancient times the Rings of Power were crafted by the Elven-smiths, and Sauron, the Dark Lord, forged the One Ring, filling it with his own power so that he could rule all others. But the One Ring was taken from him, and though he sought it throughout Middle-earth, it remained lost to him. After many ages it fell by chance into the hands of the hobbit Bilbo Baggins. From Saurons fastness in the Dark Tower of Mordor, his power spread far and wide. Sauron gathered all the Great Rings to him, but always he searched for the One Ring that would complete his dominion. When Bilbo reached his eleventy-first birthday he disappeared, bequeathing to his young cousin Frodo the Ruling Ring and a perilous quest: to journey across Middle-earth, deep into the shadow of the Dark Lord, and destroy the Ring by casting it into the Cracks of Doom. The Lord of the Rings tells of the great quest undertaken by Frodo and the Fellowship of the Ring: Gandalf the Wizard; the hobbits Merry, Pippin, and Sam; Gimli the Dwarf; Legolas the Elf; Boromir of Gondor; and a tall, mysterious stranger called Strider. This new edition includes the fiftieth-anniversary fully corrected text setting and, for the first time, an extensive new index. J.R.R. Tolkien (1892-1973), beloved throughout the world as the creator of The Hobbit, The Lord of the Rings, and The Silmarillion, was a professor of Anglo-Saxon at Oxford, a fellow of Pembroke College, and a fellow of Merton College until his retirement in 1959. His chief interest was the linguistic aspects of the early English written tradition, but while he studied classic works of the past, he was creating a set of his own.',
-      created: '24 days ago',
+      created: '17.05.2020',
       image: 'https://prodimage.images-bn.com/pimages/9780544003415_p0_v4_s550x406.jpg',
     },
     {
@@ -231,7 +242,7 @@ const INITIAL_STATE = {
       title: 'The Hunger Games',
       description:
         'A philosophical exploration of Suzanne Collinss New YorkTimes bestselling series, just in time for the release ofThe Hunger Games movie Katniss Everdeen is the girl who was on fire, but she is alsothe girl who made us think, dream, question authority, and rebel.The post-apocalyptic world of Panems twelve districts is a dividedsociety on the brink of war and struggling to survive, while theCapitol lives in the lap of luxury and pure contentment. At everyturn in the Hunger Games trilogy, Katniss, Peeta, Gale, and theirmany allies wrestle with harrowing choices and ethical dilemmasthat push them to the brink. Is it okay for Katniss to break thelaw to ensure her familys survival? Do ordinary moral rules applyin the Arena? Can the world of The Hunger Games shine alight into the dark corners of our world? Why do we often enjoywatching others suffer? How can we distinguish between whats Realand Not Real? This book draws on some of historys most engagingphilosophical thinkers to take you deeper into the story and itsthemes, such as sacrifice, altruism, moral choice, and gender. Gives you new insights into the Hunger Games series and its keycharacters, plot lines, and ideas Examines important themes such as the state of nature, war,celebrity, authenticity, and social class Applies the perspective of some of worlds greatest minds, suchas Charles Darwin, Thomas Hobbes, Friedrich Nietzsche, Plato, andImmanuel Kant to the Hunger Games trilogy Covers all three books in the Hunger Games trilogy An essential companion for Hunger Games fans, this book willtake you deeper into the dystopic world of Panem and into the mindsand motivations of those who occupy it',
-      created: '40 days ago',
+      created: '18.05.2020',
       image: 'https://images-na.ssl-images-amazon.com/images/I/61nZqhftUPL.jpg',
     },
   ],
@@ -383,13 +394,20 @@ const natReducer = (state = INITIAL_STATE, action) => {
         ...state,
         [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
       };
-    default:
-      return state;
+
     case 'ADD_TO_DONE':
       return {
         ...state,
         [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
       };
+
+    case 'TWITTER_DETAILS':
+      return {
+        ...state,
+        [action.payload.item.type]: [action.payload.item],
+      };
+    default:
+      return state;
   }
 };
 

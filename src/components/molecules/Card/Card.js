@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { removeItem as removeItemAction } from '../../../actions';
+import { removeItem, twitterDetails } from '../../../store/NATitems/NATitems.reducer';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
@@ -11,7 +11,7 @@ import LinkIcon from '../../../assets/icons/link.svg';
 import withContext from '../../../hoc/withContext';
 
 const StyledWrapper = styled.div`
-  min-height: ${({ activePage }) => (activePage === 'twitters' ? '100px' : '380px')};
+  min-height: ${({ activePage }) => (activePage === 'twitters' ? '15.5vh' : '380px')};
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -22,7 +22,7 @@ const StyledWrapper = styled.div`
 
 const InnerWrapperHead = styled.div`
   position: relative;
-  padding: 17px 30px;
+  padding: ${({ activeColor }) => (activeColor === 'twitters' ? '8px 30px' : '17px 30px')};
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
 
   :first-of-type {
@@ -30,12 +30,8 @@ const InnerWrapperHead = styled.div`
   }
 
   &:hover {
-    background-color: ${({ activeColor, theme }) =>
-      activeColor === 'notes'
-        ? 'khaki'
-        : activeColor === 'articles'
-        ? 'darkseagreen'
-        : 'lightblue'};
+    background-color: ${({ activeColor }) =>
+      activeColor === 'notes' ? 'khaki' : activeColor === 'articles' ? 'darkseagreen' : ''};
     cursor: pointer;
   }
 
@@ -56,23 +52,48 @@ const InnerWrapperBody = styled(InnerWrapperHead)`
 `;
 
 const DateInfo = styled(Paragraph)`
-  margin: 0 0 5px;
+  margin: 5px 0 5px;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
 `;
 
 const StyledHeading = styled(Heading)`
+  font-size: 2rem;
   margin: 5px 0 0;
+  width: ${({ activeColor }) => (activeColor === 'twitters' ? '11vw' : '100%')};
+  word-break: break-all;
 `;
 
 const StyledAvatar = styled.img`
-  width: 86px;
-  height: 86px;
-  border: 5px solid ${({ theme }) => theme.twitters};
+  width: 75px;
+  height: 75px;
+  border: 4px solid ${({ theme }) => theme.twitters};
   border-radius: 50px;
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 10px;
+`;
+
+const StyledSecondAvatar = styled(StyledAvatar)`
+  width: 81px;
+  height: 81px;
+  border: 3px solid white;
+  border-radius: 50px;
+  position: absolute;
+  background: transparent;
+  right: 22px;
+  top: 7px;
+`;
+
+const StyledButton = styled(Button)`
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+`;
+
+const StyledParagraph = styled(Paragraph)`
+  margin-top: 10px;
+  padding-left: 30px;
 `;
 
 const StyledLinkButton = styled.a`
@@ -88,56 +109,73 @@ const StyledLinkButton = styled.a`
   top: 50%;
   transform: translateY(-50%);
 `;
-class Card extends React.Component {
-  state = {
-    redirect: false,
+
+const StyledLink = styled.a`
+  width: 8vw;
+  position: absolute;
+  right: 0;
+  bottom: 15px;
+  font-size: 12px;
+  cursor: pointer;
+`;
+const Card = ({
+  pageContext,
+  id,
+  title,
+  twitterName,
+  articleUrl,
+  content,
+  created,
+  actualDate,
+}) => {
+  const dispatch = useDispatch();
+
+  const [redirect, setRedirect] = useState(false);
+
+  const handleCardClick = () => {
+    if (pageContext !== 'twitters') {
+      setRedirect(true);
+    } else {
+      dispatch(twitterDetails(id, title, created, content, 'twitterDetails', twitterName));
+    }
   };
 
-  handleCardClick = () => this.setState({ redirect: true });
-
-  render() {
-    const {
-      id,
-      pageContext,
-      title,
-      twitterName,
-      articleUrl,
-      content,
-      created,
-      removeItem,
-    } = this.props;
-
-    const { redirect } = this.state;
-    // po to by przeniesc sie do danej karty! + funkcja handleCardClick + state
-    if (redirect) {
-      return <Redirect to={`${pageContext}/${id}`} title={title} />;
-    }
-    return (
-      <StyledWrapper activePage={pageContext}>
-        <InnerWrapperHead onClick={this.handleCardClick} activeColor={pageContext}>
-          <StyledHeading>{title}</StyledHeading>
-          <DateInfo>{created}</DateInfo>
-          {pageContext === 'twitters' && (
-            <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
-          )}
-          {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
-        </InnerWrapperHead>
-        {pageContext === 'twitters' ? (
-          <Button onClick={() => removeItem(pageContext, id)} secondary>
+  // po to by przeniesc sie do danej karty! + funkcja handleCardClick + state
+  if (redirect) {
+    return <Redirect to={`${pageContext}/${id}`} title={title} />;
+  }
+  return (
+    <StyledWrapper activePage={pageContext}>
+      <InnerWrapperHead onClick={handleCardClick} activeColor={pageContext}>
+        <StyledHeading>{pageContext === 'twitters' ? twitterName : title}</StyledHeading>
+        <DateInfo>{created}</DateInfo>
+        {pageContext === 'twitters' && (
+          <>
+            <StyledSecondAvatar />
+            <StyledAvatar src={`https://api.adorable.io/avatars/161/${twitterName}@adorable.io`} />
+          </>
+        )}
+        {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
+      </InnerWrapperHead>
+      {pageContext === 'twitters' ? (
+        <>
+          <StyledButton onClick={() => dispatch(removeItem(pageContext, id))} secondary>
+            REMOVE
+          </StyledButton>
+          <StyledLink href={`http://www.twitter.com/${twitterName}`}>OPEN THIS TWITTER</StyledLink>
+          <StyledParagraph>{title}</StyledParagraph>
+        </>
+      ) : (
+        <InnerWrapperBody flex>
+          <Paragraph>{content}</Paragraph>
+          <Button onClick={() => dispatch(removeItem(pageContext, id))} secondary>
             REMOVE
           </Button>
-        ) : (
-          <InnerWrapperBody flex>
-            <Paragraph>{content}</Paragraph>
-            <Button onClick={() => removeItem(pageContext, id)} secondary>
-              REMOVE
-            </Button>
-          </InnerWrapperBody>
-        )}
-      </StyledWrapper>
-    );
-  }
-}
+        </InnerWrapperBody>
+      )}
+    </StyledWrapper>
+  );
+};
 
 Card.propTypes = {
   pageContext: PropTypes.oneOf([
@@ -154,7 +192,6 @@ Card.propTypes = {
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
-  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
@@ -163,8 +200,4 @@ Card.defaultProps = {
   articleUrl: null,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
-});
-
-export default connect(null, mapDispatchToProps)(withContext(Card));
+export default withContext(Card);

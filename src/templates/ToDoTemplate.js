@@ -88,7 +88,7 @@ const StyledTitle = styled.span`
   font-weight: bold;
 `;
 
-const StyledDone = styled.p`
+const StyledDone = styled.div`
   margin-top: 10px;
   padding: 0 10px;
   display: flex;
@@ -119,7 +119,7 @@ const ToDoTemplate = ({ children, pageContext }) => {
             <StyledDoneContainer>
               {done &&
                 done.map((item) => (
-                  <div>
+                  <div key={item.id}>
                     <StyledDone>
                       <StyledFont>
                         <StyledDate>{item.date}</StyledDate>

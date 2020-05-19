@@ -129,7 +129,7 @@ const StyledAddButton = styled.button`
   border-radius: 5px;
 `;
 
-const Books = ({ pageContext }) => {
+const Books = ({ pageContext, actualDate }) => {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.booksReducer.data);
 
@@ -159,7 +159,7 @@ const Books = ({ pageContext }) => {
               id: book.id,
               title,
               description,
-              created: '13 days ago',
+              created: actualDate,
               image: `${imageLinks ? imageLinks.smallThumbnail : image}`,
             };
 
