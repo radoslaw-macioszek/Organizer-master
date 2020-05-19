@@ -109,9 +109,15 @@ const StyledLink = styled.a`
   bottom: 35px;
 `;
 
-const StyledParagraph = styled.p`
+const StyledParagraphT = styled.p`
   margin: 0;
   margin-bottom: 5px;
+  position: absolute;
+  bottom: 34%;
+`;
+
+const StyledParagraphB = styled(StyledParagraphT)`
+  bottom: 20%;
 `;
 
 const StyledAddButton = styled.button`
@@ -176,15 +182,15 @@ const Books = ({ pageContext }) => {
                   <StyledTitle>{title}</StyledTitle>
                   <p>by {authors ? authors.map((auth) => `${auth}, `) : '-'}</p>
 
-                  <StyledParagraph>
-                    Category:
-                    {categories ? categories.map((cat) => `${cat}, `) : ' '}
-                  </StyledParagraph>
-                  <StyledParagraph>
-                    Average rating:
-                    {averageRating ? averageRating : '-'}, Pages: {pageCount}, Language:
+                  <StyledParagraphT>
+                    category:
+                    {categories ? categories.map((cat) => ` ${cat}, `) : ' '}
+                  </StyledParagraphT>
+                  <StyledParagraphB>
+                    rate:
+                    {averageRating ? averageRating : ' - '}; pages: {pageCount}; lang.{' '}
                     {language.toUpperCase()}
-                  </StyledParagraph>
+                  </StyledParagraphB>
                   <StyledLink href={previewLink}>Check Book</StyledLink>
                 </StyledDetails>
               </StyledBookWrapper>

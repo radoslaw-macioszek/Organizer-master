@@ -74,22 +74,8 @@ const StyledButton = styled.button`
 `;
 
 const StyledSecondButton = styled(StyledButton)`
-  top: 72.8vh;
+  bottom: 27.5%;
 `;
-
-// const StyledOverlaps = styled.div`
-//   border: 1px solid ${({ theme }) => theme.movies};
-//   height: 10vh;
-//   width: 8vh;
-//   position: absolute;
-//   left: 6vw;
-// `;
-
-// Linku mozemy uzyc tez jako "as"
-
-// Link ma wlasciwosc inline'owa, dlatego icony musza miec dodatkowo display:block
-// zmiana na NavLink zeby uzyskac activeClass. Pisane z malej, zeby consola sie nie przyczepiala.
-// podmieniamy pageType na pageContext ze wzgledu na wykorzystanie withContext
 
 const Tv = ({ pageContext }) => {
   return (
@@ -114,9 +100,11 @@ const Sidebar = ({ pageContext }) => {
       </StyledLogo>
       <StyledIcon as={NavLink} to="/todos" icon={todoIcon} activeclass="active" />
       <StyledIcon as={NavLink} to="/notes" icon={penIcon} activeclass="active" />
-      <StyledIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
       <StyledIcon as={NavLink} to="/articles" small="true" icon={bulbIcon} activeclass="active" />
+
+      <StyledIcon as={NavLink} to="/twitters" icon={twitterIcon} activeclass="active" />
       <StyledIcon as={NavLink} to="/books" icon={bookIcon} activeclass="active" />
+
       <StyledIcon
         as={NavLink}
         to={pageContext === 'series' ? '/series' : '/movies'}

@@ -20,6 +20,8 @@ const StyledMovieColumn = styled.div`
   &:hover {
     border: 1px solid ${({ theme }) => theme.movies};
   }
+
+  position: relative;
 `;
 
 const DateInfo = styled.p`
@@ -40,6 +42,43 @@ const StyledImage = styled.img`
   width: 11vw;
   border-radius: 5px;
   margin-top: 5px;
+`;
+
+const StyledToolTip = styled.p`
+  text-decoration: line-through;
+  background-color: ${({ theme }) => theme.grey200};
+  border-radius: 3px;
+  margin: 0;
+
+  position: relative;
+  backface-visibility: hidden;
+
+  &::after {
+    content: attr(data-tool-tip);
+    font-size: 1.4rem;
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    padding: 5px 15px;
+    color: transparent;
+    border-radius: 3px;
+    bottom: 0;
+    left: -1.5%;
+    transform: scale(0);
+    transition: transform ease-out 50ms, bottom ease-out 150ms;
+    width: 103%;
+    backface-visibility: hidden;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+    background-color: white;
+    text-align: center;
+    color: black;
+
+    border: 1px solid ${({ theme }) => theme.movies};
+    backface-visibility: hidden;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -92,12 +131,13 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
     ? checkMovies.map((item) => (
         <StyledMovieColumn key={item.id}>
           <DateInfo>Added: 13/12/2019</DateInfo>
-          <StyledImage
-            src={item.path === null ? image : item.path}
-            alt="book"
-            onClick={() => handleClick(item.id, 'movie')}
-          />
-
+          <StyledToolTip data-tool-tip={item.title}>
+            <StyledImage
+              src={item.path === null ? image : item.path}
+              alt="book"
+              onClick={() => handleClick(item.id, 'movie')}
+            />
+          </StyledToolTip>
           <ButtonsWrapper>
             <input
               type="checkbox"
@@ -118,11 +158,13 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
     : checkSeries.map((item) => (
         <StyledMovieColumn key={item.id}>
           <DateInfo>Added: 13/12/2019</DateInfo>
-          <StyledImage
-            src={item.path === null ? image : item.path}
-            alt="book"
-            onClick={() => handleClick(item.id, 'tv')}
-          />
+          <StyledToolTip data-tool-tip={item.title}>
+            <StyledImage
+              src={item.path === null ? image : item.path}
+              alt="book"
+              onClick={() => handleClick(item.id, 'tv')}
+            />
+          </StyledToolTip>
 
           <ButtonsWrapper>
             <input

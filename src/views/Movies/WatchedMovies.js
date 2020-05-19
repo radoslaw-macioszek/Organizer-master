@@ -76,6 +76,41 @@ const StyledImage = styled.img`
   height: 21vh;
   width: 9vw;
   border-radius: 5px;
+  backface-visibility: hidden;
+`;
+
+const StyledToolTip = styled.p`
+  text-decoration: line-through;
+  background-color: ${({ theme }) => theme.grey200};
+  border-radius: 3px;
+
+  position: relative;
+
+  &::after {
+    content: attr(data-tool-tip);
+    font-size: 1.4rem;
+    display: block;
+    position: absolute;
+    background-color: transparent;
+    color: transparent;
+    padding: 5px 15px;
+    border-radius: 3px;
+    bottom: -15%;
+    left: -15%;
+    transform: scale(0);
+    transition: transform ease 0.7s, bottom ease-out 150ms;
+    backface-visibility: hidden;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+    background-color: white;
+    text-align: center;
+    width: 130%;
+    color: black;
+
+    border: 1px solid ${({ theme }) => theme.movies};
+  }
 `;
 
 const WatchedMovies = ({ openModal, pageContext }) => {
@@ -108,9 +143,11 @@ const WatchedMovies = ({ openModal, pageContext }) => {
     ? check.map((item) => (
         <StyledWatchedMovies key={item.id}>
           <DateInfo>Watched: 13/12/2019</DateInfo>
-          <Front>
-            <StyledImage src={item.path} />
-          </Front>
+          <StyledToolTip data-tool-tip={item.title}>
+            <Front>
+              <StyledImage src={item.path} />
+            </Front>
+          </StyledToolTip>
           <ButtonsWrapper>
             <StyledTopButtons>
               <StyledButton secondary onClick={() => handleClick(item.id, 'movie')}>
@@ -130,9 +167,11 @@ const WatchedMovies = ({ openModal, pageContext }) => {
     : checkSeries.map((item) => (
         <StyledWatchedMovies key={item.id}>
           <DateInfo>Watched: 13/12/2019</DateInfo>
-          <Front>
-            <StyledImage src={item.path} />
-          </Front>
+          <StyledToolTip data-tool-tip={item.title}>
+            <Front>
+              <StyledImage src={item.path} />
+            </Front>
+          </StyledToolTip>
           <ButtonsWrapper>
             <StyledTopButtons>
               <StyledButton secondary onClick={() => handleClick(item.id, 'tv')}>

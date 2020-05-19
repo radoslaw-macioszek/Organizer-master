@@ -59,8 +59,9 @@ const StyledSpan = styled.span`
   margin: 0;
 `;
 const StyledDateParagraph = styled.span`
-  margin: 0 10px;
+  margin: -5px 10px 0;
   font-size: 10px;
+  padding-top: 0;
 `;
 
 const StyledDate = styled.p`

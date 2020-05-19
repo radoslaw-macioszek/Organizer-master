@@ -11,7 +11,7 @@ import LinkIcon from '../../../assets/icons/link.svg';
 import withContext from '../../../hoc/withContext';
 
 const StyledWrapper = styled.div`
-  min-height: 380px;
+  min-height: ${({ activePage }) => (activePage === 'twitters' ? '100px' : '380px')};
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -20,13 +20,23 @@ const StyledWrapper = styled.div`
   grid-template-rows: 0.25fr 1fr;
 `;
 
-const InnerWrapper = styled.div`
+const InnerWrapperHead = styled.div`
   position: relative;
   padding: 17px 30px;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
 
   :first-of-type {
     z-index: 9999;
+  }
+
+  &:hover {
+    background-color: ${({ activeColor, theme }) =>
+      activeColor === 'notes'
+        ? 'khaki'
+        : activeColor === 'articles'
+        ? 'darkseagreen'
+        : 'lightblue'};
+    cursor: pointer;
   }
 
   ${({ flex }) =>
@@ -36,6 +46,13 @@ const InnerWrapper = styled.div`
       flex-direction: column;
       justify-content: space-between;
     `}
+`;
+
+const InnerWrapperBody = styled(InnerWrapperHead)`
+  &:hover {
+    background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+    cursor: text;
+  }
 `;
 
 const DateInfo = styled(Paragraph)`
@@ -96,21 +113,27 @@ class Card extends React.Component {
       return <Redirect to={`${pageContext}/${id}`} title={title} />;
     }
     return (
-      <StyledWrapper>
-        <InnerWrapper onClick={this.handleCardClick} activeColor={pageContext}>
+      <StyledWrapper activePage={pageContext}>
+        <InnerWrapperHead onClick={this.handleCardClick} activeColor={pageContext}>
           <StyledHeading>{title}</StyledHeading>
           <DateInfo>{created}</DateInfo>
           {pageContext === 'twitters' && (
             <StyledAvatar src={`https://avatars.io/twitter/${twitterName}`} />
           )}
           {pageContext === 'articles' && <StyledLinkButton href={articleUrl} />}
-        </InnerWrapper>
-        <InnerWrapper flex>
-          <Paragraph>{content}</Paragraph>
+        </InnerWrapperHead>
+        {pageContext === 'twitters' ? (
           <Button onClick={() => removeItem(pageContext, id)} secondary>
             REMOVE
           </Button>
-        </InnerWrapper>
+        ) : (
+          <InnerWrapperBody flex>
+            <Paragraph>{content}</Paragraph>
+            <Button onClick={() => removeItem(pageContext, id)} secondary>
+              REMOVE
+            </Button>
+          </InnerWrapperBody>
+        )}
       </StyledWrapper>
     );
   }

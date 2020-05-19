@@ -91,7 +91,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '13/12/2019',
-      date: '2020-05-18T02:00',
+      date: '2020-05-21T02:00',
     },
     {
       id: 2,

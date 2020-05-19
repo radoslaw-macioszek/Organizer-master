@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
   background-color: white;
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 0.5s ease-in-out;
+  transition: transform ease-out 0.5s;
 
   overflow: scroll;
 `;
@@ -60,23 +60,6 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
     event.preventDefault();
   };
 
-  // const StyledOverlap = styled.div`
-  //   border-bottom: 1px solid ${({ theme }) => theme.movies};
-  // `;
-
-  // const StyledOverlapButton = styled.button`
-  //   font-size: 15px;
-  //   padding: 5px 10px;
-  //   margin-right: 2px;
-  //   border: 1px solid ${({ theme }) => theme.movies};
-
-  //   &:hover {
-  //     background-color: ${({ theme }) => theme.movies};
-  //     color: black;
-  //     font-weight: bold;
-  //   }
-  // `;
-
   useEffect(() => {
     if (pageContext === 'books' && searchPhrase !== '') {
       dispatch(loadBooksAction(searchPhrase));
@@ -104,10 +87,6 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
     </StyledWrapper>
   ) : (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
-      {/* <StyledOverlap>
-        <StyledOverlapButton>Movies</StyledOverlapButton>
-        <StyledOverlapButton>Series</StyledOverlapButton>
-      </StyledOverlap> */}
       <Heading>{pageContext === 'movies' ? 'Movies' : 'Series'}</Heading>
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput

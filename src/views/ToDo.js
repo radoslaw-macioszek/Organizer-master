@@ -128,6 +128,7 @@ const ToDo = ({ pageContext }) => {
     <ToDoTemplate>
       {days.map((column, i) => {
         const today = new Date().getDay();
+        const actualDayToday = new Date().getDate();
         const numb = today + i;
         const result = numb > 6 ? numb - 7 : numb;
         //
@@ -135,6 +136,12 @@ const ToDo = ({ pageContext }) => {
           currentDay + i > daysInMonth ? currentDay + i - daysInMonth : currentDay + i;
 
         const fullDayDate = `${bottomHeaderDate}.${currentMonth}.${currentYear}`;
+
+        // actualDay
+
+        const actualDay = `${actualDayToday}.${currentMonth}.${currentYear}`;
+        console.log(actualDay);
+
         return (
           <StyledColumn key={i}>
             <StyledHeader>
@@ -154,32 +161,16 @@ const ToDo = ({ pageContext }) => {
                 ':' +
                 (actual.getMinutes() < 10 ? '0' + actual.getMinutes() : actual.getMinutes());
 
-              return fullDate === fullDayDate && actualTime > time ? (
+              return fullDate === fullDayDate ? (
                 <StyledWrapper key={todo.id}>
                   <StyledTime>{time}</StyledTime>
-                  <StyledDoneTitle
-                    data-tool-tip="
-the set hour has passed"
-                  >
-                    {todo.title}
-                  </StyledDoneTitle>
-                  <StyledContent>{todo.content}</StyledContent>
-                  <StyledButtonWrapper>
-                    <button
-                      onClick={() =>
-                        handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
-                      }
-                    >
-                      done
-                    </button>
-                    <button onClick={() => handleClick(todo.id)}>remove</button>
-                  </StyledButtonWrapper>
-                </StyledWrapper>
-              ) : fullDate === fullDayDate && actualTime < time ? (
-                <StyledWrapper key={todo.id}>
-                  <StyledTime>{time}</StyledTime>
-                  <StyledTitle>{todo.title}</StyledTitle>
-                  {/* <StyledContent active={activeClass}>{todo.content}</StyledContent> */}
+                  {actualDay === fullDayDate && actualTime > time ? (
+                    <StyledDoneTitle data-tool-tip="the set hour has passed">
+                      {todo.title}
+                    </StyledDoneTitle>
+                  ) : (
+                    <StyledTitle>{todo.title}</StyledTitle>
+                  )}
                   <StyledContent>{todo.content}</StyledContent>
                   <StyledButtonWrapper>
                     <button
@@ -193,7 +184,7 @@ the set hour has passed"
                   </StyledButtonWrapper>
                 </StyledWrapper>
               ) : (
-                ''
+                ' '
               );
             })}
           </StyledColumn>

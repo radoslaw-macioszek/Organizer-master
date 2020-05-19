@@ -35,7 +35,8 @@ const StyledPageHeader = styled.div`
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 85px;
+  grid-gap: ${({ activePage }) => (activePage === 'twitters' ? '10px' : '85px')};
+  /* grid-gap: 85px; */
 `;
 
 // position fixed, zeby nawet przy scrollowaniu byl w tym samym miejscu
@@ -78,7 +79,7 @@ class GridTemplate extends React.Component {
             </StyledHeading>
             <StyledParagraph>6 {pageContext}</StyledParagraph>
           </StyledPageHeader>
-          <StyledGrid>{children}</StyledGrid>
+          <StyledGrid activePage={pageContext}>{children}</StyledGrid>
           <StyledButtonIcon
             onClick={this.handleBarToggle}
             icon={plusIcon}
