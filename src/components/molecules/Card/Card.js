@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import { removeItem, twitterDetails } from '../../../store/NATitems/NATitems.reducer';
+import { removeItem, twitterDetails, noteDetails } from '../../../store/NATitems/NATitems.reducer';
 import Heading from '../../atoms/Heading/Heading';
 import Button from '../../atoms/Button/Button';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
@@ -139,6 +139,7 @@ const Card = ({ pageContext, id, title, twitterName, articleUrl, content, create
   const handleCardClick = () => {
     if (pageContext === 'notes') {
       setRedirect(true);
+      dispatch(noteDetails(id, title, created, content, 'noteDetails'));
     } else if (pageContext === 'twitters') {
       dispatch(twitterDetails(id, title, created, content, 'twitterDetails', twitterName));
     }

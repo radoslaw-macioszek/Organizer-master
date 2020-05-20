@@ -9,6 +9,8 @@ export const ADD_TO_WATCHED = `${name}/ADD_TO_WATCHED`;
 export const ADD_TO_MOVIE_LIST = `${name}/ADD_TO_MOVIE_LIST`;
 export const ADD_TO_DONE = `${name}/ADD_TO_DONE`;
 export const TWITTER_DETAILS = `${name}/TWITTER_DETAILS`;
+export const NOTE_DETAILS = `${name}/NOTE_DETAILS`;
+export const NOTE_EDIT = `${name}/NOTE_EDIT`;
 
 export const removeItem = (itemType, id) => {
   return {
@@ -89,6 +91,25 @@ export const twitterDetails = (id, title, date, content, type, name) => {
     type: 'TWITTER_DETAILS',
     payload: {
       item: { id, title, date, content, type, name },
+    },
+  };
+};
+
+export const noteDetails = (id, title, date, content, type) => {
+  return {
+    type: 'NOTE_DETAILS',
+    payload: {
+      item: { id, title, date, content, type },
+    },
+  };
+};
+
+export const noteEdit = (id, title, date, content, edited, type) => {
+  console.log('result', id);
+  return {
+    type: 'NOTE_EDIT',
+    payload: {
+      item: { id, title, date, content, edited, type },
     },
   };
 };
@@ -220,6 +241,7 @@ const INITIAL_STATE = {
       created: '19.05.2020',
     },
   ],
+  noteDetails: [],
   books: [
     {
       id: 1,
@@ -405,6 +427,23 @@ const natReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         [action.payload.item.type]: [action.payload.item],
+      };
+
+    case 'NOTE_DETAILS':
+      return {
+        ...state,
+        [action.payload.item.type]: [action.payload.item],
+      };
+
+    case 'NOTE_EDIT':
+      console.log('action', action.payload);
+      return {
+        ...state,
+        [action.payload.item.type]: [
+          ...state[action.payload.item.type].map((item) =>
+            item.id === action.payload.item.id ? action.payload.item : item,
+          ),
+        ],
       };
     default:
       return state;
