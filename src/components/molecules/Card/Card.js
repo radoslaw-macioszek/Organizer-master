@@ -36,10 +36,10 @@ const InnerWrapperHead = styled.div`
 
   &:hover {
     background-color: ${({ activeColor }) =>
-      activeColor === 'notes' ? 'khaki' : activeColor === 'articles' ? 'darkseagreen' : ''};
+      activeColor === 'notes' ? 'khaki' : activeColor === 'twitters' ? 'lightblue' : ''};
     cursor: pointer;
   }
-
+  /* 'darkseagreen' */
   ${({ flex }) =>
     flex &&
     css`
@@ -113,6 +113,14 @@ const StyledLinkButton = styled.a`
   right: 25px;
   top: 50%;
   transform: translateY(-50%);
+
+  &:hover {
+    background: ${({ theme }) => theme.grey200} url(${LinkIcon}) no-repeat;
+    background-position: 50%;
+    background-size: 60%;
+
+    border: 2px solid white;
+  }
 `;
 
 const StyledLink = styled.a`
@@ -123,29 +131,19 @@ const StyledLink = styled.a`
   font-size: 12px;
   cursor: pointer;
 `;
-const Card = ({
-  pageContext,
-  id,
-  title,
-  twitterName,
-  articleUrl,
-  content,
-  created,
-  actualDate,
-}) => {
+const Card = ({ pageContext, id, title, twitterName, articleUrl, content, created }) => {
   const dispatch = useDispatch();
 
   const [redirect, setRedirect] = useState(false);
 
   const handleCardClick = () => {
-    if (pageContext !== 'twitters') {
+    if (pageContext === 'notes') {
       setRedirect(true);
-    } else {
+    } else if (pageContext === 'twitters') {
       dispatch(twitterDetails(id, title, created, content, 'twitterDetails', twitterName));
     }
   };
 
-  // po to by przeniesc sie do danej karty! + funkcja handleCardClick + state
   if (redirect) {
     return <Redirect to={`${pageContext}/${id}`} title={title} />;
   }
