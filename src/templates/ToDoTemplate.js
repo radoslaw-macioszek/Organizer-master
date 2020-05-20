@@ -10,7 +10,7 @@ import Heading from '../components/atoms/Heading/Heading';
 import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
 import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
-import SearchedMovies from '../views/Movies/SearchedMovies';
+import SearchedMoviesAndSeries from '../views/Movies/SearchedMoviesAndSeries';
 import plusIcon from '../assets/icons/plus.svg';
 
 const StyledWrapper = styled.div`

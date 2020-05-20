@@ -12,6 +12,8 @@ import withContext from '../../../hoc/withContext';
 
 const StyledWrapper = styled.div`
   min-height: ${({ activePage }) => (activePage === 'twitters' ? '15.5vh' : '380px')};
+  min-width: ${({ activePage }) => (activePage === 'twitters' ? '19.5vw' : '100%')};
+
   box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
   border-radius: 10px;
   overflow: hidden;
@@ -24,6 +26,9 @@ const InnerWrapperHead = styled.div`
   position: relative;
   padding: ${({ activeColor }) => (activeColor === 'twitters' ? '8px 30px' : '17px 30px')};
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
 
   :first-of-type {
     z-index: 9999;
@@ -60,8 +65,8 @@ const DateInfo = styled(Paragraph)`
 const StyledHeading = styled(Heading)`
   font-size: 2rem;
   margin: 5px 0 0;
-  width: ${({ activeColor }) => (activeColor === 'twitters' ? '11vw' : '100%')};
-  word-break: break-all;
+  width: ${({ activeColor }) => (activeColor === 'notes' ? '100%' : '80%')};
+  overflow-wrap: normal;
 `;
 
 const StyledAvatar = styled.img`

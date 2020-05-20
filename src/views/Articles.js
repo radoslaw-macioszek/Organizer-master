@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import GridTemplate from '../templates/GridTemplate';
@@ -7,6 +7,7 @@ import Card from '../components/molecules/Card/Card';
 
 const Articles = () => {
   const articles = useSelector((state) => state.natReducer.articles);
+
   return (
     <GridTemplate pageType="articles">
       {articles.map(({ title, created, articleUrl, content, id }) => (
@@ -41,3 +42,5 @@ Articles.defaultProps = {
 };
 
 export default Articles;
+
+// eabc157f46174c408b3a72c93381d0c1

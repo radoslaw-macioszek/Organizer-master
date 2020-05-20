@@ -10,9 +10,11 @@ import withContext from '../hoc/withContext';
 import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from '../assets/icons/plus.svg';
 import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
+import ArticlesList from '../components/organisms/ArticlesList/ArticlesList';
 
 const StyledWrapper = styled.div`
-  padding: 25px 150px 25px 70px;
+  padding: ${({ activePage }) =>
+    activePage === 'articles' ? '25px 80px 25px 70px' : '25px 150px 25px 70px'};
   position: relative;
 `;
 
@@ -37,8 +39,12 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: ${({ activePage }) =>
     activePage === 'twitters' ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
-  grid-gap: ${({ activePage }) => (activePage === 'twitters' ? '40px' : '85px')};
-  /* grid-gap: 85px; */
+  grid-gap: ${({ activePage }) => (activePage === 'notes' ? '85px' : '40px')};
+  height: 100%;
+`;
+
+const StyledArticlesGrid = styled(StyledGrid)`
+  max-width: 100vw;
 `;
 
 // position fixed, zeby nawet przy scrollowaniu byl w tym samym miejscu
@@ -60,10 +66,10 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
 const StyledDoneContainer = styled.div`
   position: absolute;
-  right: 2%;
+  right: 4%;
   top: 12%;
   height: 14vh;
-  width: 55%;
+  width: 52%;
   border: 3px solid ${({ theme }) => theme.twitters};
   border-radius: 10px;
 
@@ -100,10 +106,12 @@ const StyledParagraf = styled.p`
   font-size: 15px;
 `;
 
+const StyledArticlesPage = styled.div`
+  display: flex;
+`;
+
 const GridTemplate = ({ children, pageContext }) => {
   const details = useSelector((state) => state.natReducer.twitterDetails);
-  console.log(details);
-
   const [barVisible, setBarVisible] = useState(false);
 
   const typeLength = useSelector((state) => state.natReducer);
@@ -113,7 +121,7 @@ const GridTemplate = ({ children, pageContext }) => {
   };
   return (
     <UserPageTemplate pageType={pageContext}>
-      <StyledWrapper>
+      <StyledWrapper activePage={pageContext}>
         <StyledPageHeader>
           <Input search placeholder="Search" />
           <StyledHeading big as="h1">
@@ -155,7 +163,14 @@ const GridTemplate = ({ children, pageContext }) => {
             ''
           )}
         </StyledPageHeader>
-        <StyledGrid activePage={pageContext}>{children}</StyledGrid>
+        {pageContext === 'articles' ? (
+          <StyledArticlesPage>
+            <StyledArticlesGrid activePage={pageContext}>{children}</StyledArticlesGrid>
+            <ArticlesList />
+          </StyledArticlesPage>
+        ) : (
+          <StyledGrid activePage={pageContext}>{children}</StyledGrid>
+        )}
         <StyledButtonIcon onClick={handleBarToggle} icon={plusIcon} activecolor={pageContext} />
         <NewItemBar handleClose={handleBarToggle} isVisible={barVisible} />
       </StyledWrapper>

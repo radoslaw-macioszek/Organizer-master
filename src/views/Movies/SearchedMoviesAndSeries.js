@@ -129,7 +129,7 @@ const StyledSpan = styled.span`
   font-size: 16px;
 `;
 
-const SearchedMovies = ({ pageContext }) => {
+const SearchedMoviesAndSeries = ({ pageContext }) => {
   const series = 'series';
   const movies = 'movies';
   const dispatch = useDispatch();
@@ -244,22 +244,6 @@ const SearchedMovies = ({ pageContext }) => {
                 + Add to your movie list
               </StyledAddButton>
             )}
-            {/* <StyledAddButton
-              onClick={() =>
-                dispatch(
-                  addToMovieList(
-                    item.id,
-                    item.title,
-                    `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                    item.vote_average,
-                    item.popularity,
-                    item.release_date,
-                  ),
-                )
-              }
-            >
-              + Add to your movie list
-            </StyledAddButton> */}
           </StyledDetails>
         </StyledBookWrapper>
       ))}
@@ -267,4 +251,4 @@ const SearchedMovies = ({ pageContext }) => {
   );
 };
 
-export default withContext(SearchedMovies);
+export default withContext(SearchedMoviesAndSeries);

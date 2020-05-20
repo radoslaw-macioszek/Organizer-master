@@ -87,7 +87,7 @@ const StyledButton = styled(Button)`
   height: 20px;
 `;
 
-const MainMovieColumn = ({ openModal, pageContext }) => {
+const MainColumn = ({ openModal, pageContext }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
 
@@ -185,4 +185,4 @@ const MainMovieColumn = ({ openModal, pageContext }) => {
       ));
 };
 
-export default withContext(MainMovieColumn);
+export default withContext(MainColumn);

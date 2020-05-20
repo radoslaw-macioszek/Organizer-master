@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import withContext from '../hoc/withContext';
-import SearchedMovies from '../views/Movies/SearchedMovies';
+import SearchedMoviesAndSeries from '../views/Movies/SearchedMoviesAndSeries';
 
 import UserPageTemplate from './UserPageTemplate';
 import RightSearchBar from '../components/organisms/RightSearchBar/RightSearchBar';
@@ -124,7 +124,7 @@ const MoviesTemplate = ({ pageContext, children }) => {
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <RightSearchBar isVisible={barVisible}>
-            <SearchedMovies />
+            <SearchedMoviesAndSeries />
           </RightSearchBar>
           <StyledButtonIcon onClick={() => setBarVisibility(!barVisible)} activecolor={pageContext}>
             Find new movie!

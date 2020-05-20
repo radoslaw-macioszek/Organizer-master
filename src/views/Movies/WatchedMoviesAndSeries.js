@@ -114,7 +114,7 @@ const StyledToolTip = styled.p`
   }
 `;
 
-const WatchedMovies = ({ openModal, pageContext }) => {
+const WatchedMoviesAndSeries = ({ openModal, pageContext }) => {
   const dispatch = useDispatch();
 
   const check = useSelector((state) => state.natReducer.watchedMovies);
@@ -194,4 +194,4 @@ const WatchedMovies = ({ openModal, pageContext }) => {
       ));
 };
 
-export default withContext(WatchedMovies);
+export default withContext(WatchedMoviesAndSeries);

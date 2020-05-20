@@ -159,7 +159,9 @@ const ToDo = ({ pageContext, actualDate }) => {
                   <StyledWrapper key={todo.id}>
                     <StyledTime>{time}</StyledTime>
                     {actualDate === fullDayDate && actualTime > time ? (
-                      <StyledDoneTitle>{todo.title}</StyledDoneTitle>
+                      <StyledDoneTitle data-tool-tip="the set task time has passed">
+                        {todo.title}
+                      </StyledDoneTitle>
                     ) : (
                       <StyledTitle>{todo.title}</StyledTitle>
                     )}

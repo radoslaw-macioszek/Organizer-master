@@ -9,8 +9,8 @@ import TopRatedSeries from './Series/TopRatedSeries';
 import MostPopularSeries from './Series/MostPopularSeries';
 import WeekPopularSeries from './Series/WeekPopularSeries';
 
-import MainMovieColumn from './Movies/MainMovieColumn';
-import WatchedMovies from './Movies/WatchedMovies';
+import MainColumn from './Movies/MainColumn';
+import WatchedMoviesAndSeries from './Movies/WatchedMoviesAndSeries';
 
 // zamykanie modala po kliknieciu poza modal
 
@@ -107,7 +107,7 @@ const Series = () => {
           <StyledScroll>
             <StyledHeading>{title}</StyledHeading>
             <StyledLeftSide>
-              <MainMovieColumn openModal={openModal} />
+              <MainColumn openModal={openModal} />
             </StyledLeftSide>
           </StyledScroll>
           <StyledRightSide>
@@ -125,7 +125,7 @@ const Series = () => {
         <StyledBottom>
           <StyledHeading style={{ marginTop: '100px' }}>{title2}</StyledHeading>
           <StyledBottomSide>
-            <WatchedMovies openModal={openModal} />
+            <WatchedMoviesAndSeries openModal={openModal} />
           </StyledBottomSide>
         </StyledBottom>
       </StyledWhole>
