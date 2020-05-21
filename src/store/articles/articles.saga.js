@@ -4,7 +4,7 @@ import { LOAD_ARTICLES, loadArticlesSuccess, loadArticlesFailed } from './articl
 
 function* loadArticles(action) {
   const searchResult = action.payload;
-  const response = yield call(axios.get, 'https://newsapi.org/v2/top-headlines', {
+  const response = yield call(axios.get, 'https://newsapi.org/v2/everything', {
     params: {
       apiKey: 'eabc157f46174c408b3a72c93381d0c1',
       q: `${searchResult}`,

@@ -9,6 +9,8 @@
     "document": true
   },
   "rules": {
+    "react/jsx-curly-newline": 0,
+    "react/jsx-one-expression-per-line": 0,
     "no-nested-ternary": 0,
     "object-curly-newline": 0,
     "operator-linebreak": 0,

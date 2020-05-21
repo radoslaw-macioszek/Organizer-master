@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-
-// import withContext from '../../../hoc/withContext';
+import PropTypes from 'prop-types';
 
 import { loadMovieDetail } from '../../../store/movies/movies.reducer';
 
@@ -43,7 +42,6 @@ const Back = styled(Front)`
   background-color: ${({ theme }) => theme.movies};
   z-index: 1;
   transform: rotateY(180deg);
-  /* height: 100%; */
 `;
 
 const StyledParagraph = styled.span`
@@ -138,6 +136,26 @@ const FlipAnimation = ({ id, title, path, rate, popularity, date, openModal, nam
       </Flipper>
     </FlipContainer>
   );
+};
+
+FlipAnimation.propTypes = {
+  id: PropTypes.number,
+  popularity: PropTypes.number,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  path: PropTypes.string,
+  name: PropTypes.string,
+  rate: PropTypes.number,
+};
+
+FlipAnimation.defaultProps = {
+  id: null,
+  popularity: null,
+  title: null,
+  date: null,
+  path: null,
+  name: null,
+  rate: null,
 };
 
 export default FlipAnimation;

@@ -38,7 +38,7 @@ export const addToFavorite = (title) => {
   return {
     type: 'ADD_TO_FAVORITE',
     payload: {
-      item: { id: getId(), title: title, position: '10' },
+      item: { id: getId(), title, position: '10' },
     },
   };
 };
@@ -47,7 +47,7 @@ export const addToReaded = (title) => {
   return {
     type: 'ADD_TO_READED',
     payload: {
-      item: { id: getId(), title: title },
+      item: { id: getId(), title },
     },
   };
 };
@@ -436,7 +436,6 @@ const natReducer = (state = INITIAL_STATE, action) => {
       };
 
     case 'NOTE_EDIT':
-      console.log('action', action.payload);
       return {
         ...state,
         [action.payload.item.type]: [

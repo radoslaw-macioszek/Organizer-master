@@ -82,22 +82,22 @@ const StyledImage = styled.img`
 
 const StyledToolTip = styled.p`
   text-decoration: line-through;
-  background-color: ${({ theme }) => theme.grey200};
+  background-color: hsl(0, 0%, 0%, 0.4);
   border-radius: 3px;
 
   position: relative;
 
   &::after {
     content: attr(data-tool-tip);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     display: block;
     position: absolute;
     background-color: transparent;
     color: transparent;
     padding: 5px 15px;
     border-radius: 3px;
-    bottom: 1%;
-    left: -5%;
+    bottom: 5%;
+    left: 0;
     transform: scale(0);
     transition: transform ease 0.7s, bottom ease-out 150ms;
     backface-visibility: hidden;
@@ -105,10 +105,10 @@ const StyledToolTip = styled.p`
 
   &:hover::after {
     transform: scale(1);
-    background-color: white;
+    background-color: hsl(0, 0%, 0%, 0.4);
     text-align: center;
-    width: 110%;
-    color: black;
+    width: 100%;
+    color: white;
 
     border: 1px solid ${({ theme }) => theme.movies};
   }

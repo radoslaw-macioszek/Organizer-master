@@ -5,13 +5,11 @@ import styled from 'styled-components';
 import { Formik, Form } from 'formik';
 
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
 import Input from '../components/atoms/Input/Input';
 
 import Paragraph from '../components/atoms/Paragraph/Paragraph';
-import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
 import { noteEdit } from '../store/NATitems/NATitems.reducer';
 
 import UserPageTemplate from './UserPageTemplate';
@@ -172,19 +170,17 @@ const DetailsTemplate = ({ pageContext, title, content, id, created }) => {
 
 DetailsTemplate.propTypes = {
   pageContext: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   created: PropTypes.string,
   content: PropTypes.string,
-  articleUrl: PropTypes.string,
-  twitterName: PropTypes.string,
 };
 
 DetailsTemplate.defaultProps = {
+  id: '',
   title: '',
   created: '',
   content: '',
-  articleUrl: '',
-  twitterName: '',
 };
 
 export default withContext(DetailsTemplate);

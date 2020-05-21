@@ -10,7 +10,7 @@ import Twitters from './Twitters';
 import Articles from './Articles';
 import Movies from './Movies';
 import routes from '../Routes';
-import BooksTemplate from '../templates/BooksTemplate';
+import BooksContentTemplate from '../templates/BooksContentTemplate';
 import Series from './Series';
 import ToDo from './ToDo';
 
@@ -28,7 +28,7 @@ const Root = () => {
             <Route path={routes.twitter} component={DetailsPage} />
             <Route exact path={routes.articles} component={Articles} />
             <Route path={routes.article} component={DetailsPage} />
-            <Route path={routes.books} component={BooksTemplate} />
+            <Route path={routes.books} component={BooksContentTemplate} />
             <Route path={routes.movies} component={Movies} />
             <Route path={routes.series} component={Series} />
             <Route path={routes.login} />

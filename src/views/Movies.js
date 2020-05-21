@@ -18,7 +18,7 @@ const StyledRightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 35vw;
-  margin-left: 130px;
+  margin-left: 6vw;
 `;
 
 const StyledLeftSide = styled.div`

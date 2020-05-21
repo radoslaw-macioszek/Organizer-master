@@ -1,13 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik, Form } from 'formik';
+
 import styled from 'styled-components';
 import Input from '../../atoms/Input/Input';
 import Button from '../../atoms/Button/Button';
 import withContext from '../../../hoc/withContext';
 import Heading from '../../atoms/Heading/Heading';
-import { connect } from 'react-redux';
-import { addItem as addItemAction } from '../../../actions';
-
-import { Formik, Form } from 'formik';
+import { addItem as addItemAction } from '../../../store/NATitems/NATitems.reducer';
 
 const StyledWrapper = styled.div`
   border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -22,7 +22,7 @@ const StyledWrapper = styled.div`
   right: 0;
   top: 0;
   height: 100vh;
-  weight: 680px;
+  width: 680px;
   background-color: white;
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
@@ -59,7 +59,8 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.grey300};
 `;
 
-const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => {
+const NewItemBar = ({ pageContext, isVisible, handleClose }) => {
+  const dispatch = useDispatch();
   const today = new Date().toLocaleDateString();
   const min = `${today.slice(6, 10)}-${today.slice(3, 5)}-${today.slice(0, 2)}T00:00`;
 
@@ -76,7 +77,9 @@ const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => {
           date: '',
         }}
         onSubmit={(values) => {
-          addItem(pageContext, values);
+          console.log(values);
+          console.log(pageContext);
+          dispatch(addItemAction(pageContext, values));
           handleClose();
         }}
       >
@@ -142,8 +145,4 @@ const NewItemBar = ({ pageContext, isVisible, addItem, handleClose }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),
-});
-
-export default connect(null, mapDispatchToProps)(withContext(NewItemBar));
+export default withContext(NewItemBar);

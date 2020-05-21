@@ -39,14 +39,8 @@ const StyledPageHeader = styled.div`
 
 const StyledGrid = styled.div`
   display: flex;
-  /* display: grid; */
-  /* grid-template-columns: repeat(2, 1fr); */
-  /* grid-template-rows: repeat(6, 1fr); */
-
-  /* grid-gap: 15px; */
 `;
 
-// position fixed, zeby nawet przy scrollowaniu byl w tym samym miejscu
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
   border-radius: 50px;
@@ -69,18 +63,16 @@ const StyledLink = styled.a`
   text-decoration: none;
   font-size: 25px;
   margin-right: 2px;
-  /* background-color: ${({ theme }) => theme.greyTransparent}; */
   background-color: ${({ theme }) => theme.movies};
 
   padding: 15px 30px;
   font-weight: bold;
 
   &:hover {
-    /* background: ${({ theme }) => theme.grey300Transparent}; */
     color: ${({ theme }) => theme.movies};
     border: 1px solid ${({ theme }) => theme.movies};
 
-  background-color: ${({ theme }) => theme.greyTransparent};
+    background-color: ${({ theme }) => theme.greyTransparent};
 
     border-bottom: 4px solid ${({ theme }) => theme.movies};
   }
@@ -88,7 +80,6 @@ const StyledLink = styled.a`
 
 const StyledCategory = styled.div`
   display: flex;
-  /* justify-content: center; */
   margin: 0px 150px 50px 0;
   border-bottom: 1px solid ${({ theme }) => theme.movies};
   border-radius: 5px;
@@ -103,14 +94,14 @@ const MoviesTemplate = ({ pageContext, children }) => {
     <UserPageTemplate>
       <>
         <StyledWrapper>
-          {/* <StyledCategory>
+          <StyledCategory>
             <StyledLink as={Link} to="/movies">
               Movies
             </StyledLink>
             <StyledLink as={Link} to="/series">
               Series
             </StyledLink>
-          </StyledCategory> */}
+          </StyledCategory>
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">

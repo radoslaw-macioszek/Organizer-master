@@ -11,6 +11,7 @@ import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from '../assets/icons/plus.svg';
 import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
 import ArticlesList from '../components/organisms/ArticlesList/ArticlesList';
+import TwitterDetail from '../components/molecules/TwitterDetail/TwitterDetail';
 
 const StyledWrapper = styled.div`
   padding: ${({ activePage }) =>
@@ -47,7 +48,6 @@ const StyledArticlesGrid = styled(StyledGrid)`
   max-width: 100vw;
 `;
 
-// position fixed, zeby nawet przy scrollowaniu byl w tym samym miejscu
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
   border-radius: 50px;
@@ -62,56 +62,11 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 `;
 
-//
-
-const StyledDoneContainer = styled.div`
-  position: absolute;
-  right: 4%;
-  top: 12%;
-  height: 14vh;
-  width: 52%;
-  border: 3px solid ${({ theme }) => theme.twitters};
-  border-radius: 10px;
-
-  overflow: scroll;
-`;
-
-const StyledP = styled.p`
-  position: absolute;
-  bottom: 88%;
-  left: 45%;
-  margin-bottom: 5px;
-  margin-top: 0;
-  font-weight: bold;
-`;
-
-const StyledDone = styled.div`
-  margin-top: 10px;
-  padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledSpan = styled.span`
-  color: ${({ theme }) => theme.grey300};
-  min-width: 6vw;
-  display: inline-flex;
-  font-size: 16px;
-`;
-
-const StyledParagraf = styled.p`
-  display: inline-flex;
-  width: 100%;
-  margin: 2px 0;
-  font-size: 15px;
-`;
-
 const StyledArticlesPage = styled.div`
   display: flex;
 `;
 
 const GridTemplate = ({ children, pageContext }) => {
-  const details = useSelector((state) => state.natReducer.twitterDetails);
   const [barVisible, setBarVisible] = useState(false);
 
   const typeLength = useSelector((state) => state.natReducer);
@@ -130,38 +85,7 @@ const GridTemplate = ({ children, pageContext }) => {
           <StyledParagraph>
             {typeLength[pageContext].length} {pageContext}
           </StyledParagraph>
-          {pageContext === 'twitters' ? (
-            <>
-              <StyledP>Account details</StyledP>
-              <StyledDoneContainer>
-                {details &&
-                  details.map((item) => (
-                    <div key={item.id}>
-                      <StyledDone>
-                        <StyledParagraf>
-                          <StyledSpan>added:</StyledSpan>
-                          {item.date}
-                        </StyledParagraf>
-                        <StyledParagraf>
-                          <StyledSpan>account:</StyledSpan>
-                          {item.name}
-                        </StyledParagraf>
-                        <StyledParagraf>
-                          <StyledSpan>title:</StyledSpan>
-                          {item.title}
-                        </StyledParagraf>
-                        <StyledParagraf>
-                          <StyledSpan>content:</StyledSpan>
-                          {item.content}
-                        </StyledParagraf>
-                      </StyledDone>
-                    </div>
-                  ))}
-              </StyledDoneContainer>
-            </>
-          ) : (
-            ''
-          )}
+          {pageContext === 'twitters' ? <TwitterDetail /> : ''}
         </StyledPageHeader>
         {pageContext === 'articles' ? (
           <StyledArticlesPage>

@@ -8,6 +8,8 @@ const StyledTopRatedMovies = styled.div`
   overflow: scroll;
   width: 35vw;
   padding: 1.5rem;
+  padding-right: 0;
+  width: 100%;
   border-top: 1px solid ${({ theme }) => theme.movies};
 
   height: 26.5vh;

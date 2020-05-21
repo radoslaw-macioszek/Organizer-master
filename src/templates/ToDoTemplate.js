@@ -10,8 +10,8 @@ import Heading from '../components/atoms/Heading/Heading';
 import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
 import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
-import SearchedMoviesAndSeries from '../views/Movies/SearchedMoviesAndSeries';
 import plusIcon from '../assets/icons/plus.svg';
+import ToDoDone from '../components/molecules/ToDoDone/ToDoDone';
 
 const StyledWrapper = styled.div`
   padding: 25px 30px 25px;
@@ -58,18 +58,6 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
 `;
 
-const StyledDoneContainer = styled.div`
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 14vh;
-  width: 55%;
-  border: 3px solid ${({ theme }) => theme.todos};
-  border-radius: 10px;
-
-  overflow: scroll;
-`;
-
 const StyledP = styled.p`
   position: absolute;
   bottom: 100%;
@@ -79,30 +67,7 @@ const StyledP = styled.p`
   font-weight: bold;
 `;
 
-const StyledDate = styled.span`
-  margin-right: 5px;
-`;
-
-const StyledTitle = styled.span`
-  margin-right: 5px;
-  font-weight: bold;
-`;
-
-const StyledDone = styled.div`
-  margin-top: 10px;
-  padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledFont = styled.div`
-  font-size: 14px;
-`;
-
 const ToDoTemplate = ({ children, pageContext }) => {
-  const done = useSelector((state) => state.natReducer.done);
-  done.sort((a, b) => (a.fullDate > b.fullDate ? 1 : -1));
-
   const [barVisible, setBarVisibility] = useState(false);
   const todoLength = useSelector((state) => state.natReducer.todos);
 
@@ -116,27 +81,11 @@ const ToDoTemplate = ({ children, pageContext }) => {
               {pageContext}
             </StyledHeading>
             <StyledP>Recently comleted</StyledP>
-            <StyledDoneContainer>
-              {done &&
-                done.map((item) => (
-                  <div key={item.id}>
-                    <StyledDone>
-                      <StyledFont>
-                        <StyledDate>{item.date}</StyledDate>
-                        <StyledDate>{item.fullDate}</StyledDate>
-                      </StyledFont>
-                      <div>
-                        <StyledTitle>{item.title}</StyledTitle>
-                        {item.content}
-                      </div>
-                    </StyledDone>
-                  </div>
-                ))}
-            </StyledDoneContainer>
+            <ToDoDone />
             <StyledParagraph>{`${todoLength.length} ${pageContext}`}</StyledParagraph>
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
-          <NewItemBar isVisible={barVisible}>{/* <SearchedMovies /> */}</NewItemBar>
+          <NewItemBar isVisible={barVisible} />
           <StyledButtonIcon
             icon={plusIcon}
             onClick={() => setBarVisibility(!barVisible)}

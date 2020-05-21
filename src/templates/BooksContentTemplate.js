@@ -2,21 +2,20 @@ import React from 'react';
 import withContext from '../hoc/withContext';
 
 import UserPageTemplate from './UserPageTemplate';
-import BookTemplate from './bookTemplate';
+import BookTemplate from './BookTemplate';
 
 import Books from '../views/Books';
+import Book from '../views/Books/Book';
 import BooksToRead from '../views/Books/BooksToRead';
 import BooksRead from '../views/Books/BooksRead';
 import BooksFavorite from '../views/Books/BooksFavorite';
 
-const BooksTemplate = () => {
+const BooksContentTemplate = () => {
   return (
     <UserPageTemplate>
       <>
         <BookTemplate>
-          <BooksToRead />
-          <BooksRead />
-          <BooksFavorite />
+          <Book />
         </BookTemplate>
         <Books />
       </>
@@ -24,4 +23,4 @@ const BooksTemplate = () => {
   );
 };
 
-export default withContext(BooksTemplate);
+export default withContext(BooksContentTemplate);

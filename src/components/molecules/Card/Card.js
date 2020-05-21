@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Redirect } from 'react-router-dom';
@@ -39,7 +39,6 @@ const InnerWrapperHead = styled.div`
       activeColor === 'notes' ? 'khaki' : activeColor === 'twitters' ? 'lightblue' : ''};
     cursor: pointer;
   }
-  /* 'darkseagreen' */
   ${({ flex }) =>
     flex &&
     css`
@@ -131,9 +130,9 @@ const StyledLink = styled.a`
   font-size: 12px;
   cursor: pointer;
 `;
+
 const Card = ({ pageContext, id, title, twitterName, articleUrl, content, created }) => {
   const dispatch = useDispatch();
-
   const [redirect, setRedirect] = useState(false);
 
   const handleCardClick = () => {
@@ -192,7 +191,8 @@ Card.propTypes = {
     'todos',
   ]),
   title: PropTypes.string.isRequired,
-  created: PropTypes.string.isRequired,
+  id: PropTypes.number,
+  created: PropTypes.string,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
@@ -200,6 +200,8 @@ Card.propTypes = {
 
 Card.defaultProps = {
   pageContext: 'notes',
+  id: null,
+  created: null,
   twitterName: null,
   articleUrl: null,
 };

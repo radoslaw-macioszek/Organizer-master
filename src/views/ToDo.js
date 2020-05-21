@@ -5,6 +5,7 @@ import ToDoTemplate from '../templates/ToDoTemplate';
 
 import withContext from '../hoc/withContext';
 import { removeItem, addToDone } from '../store/NATitems/NATitems.reducer';
+import ToolTip from '../components/molecules/ToolTip/ToolTip';
 
 const StyledColumn = styled.div`
   border-right: 1px solid ${({ theme }) => theme.grey200};
@@ -58,34 +59,34 @@ const StyledTitle = styled.h3`
   word-wrap: break-word;
 `;
 
-const StyledDoneTitle = styled(StyledTitle)`
-  text-decoration: line-through;
-  background-color: ${({ theme }) => theme.grey200};
-  border-radius: 3px;
+// const StyledDoneTitle = styled(StyledTitle)`
+//   text-decoration: line-through;
+//   background-color: ${({ theme }) => theme.grey200};
+//   border-radius: 3px;
 
-  position: relative;
+//   position: relative;
 
-  &::after {
-    content: attr(data-tool-tip);
-    font-size: 1.4rem;
-    display: block;
-    position: absolute;
-    background-color: ${({ theme }) => theme.grey300};
-    padding: 5px 15px;
-    color: white;
-    border-radius: 3px;
-    bottom: 0;
-    left: 0;
-    white-space: nowrap;
-    transform: scale(0);
-    transition: transform ease-out 150ms, bottom ease-out 150ms;
-  }
+//   &::after {
+//     content: attr(data-tool-tip);
+//     font-size: 1.4rem;
+//     display: block;
+//     position: absolute;
+//     background-color: ${({ theme }) => theme.grey300};
+//     padding: 5px 15px;
+//     color: white;
+//     border-radius: 3px;
+//     bottom: 0;
+//     left: 0;
+//     white-space: nowrap;
+//     transform: scale(0);
+//     transition: transform ease-out 150ms, bottom ease-out 150ms;
+//   }
 
-  &:hover::after {
-    transform: scale(1);
-    bottom: 100%;
-  }
-`;
+//   &:hover::after {
+//     transform: scale(1);
+//     bottom: 100%;
+//   }
+// `;
 
 const StyledWrapper = styled.div`
   padding: 0 15px;
@@ -159,9 +160,9 @@ const ToDo = ({ pageContext, actualDate }) => {
                   <StyledWrapper key={todo.id}>
                     <StyledTime>{time}</StyledTime>
                     {actualDate === fullDayDate && actualTime > time ? (
-                      <StyledDoneTitle data-tool-tip="the set task time has passed">
+                      <ToolTip data-tool-tip="the set task time has passed" todo>
                         {todo.title}
-                      </StyledDoneTitle>
+                      </ToolTip>
                     ) : (
                       <StyledTitle>{todo.title}</StyledTitle>
                     )}

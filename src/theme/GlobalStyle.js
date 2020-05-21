@@ -14,7 +14,6 @@ const GlobalStyle = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
     }
 
-    /* happy rems: font size: 1.6rem w celu sprowadzenie wszystkiego do poprzednich jednostek, przed zamiana w html. A zamiana by latwiej przeliczac. */
     body {
         padding-left: 150px;
         font-size: 1.6rem; 

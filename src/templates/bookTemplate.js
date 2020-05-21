@@ -17,7 +17,7 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 0.9fr;
   grid-gap: 75px;
-  grid-template-rows: repeat(2, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
   height: 60vh;
 `;
 

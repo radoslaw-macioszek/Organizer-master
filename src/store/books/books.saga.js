@@ -8,8 +8,6 @@ function* loadBooks(action) {
     params: {
       key: 'AIzaSyAG5vXBaGFP_7UbMzS93LCGHTsoGsFyk2Y',
       q: `${searchResult}`,
-      // printType: all,
-      // pagination
     },
   });
 

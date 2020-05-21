@@ -118,7 +118,6 @@ const Modal = () => {
 
   const details = useSelector((state) => state.moviesReducer.details);
   const type = useSelector((state) => state.moviesReducer.type);
-  // console.log('det', detailssss);
 
   const runtime = details.runtime / 60;
   const hours = runtime.toString().slice(0, 1) * 1;
@@ -135,9 +134,10 @@ const Modal = () => {
                 <StyledSubTitle>{details.tagline ? `,,${details.tagline}''` : ''}</StyledSubTitle>
                 <StyledVages>
                   <p>
-                    <FaStar color={'#ffc107'} /> {details.vote_average}
+                    <FaStar color="#ffc107" />
+                    {details.vote_average}
                   </p>
-                  <p>{details.popularity} kk</p>
+                  <p>${details.popularity} kk</p>
                   <p>{details.release_date && details.release_date.slice(0, 4)}</p>
                   <p>
                     {hours}h {minutes} min.
@@ -160,7 +160,8 @@ const Modal = () => {
                     details.production_countries.map((comp) => ` ${comp.name},`)}
                 </StyledParagraph>
                 <StyledParagraph>
-                  <StyledSpan>premiere:</StyledSpan> {details.release_date}
+                  <StyledSpan>premiere:</StyledSpan>
+                  {details.release_date}
                 </StyledParagraph>
               </StyledDetails>
             </StyledTopWrapper>
@@ -196,7 +197,8 @@ const Modal = () => {
 
                 <StyledVages>
                   <p>
-                    <FaStar color={'#ffc107'} /> {details.vote_average}
+                    <FaStar color="#ffc107" />
+                    {details.vote_average}
                   </p>
                   <p>{details.popularity} kk</p>
                   <p>{details.first_air_date && details.first_air_date.slice(0, 4)}</p>

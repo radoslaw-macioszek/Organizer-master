@@ -15,6 +15,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
   position: fixed;
   bottom: 40px;
   right: 40px;
+  color: white;
 
   width: 180px;
   font-size: 1.7rem;

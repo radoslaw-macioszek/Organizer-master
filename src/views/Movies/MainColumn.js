@@ -45,8 +45,7 @@ const StyledImage = styled.img`
 `;
 
 const StyledToolTip = styled.p`
-  text-decoration: line-through;
-  background-color: ${({ theme }) => theme.grey200};
+  background-color: hsl(0, 0%, 0%, 0.4);
   border-radius: 3px;
   margin: 0;
 
@@ -55,26 +54,25 @@ const StyledToolTip = styled.p`
 
   &::after {
     content: attr(data-tool-tip);
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     display: block;
     position: absolute;
-    background-color: transparent;
     padding: 5px 15px;
     color: transparent;
     border-radius: 3px;
     bottom: 0;
-    left: -1.5%;
+    left: 0;
     transform: scale(0);
-    transition: transform ease-out 150ms, bottom ease-out 150ms;
-    width: 103%;
+    transition: transform ease-out 0, bottom ease-out 150ms;
+    width: 100%;
     backface-visibility: hidden;
   }
 
   &:hover::after {
     transform: scale(1);
-    background-color: white;
+    background-color: hsl(0, 0%, 0%, 0.4);
     text-align: center;
-    color: black;
+    color: white;
 
     border: 1px solid ${({ theme }) => theme.movies};
     backface-visibility: hidden;
@@ -91,11 +89,9 @@ const MainColumn = ({ openModal, pageContext }) => {
   const dispatch = useDispatch();
   const [checked, setChecked] = useState(false);
 
-  //   const check = useSelector((state) => state.moviesReducer.data);
   const checkMovies = useSelector((state) => state.natReducer.movies);
   const checkSeries = useSelector((state) => state.natReducer.series);
 
-  // looknac!
   const handleChange = (id, title, path, changeType, watched) => {
     setChecked(true);
     dispatch(removeItem(changeType, id));

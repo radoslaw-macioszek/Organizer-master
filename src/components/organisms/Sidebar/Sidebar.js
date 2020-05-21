@@ -14,10 +14,8 @@ import todoIcon from '../../../assets/icons/romantic-date.svg';
 import logologo from '../../../assets/icons/logologo.svg';
 
 import Logo from '../../atoms/Logo/Logo';
-import logoIcon from '../../../assets/icons/logo.svg';
 import withContext from '../../../hoc/withContext';
 
-// position fixed ze wzgledu na mozliwosc "przyklejenia" sidebaru do lewej strony aplikacji.
 const StyledSidebar = styled.div`
   width: 153px;
   height: 100vh;
@@ -59,16 +57,13 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   border: 1px solid ${({ theme }) => theme.movies};
-  /* border: 1px solid black; */
 
   z-index: 999999999999999999999;
   color: ${({ theme }) => theme.moviesBold};
   border-radius: 5px;
 
   &:hover {
-    /* background: ${({ theme }) => theme.grey100}; */
     color: black;
-    /* border: 4px solid ${({ theme }) => theme.movies}; */
     border-bottom: 4px solid ${({ theme }) => theme.movies};
   }
 `;
@@ -77,13 +72,13 @@ const StyledSecondButton = styled(StyledButton)`
   bottom: 27.5%;
 `;
 
-const Tv = ({ pageContext }) => {
+const Tv = () => {
   return (
     <div>
-      <StyledButton as={NavLink} to={'/movies'}>
+      <StyledButton as={NavLink} to="/movies">
         Movies
       </StyledButton>
-      <StyledSecondButton as={NavLink} to={'/series'} activeclass="active">
+      <StyledSecondButton as={NavLink} to="/series" activeclass="active">
         Series
       </StyledSecondButton>
     </div>

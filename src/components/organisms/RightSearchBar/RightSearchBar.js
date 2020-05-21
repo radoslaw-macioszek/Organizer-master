@@ -63,10 +63,13 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
   useEffect(() => {
     if (pageContext === 'books' && searchPhrase !== '') {
       dispatch(loadBooksAction(searchPhrase));
+      setSearchPhrase('');
     } else if (pageContext === 'movies' && searchPhrase !== '') {
       dispatch(loadMoviesAction(searchPhrase, 'movie'));
+      setSearchPhrase('');
     } else if (pageContext === 'series' && searchPhrase !== '') {
       dispatch(loadMoviesAction(searchPhrase, 'tv'));
+      setSearchPhrase('');
     }
   }, [dispatch, bookLoading, pageContext, searchPhrase]);
 

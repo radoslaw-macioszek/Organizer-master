@@ -10,7 +10,6 @@ const Logo = styled.div`
   background-position: 50% 50%;
   background-size: 90%;
   border: none;
-  /* background-color: ${({ active }) => (active ? 'white' : 'transparent')}; */
 `;
 
 export default Logo;

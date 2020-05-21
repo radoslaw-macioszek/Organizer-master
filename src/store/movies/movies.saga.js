@@ -16,8 +16,6 @@ function* loadMovies(action) {
       params: {
         api_key: '20a84d44425a1770674ac45f99ccc0f4',
         query: `${term}`,
-        // printType: all,
-        // pagination
       },
     }),
     call(axios.get, 'https://api.themoviedb.org/3/movie/top_rated', {

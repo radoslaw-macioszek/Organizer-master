@@ -1,7 +1,5 @@
 import React from 'react';
-// import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
-// import { addDecorator } from '@storybook/react';
 
 import ButtonIcon from './ButtonIcon';
 import bulbIcon from '../../../assets/icons/bulb.svg';
@@ -25,13 +23,9 @@ export default {
   decorators: [(story) => <YellowBackground>{story()}</YellowBackground>],
 };
 
-// addDecorator((story) => <YellowBackground>{story()}</YellowBackground>);
-
 export const Bulb = () => <ButtonIcon small icon={bulbIcon} />;
 export const Active = () => <ButtonIcon active icon={bulbIcon} />;
 export const Logout = () => <ButtonIcon big icon={logoutIcon} />;
 export const Pen = () => <ButtonIcon icon={penIcon} />;
 export const Plus = () => <ButtonIcon icon={plusIcon} />;
 export const Twitter = () => <ButtonIcon icon={twitterIcon} />;
-
-// addDecorator((story) => <YellowBackground>{story()}</YellowBackground>);
