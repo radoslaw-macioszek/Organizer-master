@@ -12,40 +12,38 @@ import WeekPopularSeries from './Series/WeekPopularSeries';
 import MainColumn from './Movies/MainColumn';
 import WatchedMoviesAndSeries from './Movies/WatchedMoviesAndSeries';
 
-// zamykanie modala po kliknieciu poza modal
-
 const StyledRightSide = styled.div`
   display: flex;
   flex-direction: column;
   width: 35vw;
-  margin-left: 130px;
+  margin-left: 13rem;
 `;
 
 const StyledLeftSide = styled.div`
   width: 41vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
+  grid-gap: 0.5rem;
 
-  padding: 10px;
+  padding: 1rem;
 
   height: 100vh;
   overflow: scroll;
   border-top: 1px solid ${({ theme }) => theme.movies};
   border-left: 1px solid ${({ theme }) => theme.movies};
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
 `;
 
 const StyledBottomSide = styled(StyledLeftSide)`
   height: 69vh;
   width: 84vw;
   grid-template-columns: repeat(6, 1fr);
-  padding: 20px;
+  padding: 2rem;
 `;
 
 const StyledScroll = styled.div`
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const StyledHeading = styled(Heading)`
@@ -95,7 +93,6 @@ const Series = () => {
   const openModal = () => {
     setModal(true);
   };
-  // do modala + ref w divie (mozna go jeszcze przekazac przez inna nazwe niz ref badz forward refa)
   const node = useRef();
 
   useOnClickOutside(node, () => setModal(false));

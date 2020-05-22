@@ -8,18 +8,18 @@ import { addToMovieList } from '../../store/NATitems/NATitems.reducer';
 
 const StyledBookWrapper = styled.div`
   display: flex;
-  margin: 10px 10px 30px 0;
-  border-radius: 5px;
+  margin: 1rem 1rem 3rem 0;
+  border-radius: 0.5rem;
 
   position: relative;
-  box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.3);
-  width: 35vw;
+  box-shadow: 1rem 0.5rem 2rem rgba(0, 0, 0, 0.3);
+  width: 100%;
 `;
 
 const StyledDetails = styled.div`
   flex-direction: column;
   width: 100%;
-  margin: 10px 10px;
+  margin: 1rem 1rem;
 
   position: relative;
 `;
@@ -32,24 +32,24 @@ const StyledImage = styled.img`
 const StyledToolTipImage = styled.img`
   height: 16vh;
   width: 7vw;
-  margin-right: 15px;
+  margin-right: 1.5rem;
 `;
 
 const StyledDescription = styled.div`
   position: relative;
   text-align: justify;
-  padding: 10px;
+  padding: 1rem;
 `;
 
 const StyledToolTip = styled.span`
   visibility: hidden;
 
   background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  border-radius: 5px;
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.16);
+  border-radius: 0.5rem;
   color: #555;
   font-weight: 300;
-  padding: 30px 30px 60px;
+  padding: 3rem 3rem 6rem;
   position: absolute;
   width: 25vw;
   top: 100%;
@@ -68,28 +68,28 @@ const StyledToolTip = styled.span`
     z-index: 999999999999999999;
 
     display: flex;
-    box-shadow: 40px 60px 20px -10px rgba(0, 0, 0, 0.3);
+    box-shadow: 4rem 6rem 2rem -1rem rgba(0, 0, 0, 0.3);
   }
 `;
 
 const StyledTitle = styled.h3`
-  font-size: 25px;
+  font-size: 2.5rem;
   margin-top: 3px;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 const StyledParagraph = styled.p`
-  margin: 0 0 12px 10px;
-  margin-bottom: 12px;
+  margin: 0 0 1.2rem 1rem;
+  margin-bottom: 1.2rem;
 `;
 
 const StyledAddButton = styled.button`
   position: absolute;
   bottom: 1vh;
-  right: 15px;
-  padding: 6px 6px;
-  font-size: 11px;
-  border-radius: 5px;
+  right: 1.5rem;
+  padding: 0.6rem 0.6rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
 `;
 
 const StyledVages = styled.div`
@@ -97,11 +97,11 @@ const StyledVages = styled.div`
   justify-content: space-between;
   font-weight: bold;
   align-items: center;
-  margin-top: -10px;
+  margin-top: -1rem;
   margin-bottom: 0;
 
   p {
-    margin: 5px 0 0 0;
+    margin: 0.5rem 0 0 0;
   }
 `;
 
@@ -109,11 +109,11 @@ const StyledColumn = styled.p`
   display: flex;
   flex-direction: column;
 
-  font-size: 10px;
+  font-size: 1rem;
 
   span {
     margin: 0;
-    font-size: 15px;
+    font-size: 1.5rem;
   }
 
   p {
@@ -126,7 +126,7 @@ const StyledSpan = styled.span`
   color: ${({ theme }) => theme.grey300};
   min-width: 6vw;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1.6rem;
 `;
 
 const SearchedMoviesAndSeries = ({ pageContext }) => {

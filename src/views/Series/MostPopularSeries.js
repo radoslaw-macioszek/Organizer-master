@@ -18,11 +18,11 @@ const StyledButton = styled.button`
   height: 21vh;
   width: 4vw;
   position: absolute;
-  right: -61px;
-  top: 51px;
+  right: -6.1rem;
+  top: 5.1rem;
   background-color: ${({ theme }) => theme.greyTransparent};
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   font-size: 4rem;
   color: ${({ theme }) => theme.grey300Transparent};
   outline: none;
@@ -34,7 +34,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLeftButton = styled(StyledButton)`
-  left: -62px;
+  left: -6.2rem;
 `;
 
 const MostPopularSeries = ({ openModal }) => {

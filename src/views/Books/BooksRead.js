@@ -12,12 +12,12 @@ const StyledHeader = styled.div`
   width: 100%;
   text-align: justify;
   position: relative;
-  margin-top: 8px;
-  margin-bottom: 40px;
+  margin-top: 0.8rem;
+  margin-bottom: 4rem;
 `;
 
 const StyledLabel = styled.label`
-  margin: 0 5px 10px 30px;
+  margin: 0 0.5rem 1rem 3rem;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
@@ -26,15 +26,15 @@ const StyledLabel = styled.label`
 
 const StyledPosition = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 0 20px 8px 10px;
-  font-size: 20px;
+  margin: 0 2rem 0.8rem 1rem;
+  font-size: 2rem;
   background-color: ${({ theme }) => theme.books};
-  padding: 20px 0;
-  border-radius: 10px 10px 3px 3px;
+  padding: 2rem 0;
+  border-radius: 1rem 1rem 0.3rem 0.3rem;
   text-align: center;
   display: flex;
   color: white;
@@ -43,12 +43,26 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledReadedHeading = styled(StyledHeading)`
-  margin: 0 20px 2px 10px;
-  padding-left: 20px;
+  margin: 0 2rem 0.2rem 1rem;
+  padding-left: 2rem;
   width: 100%;
-  font-size: 15px;
+  font-size: 1.5rem;
   justify-content: flex-start;
-  border-radius: 10px;
+  border-radius: 1rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    border: 1px solid white;
+    border-radius: 1rem;
+    width: 104%;
+    height: 90%;
+    z-index: 9999;
+    position: absolute;
+    left: -2%;
+    top: 5%;
+    transform: scale(0.95);
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -63,19 +77,21 @@ const BooksRead = () => {
   const readedBooks = 'readedBooks';
 
   const check = useSelector((state) => state.natReducer.readedBooks);
+  check.sort((a, b) => (b.readed > a.readed ? 1 : -1));
   const dispatch = useDispatch();
 
   return (
     <>
       {check.map((book) => {
-        const { id, title } = book;
+        const { id, title, readed } = book;
         return (
-          <StyledHeader>
+          <StyledHeader key={id}>
             <StyledLabel>
               Rate this book:
-              <div style={{ marginLeft: '5px' }}>
+              <div style={{ margin: '0 50px 0 5px' }}>
                 <Stars />
               </div>
+              {`Readed: ${readed}`}
             </StyledLabel>
             <StyledPosition>
               <StyledReadedHeading>{title}</StyledReadedHeading>

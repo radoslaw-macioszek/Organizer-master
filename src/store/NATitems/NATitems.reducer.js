@@ -33,21 +33,22 @@ export const addItem = (itemType, itemContent) => {
   };
 };
 
-export const addToFavorite = (title) => {
+export const addToFavorite = (title, image, favoriteLength) => {
   const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
+  const position = favoriteLength + 1;
   return {
     type: 'ADD_TO_FAVORITE',
     payload: {
-      item: { id: getId(), title, position: '10' },
+      item: { id: getId(), title, position, image },
     },
   };
 };
-export const addToReaded = (title) => {
+export const addToReaded = (title, readed) => {
   const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
   return {
     type: 'ADD_TO_READED',
     payload: {
-      item: { id: getId(), title },
+      item: { id: getId(), title, readed },
     },
   };
 };
@@ -122,7 +123,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '13/12/2019',
-      date: '2020-05-21T02:00',
+      date: '2020-05-25T02:00',
     },
     {
       id: 2,
@@ -130,7 +131,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '1 day',
-      date: '2020-05-20T12:00',
+      date: '2020-05-22T12:00',
     },
     {
       id: 3,
@@ -138,7 +139,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '5 days',
-      date: '2020-05-20T13:00',
+      date: '2020-05-23T13:00',
     },
   ],
   done: [],
@@ -284,10 +285,12 @@ const INITIAL_STATE = {
     {
       id: 1,
       title: 'The Hunger Games',
+      readed: '19.05.2020',
     },
     {
       id: 8,
       title: 'The asdasdas Games',
+      readed: '15.05.2020',
     },
   ],
   movies: [

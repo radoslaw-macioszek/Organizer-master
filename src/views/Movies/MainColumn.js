@@ -13,7 +13,7 @@ const StyledMovieColumn = styled.div`
   flex-direction: column;
 
   align-items: center;
-  padding-top: 10px;
+  padding-top: 1rem;
 
   height: 35vh;
 
@@ -25,7 +25,7 @@ const StyledMovieColumn = styled.div`
 `;
 
 const DateInfo = styled.p`
-  margin: 0 0 8px 12px;
+  margin: 0 0 0.8rem 1.2rem;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
@@ -34,14 +34,14 @@ const DateInfo = styled.p`
 
 const ButtonsWrapper = styled.div`
   display: flex;
-  margin: 10px 0 20px;
+  margin: 1rem 0 2rem;
 `;
 
 const StyledImage = styled.img`
   height: 25vh;
   width: 11vw;
-  border-radius: 5px;
-  margin-top: 5px;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 const StyledToolTip = styled.p`
@@ -57,7 +57,7 @@ const StyledToolTip = styled.p`
     font-size: 1.5rem;
     display: block;
     position: absolute;
-    padding: 5px 15px;
+    padding: 0.5rem 1.5rem;
     color: transparent;
     border-radius: 3px;
     bottom: 0;
@@ -80,9 +80,9 @@ const StyledToolTip = styled.p`
 `;
 
 const StyledButton = styled(Button)`
-  margin-left: 15px;
-  width: 80px;
-  height: 20px;
+  margin-left: 1.5rem;
+  width: 8rem;
+  height: 2rem;
 `;
 
 const MainColumn = ({ openModal, pageContext }) => {

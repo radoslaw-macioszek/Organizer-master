@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 const ToolTip = styled.h3`
   position: absolute;
   bottom: 0;
-  padding: 5px;
-  padding-left: 10px;
-  margin-right: 25px;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  margin-right: 2.5rem;
   color: white;
   font-weight: bold;
   font-size: 1.6rem;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   background-color: hsl(0, 0%, 0%, 0.4);
 
   border-radius: 3px;
@@ -20,9 +20,9 @@ const ToolTip = styled.h3`
     display: block;
     position: absolute;
     background-color: ${({ theme }) => theme.grey300};
-    padding: 5px 15px;
+    padding: 0.5rem 1.5rem;
     color: white;
-    border-radius: 3px;
+    border-radius: 0.3rem;
     bottom: 0;
     left: 0.5vw;
     overflow-wrap: normal;
@@ -50,7 +50,7 @@ const ToolTip = styled.h3`
       border-radius: 3px;
       position: relative;
       margin: 0;
-      padding: 5px 0;
+      padding: 0.5rem 0;
       word-wrap: break-word;
       color: black;
 
@@ -60,7 +60,7 @@ const ToolTip = styled.h3`
         display: block;
         position: absolute;
         background-color: ${({ theme }) => theme.grey300};
-        padding: 5px 15px;
+        padding: 0.5rem 1.5rem;
         color: white;
         border-radius: 3px;
         bottom: 0;

@@ -1,9 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaBalanceScale } from 'react-icons/fa';
 
 import { addToMovieList } from '../../../store/NATitems/NATitems.reducer';
+
+const Animation = keyframes`
+  0% {  opacity: 0 ; top: 50%; left: -100%}
+ 80% { opacity: 0.9 ; top: 50%; left: 5%}
+ 100% {   opacity: 1 ; top: 50%; left: 0} 
+`;
 
 const StyledWrapper = styled.div`
   position: fixed;
@@ -12,55 +18,58 @@ const StyledWrapper = styled.div`
   right: 0;
   margin: 0 auto;
   transform: translateY(-50%);
-  width: 39vw;
+  width: 35vw;
   height: 75vh;
   background-color: white;
-  box-shadow: 0 20px 40px -10px rgba(#818181, 0.5);
+  box-shadow: 0 2rem 4rem -1rem rgba(#818181, 0.5);
   border: 2px solid ${({ theme }) => theme.movies};
-  border-right: 10px solid ${({ theme }) => theme.movies};
-  border-left: 10px solid ${({ theme }) => theme.movies};
-  border-radius: 10px;
+  border-right: 1rem solid ${({ theme }) => theme.movies};
+  border-left: 1rem solid ${({ theme }) => theme.movies};
+  border-radius: 1rem;
   z-index: 99999;
-  box-shadow: 60px 80px 20px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10rem 200rem rgba(0, 0, 0, 0.3);
 
-  transition: all 5s ease;
+  animation: ${Animation} 1s ease-in-out;
+  transition: ${Animation};
 `;
+
+const StyledBackground = styled.div``;
 
 const StyledTopWrapper = styled.div`
   display: flex;
-  padding: 10px 5px;
+  padding: 1rem 0.5rem;
   height: 32vh;
-  padding-right: 15px;
+  padding-right: 1.5rem;
 `;
 
 const StyledDetails = styled.div`
   flex-direction: column;
   width: 100%;
-  padding-right: 10px;
+  padding-right: 1rem;
 `;
 
 const StyledImage = styled.img`
   height: 29vh;
   width: 12.5vw;
   border-radius: 5px;
-  margin: 10px;
+  margin: 1rem;
   margin-right: 2rem;
 `;
 
 const StyledTitle = styled.p`
-  font-size: 25px;
-  margin: 10px 0 20px;
+  font-size: 2.5rem;
+  margin: 1rem 0 2rem;
   text-align: left;
   font-weight: bold;
 `;
 
 const StyledSeriesTitle = styled(StyledTitle)`
-  margin: 10px 0 8px;
+  margin: 1rem 0 0.8rem;
 `;
 
 const StyledSubTitle = styled.p`
-  font-size: 16px;
-  margin: -13px 0 10px 4px;
+  font-size: 1.6rem;
+  margin: -1.3rem 0 1rem 0.4rem;
   text-align: left;
 `;
 
@@ -71,7 +80,7 @@ const StyledVages = styled.div`
   align-items: center;
 
   p {
-    margin: 5px 0;
+    margin: 0.5rem 0;
   }
 `;
 
@@ -79,36 +88,36 @@ const StyledSpan = styled.span`
   color: ${({ theme }) => theme.grey300};
   min-width: 6vw;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 1.6rem;
 `;
 const StyledGenres = styled.p`
-  font-size: 15px;
-  margin: 18px 0 5px 0;
+  font-size: 1.5rem;
+  margin: 1.8rem 0 0.5rem 0;
   display: inline-flex;
 `;
 
 const StyledBottomWrapper = styled.div`
-  font-size: 16px;
+  font-size: 1.6rem;
   height: 26vh;
   text-align: justify;
-  padding: 32px 30px 10px;
+  padding: 3.2rem 3rem 1rem;
   line-height: 1.5;
 `;
 
 const StyledParagraph = styled.p`
   display: inline-flex;
   width: 100%;
-  margin: 7px 0;
-  font-size: 15px;
+  margin: 0.7rem 0;
+  font-size: 1.5rem;
 `;
 
 const StyledAddButton = styled.button`
   position: absolute;
   bottom: 1vh;
-  right: 15px;
-  padding: 6px 6px;
-  font-size: 11px;
-  border-radius: 5px;
+  right: 1.5rem;
+  padding: 0.6rem 0.6rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
 `;
 
 const Modal = () => {
@@ -126,7 +135,7 @@ const Modal = () => {
     <StyledWrapper>
       {details &&
         (type === 'movie' ? (
-          <div>
+          <StyledBackground>
             <StyledTopWrapper>
               <StyledImage src={`https://image.tmdb.org/t/p/w500${details.poster_path}`} />
               <StyledDetails>
@@ -187,7 +196,7 @@ const Modal = () => {
             >
               + Add to your movie list
             </StyledAddButton>
-          </div>
+          </StyledBackground>
         ) : (
           <div>
             <StyledTopWrapper>

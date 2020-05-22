@@ -14,106 +14,114 @@ const StyledHeader = styled.div`
 `;
 
 const StyledLabel = styled.p`
-  margin: 3px 0 7px;
+  margin: 0.3rem 0 0.7rem;
   font-weight: ${({ theme }) => theme.bold};
-  font-size: 11px;
+  font-size: 1.1rem;
   display: inline-flex;
   align-items: center;
 `;
 
 const StyledInput = styled(Input)`
-  padding: 2px 0 3px 14px;
+  padding: 0.2rem 0 0.3rem 1.4rem;
   font-size: 1.4rem;
-  border-radius: 7px;
+  border-radius: 0.7rem;
   width: 3vw;
   border: 1px solid #8080802e;
-  box-shadow: 2px -2px 0px #0000002b;
+  box-shadow: 0.2rem -0.2rem 0px #0000002b;
   background-color: transparent;
-  margin-right: 10px;
+  margin-right: 1rem;
   outline: none;
 `;
 
 const StyledSubmit = styled.button`
-  font-size: 10px;
+  font-size: 1rem;
   background-color: hsl(0, 0%, 96%);
-  padding: 3px 5px 2px;
-  margin-left: -17px;
+  padding: 0.3rem 0.5rem 0.2rem;
+  margin-left: -1.7rem;
   color: black;
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   outline: none;
 `;
 
 const StyledPosition = styled.div`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   position: relative;
 `;
 
 const StyledButton = styled(Button)`
   position: absolute;
-  top: 7px;
-  right: 10px;
-  width: 25px;
-  height: 23px;
+  top: 0.7rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.3rem;
 `;
 
 const StyledHeading = styled(Heading)`
-  font-size: 4rem;
+  font-size: 3rem;
   color: white;
-  border-radius: 50px;
-  padding: 5px 10px;
+  border-radius: 5rem;
+  padding: 0.5rem 1.5rem;
 
   margin: 0;
   justify-content: center;
   position: absolute;
-  left: 3px;
-  bottom: 3px;
+  left: 0.3rem;
+  bottom: 0.3rem;
   background-color: hsla(360, 73%, 60%, 0.5);
-  border: 2px solid white;
+  border: 0.2rem solid white;
+
+  transition: all 0.4s ease-out;
 `;
 
 const StyledFavoriteHeading = styled.div`
-  margin: 10px 20px;
-  border-radius: 10px 10px 3px 3px;
+  margin: 1rem 2rem;
+  border-radius: 1rem 1rem 0.3rem 0.3rem;
   background-color: white;
-  border-left: 1px solid hsla(360, 73%, 50%);
-  border-right: 5px solid hsla(360, 73%, 50%);
-  border-bottom: 1px solid hsla(360, 73%, 50%);
-  border-top: 16px solid hsla(360, 73%, 50%);
+  border-left: 1px solid hsla(360, 73%, 60%);
+  border-right: 3px solid hsla(360, 73%, 60%);
+  border-bottom: 1px solid hsla(360, 73%, 60%);
+  border-top: 4px solid hsla(360, 73%, 60%);
   color: black;
   position: relative;
 
   &::after {
     content: attr(data-tool-tip);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: bold;
     display: block;
     position: absolute;
     background-color: hsla(360, 73%, 60%, 0.5);
-    padding: 5px 15px;
+    padding: 0.5rem 1.5rem;
     color: white;
     border-radius: 3px;
-    top: 3%;
+    bottom: 5%;
     left: 0;
     transform: scale(0);
-    transition: transform ease-out 150ms, bottom ease-out 150ms;
+    transition: transform ease-out 400ms, bottom ease-out 150ms;
   }
 
   &:hover::after {
     transform: scale(1);
-    top: 3%;
+    bottom: 5%;
     width: 100%;
     text-align: center;
+  }
+
+  &:hover ${StyledHeading} {
+    background-color: hsla(360, 73%, 60%, 0.8);
+    left: -4.5rem;
+    z-index: 9999;
   }
 `;
 
 const StyledImage = styled.img`
-  height: 12vh;
+  height: 14vh;
   min-width: 5vw;
-  margin: 5px 10px;
+  margin: 0.5rem 1rem;
   border-radius: 2px;
-  margin-top: 8px;
+  margin-top: 0.8rem;
 `;
 
 const StyledForm = styled.form`
@@ -169,14 +177,14 @@ const BooksFavorite = () => {
     <>
       {check
         ? sortedFavoriteBooks.map((book, i) => {
-            const { id, title, position } = book;
+            const { id, title, position, image } = book;
             return (
-              <StyledHeader>
+              <StyledHeader key={id}>
                 <StyledPosition>
                   <div>
                     <StyledFavoriteHeading data-tool-tip={title}>
-                      <StyledHeading>{position}.</StyledHeading>
-                      <StyledImage src={randomImage} alt="book" />
+                      <StyledHeading>{position}</StyledHeading>
+                      <StyledImage src={image ? image : randomImage} alt="book" />
                     </StyledFavoriteHeading>
                   </div>
                   <StyledForm onSubmit={handleSubmit}>

@@ -17,7 +17,7 @@ import Logo from '../../atoms/Logo/Logo';
 import withContext from '../../../hoc/withContext';
 
 const StyledSidebar = styled.div`
-  width: 153px;
+  width: 15.3rem;
   height: 100vh;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.notes)};
   display: flex;
@@ -30,7 +30,7 @@ const StyledSidebar = styled.div`
 `;
 
 const StyledIcon = styled(ButtonIcon)`
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 `;
 
 const StyledLogo = styled.div`
@@ -39,10 +39,10 @@ const StyledLogo = styled.div`
 
 const StyledLogout = styled.div`
   position: absolute;
-  bottom: 20px;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  height: 100px;
+  height: 10rem;
 `;
 
 const StyledButton = styled.button`
@@ -51,7 +51,7 @@ const StyledButton = styled.button`
   background: ${({ theme }) => theme.grey100};
 
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 1rem 1.5rem;
   width: 7vw;
   display: flex;
   justify-content: center;
@@ -60,11 +60,11 @@ const StyledButton = styled.button`
 
   z-index: 999999999999999999999;
   color: ${({ theme }) => theme.moviesBold};
-  border-radius: 5px;
+  border-radius: 0.5rem;
 
   &:hover {
     color: black;
-    border-bottom: 4px solid ${({ theme }) => theme.movies};
+    border-bottom: 0.4rem solid ${({ theme }) => theme.movies};
   }
 `;
 

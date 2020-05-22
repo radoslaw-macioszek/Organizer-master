@@ -13,14 +13,14 @@ const StyledWrapper = styled.div`
 const StyledArticlesList = styled.div`
   min-width: 20vw;
   max-width: 30vw;
-  margin-left: 50px;
+  margin-left: 5rem;
   border: 2px solid ${({ theme }) => theme.articles};
-  border-radius: 10px;
+  border-radius: 1rem;
 `;
 
 const StyledArticle = styled.div`
   display: flex;
-  padding: 25px 25px 0;
+  padding: 2.5rem 2.5rem 0;
   position: relative;
 
   &:hover {
@@ -33,14 +33,14 @@ const StyledArticle = styled.div`
   }
 
   &:last-child {
-    padding-bottom: 25px;
+    padding-bottom: 2.5rem;
   }
 `;
 
 const StyledArticleImage = styled.img`
   width: 100%;
   height: 18vh;
-  border-radius: 10px;
+  border-radius: 1rem;
 `;
 
 const StyledLabel = styled.label`
@@ -53,8 +53,8 @@ const StyledLabel = styled.label`
 `;
 
 const StyledInput = styled(Input)`
-  margin-top: 5px;
-  margin-left: 35px;
+  margin-top: 0.5rem;
+  margin-left: 3.5rem;
   width: 70%;
 `;
 
@@ -66,7 +66,7 @@ const StyledSpan = styled.p`
   display: flex;
   justify-content: center;
 
-  margin-left: 25px;
+  margin-left: 2.5rem;
   text-align: center;
 `;
 
@@ -93,7 +93,7 @@ const ArticlesList = () => {
       setSendReq(false);
       setArticleNameSearch('');
     }
-  }, [dispatch, sendReq]);
+  }, [dispatch, sendReq, articleNameSearch]);
 
   return (
     <StyledWrapper>

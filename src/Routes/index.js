@@ -15,5 +15,3 @@ const routes = {
 };
 
 export default routes;
-
-// zawier wszystkie routy jakie mamy w root zeby ulatwic odnajdowanie sciezki przy zmianie miejsca.

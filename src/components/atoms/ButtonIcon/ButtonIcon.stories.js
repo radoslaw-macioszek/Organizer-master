@@ -12,8 +12,8 @@ const YellowBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 50rem;
+  height: 50rem;
   background: ${({ theme }) => theme.notes};
 `;
 

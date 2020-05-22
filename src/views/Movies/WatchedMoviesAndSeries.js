@@ -13,7 +13,7 @@ const StyledWatchedMovies = styled.div`
   height: 30vh;
 
   align-items: center;
-  padding-top: 10px;
+  padding-top: 1rem;
   filter: grayscale(100%);
   transition: all 2s ease;
 
@@ -23,7 +23,7 @@ const StyledWatchedMovies = styled.div`
 `;
 
 const DateInfo = styled.p`
-  margin: 0 0 5px 12px;
+  margin: 0 0 0.5rem 1.2rem;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
@@ -33,7 +33,7 @@ const DateInfo = styled.p`
 const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 25px 0 20px;
+  margin: 2.5rem 0 2rem;
   width: 90%;
 `;
 
@@ -44,15 +44,15 @@ const StyledTopButtons = styled.div`
 const StyledButton = styled(Button)`
   background-color: white;
   color: ${({ theme }) => theme.movies};
-  font-size: 11px;
+  font-size: 1.1rem;
   font-weight: bold;
   border: 1px solid ${({ theme }) => theme.movies};
-  border-radius: 5px;
+  border-radius: 0.5rem;
   height: 4vh;
   width: 100%;
   margin-right: 5px;
   line-height: 1.3;
-  padding: 5px;
+  padding: 0.5rem;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.moviesBold};
@@ -63,10 +63,10 @@ const StyledButton = styled(Button)`
 const Front = styled.div`
   height: 21vh;
   width: 9vw;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
   transition: all 0.8s ease;
-  margin-bottom: 25px;
+  margin-bottom: 2.5rem;
 
   &:hover {
     transform: scale(1.2);
@@ -76,14 +76,14 @@ const Front = styled.div`
 const StyledImage = styled.img`
   height: 21vh;
   width: 9vw;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   backface-visibility: hidden;
 `;
 
 const StyledToolTip = styled.p`
   text-decoration: line-through;
   background-color: hsl(0, 0%, 0%, 0.4);
-  border-radius: 3px;
+  border-radius: 0.3rem;
 
   position: relative;
 
@@ -94,8 +94,8 @@ const StyledToolTip = styled.p`
     position: absolute;
     background-color: transparent;
     color: transparent;
-    padding: 5px 15px;
-    border-radius: 3px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.3rem;
     bottom: 5%;
     left: 0;
     transform: scale(0);

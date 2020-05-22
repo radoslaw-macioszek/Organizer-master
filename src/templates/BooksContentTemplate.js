@@ -6,9 +6,6 @@ import BookTemplate from './BookTemplate';
 
 import Books from '../views/Books';
 import Book from '../views/Books/Book';
-import BooksToRead from '../views/Books/BooksToRead';
-import BooksRead from '../views/Books/BooksRead';
-import BooksFavorite from '../views/Books/BooksFavorite';
 
 const BooksContentTemplate = () => {
   return (

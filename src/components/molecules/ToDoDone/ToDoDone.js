@@ -9,29 +9,29 @@ const StyledDoneContainer = styled.div`
   height: 14vh;
   width: 55%;
   border: 3px solid ${({ theme }) => theme.todos};
-  border-radius: 10px;
+  border-radius: 1rem;
 
   overflow: scroll;
 `;
 
 const StyledDate = styled.span`
-  margin-right: 5px;
+  margin-right: 0.5rem;
 `;
 
 const StyledTitle = styled.span`
-  margin-right: 5px;
+  margin-right: 0.5rem;
   font-weight: bold;
 `;
 
 const StyledDone = styled.div`
-  margin-top: 10px;
-  padding: 0 10px;
+  margin-top: 1rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
 `;
 
 const StyledFont = styled.div`
-  font-size: 14px;
+  font-size: 1.4rem;
 `;
 
 const ToDoDone = () => {

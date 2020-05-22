@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import ToDoTemplate from '../templates/ToDoTemplate';
@@ -12,91 +12,57 @@ const StyledColumn = styled.div`
   border-left: 1px solid ${({ theme }) => theme.grey200};
 
   text-align: center;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
   max-width: 12vw;
 `;
 
 const StyledHeader = styled.h3`
-  font-size: 23px;
+  font-size: 2.3rem;
   border-bottom: 1px solid grey;
-  padding: 15px 0 10px;
+  padding: 1.5rem 0 1rem;
   margin-top: 0;
   background-color: ${({ theme }) => theme.todos};
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 
   display: flex;
   flex-direction: column;
 `;
 
 const StyledSpan = styled.span`
-  font-size: 12px;
-  margin: 10px 0 0;
+  font-size: 1.2rem;
+  margin: 1rem 0 0;
 `;
 
 const StyledTime = styled.p`
-  font-size: 15px;
-  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  margin: 0 0 0.8rem 0;
   text-align: left;
   text-decoration: underline;
 `;
 
 const StyledContent = styled.p`
   text-align: justify;
-  padding-bottom: 20px;
+  padding-bottom: 2rem;
 
   border-bottom: 1px solid ${({ theme }) => theme.grey200};
   word-wrap: break-word;
-
-
-  /* background-color: ${(props) => (props.active ? 'green' : 'white')}; */
 `;
 
 const StyledTitle = styled.h3`
   margin: 0;
-  padding: 5px 0;
+  padding: 0.5rem 0;
   word-wrap: break-word;
 `;
 
-// const StyledDoneTitle = styled(StyledTitle)`
-//   text-decoration: line-through;
-//   background-color: ${({ theme }) => theme.grey200};
-//   border-radius: 3px;
-
-//   position: relative;
-
-//   &::after {
-//     content: attr(data-tool-tip);
-//     font-size: 1.4rem;
-//     display: block;
-//     position: absolute;
-//     background-color: ${({ theme }) => theme.grey300};
-//     padding: 5px 15px;
-//     color: white;
-//     border-radius: 3px;
-//     bottom: 0;
-//     left: 0;
-//     white-space: nowrap;
-//     transform: scale(0);
-//     transition: transform ease-out 150ms, bottom ease-out 150ms;
-//   }
-
-//   &:hover::after {
-//     transform: scale(1);
-//     bottom: 100%;
-//   }
-// `;
-
 const StyledWrapper = styled.div`
-  padding: 0 15px;
+  padding: 0 1.5rem;
 `;
 
 const StyledButtonWrapper = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 `;
-
-//
 
 const ToDo = ({ pageContext, actualDate }) => {
   const dispatch = useDispatch();

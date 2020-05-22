@@ -14,13 +14,13 @@ import plusIcon from '../assets/icons/plus.svg';
 import ToDoDone from '../components/molecules/ToDoDone/ToDoDone';
 
 const StyledWrapper = styled.div`
-  padding: 25px 30px 25px;
-  margin-left: 40px;
+  padding: 2.5rem 3rem 2.5rem;
+  margin-left: 4rem;
   position: relative;
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 25px 0 0;
+  margin: 2.5rem 0 0;
 
   ::first-letter {
     text-transform: uppercase;
@@ -33,7 +33,7 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const StyledPageHeader = styled.div`
-  margin: 25px 0 50px;
+  margin: 2.5rem 0 5rem;
   position: relative;
 `;
 
@@ -46,25 +46,35 @@ const StyledGrid = styled.div`
 
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
-  border-radius: 50px;
+  border-radius: 5rem;
 
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 4rem;
+  right: 4rem;
 
   background-size: 40%;
   z-index: 1000000;
 
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 `;
 
 const StyledP = styled.p`
+  display: flex;
   position: absolute;
   bottom: 100%;
   left: 45%;
-  margin-bottom: 5px;
-  margin-top: 0;
+  margin-bottom: 0.5rem;
+  margin: 0;
   font-weight: bold;
+  align-items: center;
+`;
+
+const StyledSpan = styled.p`
+  font-size: 1.3rem;
+  color: ${({ theme }) => theme.grey300};
+
+  margin-left: 2.5rem;
+  text-align: center;
 `;
 
 const ToDoTemplate = ({ children, pageContext }) => {
@@ -80,7 +90,13 @@ const ToDoTemplate = ({ children, pageContext }) => {
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
-            <StyledP>Recently comleted</StyledP>
+            <StyledP>
+              Recently comleted
+              <StyledSpan>
+                (list of completed tasks - here you can see all the tasks you have done)
+              </StyledSpan>
+            </StyledP>
+
             <ToDoDone />
             <StyledParagraph>{`${todoLength.length} ${pageContext}`}</StyledParagraph>
           </StyledPageHeader>

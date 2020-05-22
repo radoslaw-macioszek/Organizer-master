@@ -10,17 +10,17 @@ import { addItem } from '../store/NATitems/NATitems.reducer';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
-  border-radius: 50px;
+  border-radius: 5rem;
 
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 4rem;
+  right: 4rem;
   color: white;
 
-  width: 180px;
+  width: 18rem;
   font-size: 1.7rem;
   font-weight: bold;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 
   background-size: 40%;
   z-index: 1000000;
@@ -28,7 +28,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
 const StyledBookWrapper = styled.div`
   display: flex;
-  margin: 10px 10px 35px;
+  margin: 1rem 1rem 3.5rem;
 
   position: relative;
   height: 20vh;
@@ -39,7 +39,7 @@ const StyledDetails = styled.div`
   flex-direction: column;
   height: 15vh;
   width: 100%;
-  margin: 10px 10px;
+  margin: 1rem 1rem;
 `;
 
 const StyledImage = styled.img`
@@ -57,10 +57,10 @@ const StyledToolTip = styled.span`
 
   background-color: #fff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  border-radius: 5px;
+  border-radius: 0.5rem;
   color: #555;
   font-weight: 300;
-  padding: 30px 30px 60px;
+  padding: 3rem 3rem 6rem;
   position: absolute;
   width: 30vw;
   top: 100%;
@@ -83,36 +83,36 @@ const StyledToolTip = styled.span`
 `;
 
 const StyledTitle = styled.h3`
-  margin-top: -8px;
-  margin-bottom: -10px;
+  margin-top: -0.8rem;
+  margin-bottom: -1rem;
 `;
 
 const StyledToolTipTitle = styled.p`
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 `;
 
 const StyledLink = styled.a`
   display: inline-flex;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   text-decoration: none;
-  padding: 5px 10px;
-  width: 142px;
+  padding: 0.5rem 1rem;
+  width: 14.2rem;
   align-items: center;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 1.2rem;
   background-color: ${({ theme }) => theme.grey200};
   color: ${({ theme }) => theme.grey300};
   position: absolute;
   right: 0;
-  bottom: 35px;
+  bottom: 3.5rem;
 `;
 
 const StyledParagraphT = styled.p`
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
   position: absolute;
   bottom: 34%;
 `;
@@ -125,9 +125,9 @@ const StyledAddButton = styled.button`
   position: absolute;
   top: 40%;
   right: 0;
-  padding: 6px 6px;
-  font-size: 11px;
-  border-radius: 5px;
+  padding: 0.6rem 0.6rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
 `;
 
 const Books = ({ pageContext, actualDate }) => {

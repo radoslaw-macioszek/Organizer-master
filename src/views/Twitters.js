@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import GridTemplate from '../templates/GridTemplate';
 import Card from '../components/molecules/Card/Card';
 
-// pageType pozwala zmieniac kolor sidebaru!
 const Twitters = () => {
   const twitters = useSelector((state) => state.natReducer.twitters);
 

@@ -6,8 +6,6 @@ const DetailsPage = () => {
   const note = useSelector((state) => state.natReducer.noteDetails);
   const notes = useSelector((state) => state.natReducer.notes);
 
-  console.log('cotam', notes);
-
   return (
     <DetailsTemplate
       id={note[0] && note[0].id}

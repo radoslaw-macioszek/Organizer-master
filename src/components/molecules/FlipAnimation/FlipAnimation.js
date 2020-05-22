@@ -13,7 +13,7 @@ const Flipper = styled.div`
 `;
 
 const FlipContainer = styled.div`
-  perspective: 1000px;
+  perspective: 100rem;
   height: 19vh;
   width: 8vw;
   margin-right: 5px;
@@ -27,7 +27,7 @@ const FlipContainer = styled.div`
 const Front = styled.div`
   height: 19vh;
   width: 7.5vw;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 
   backface-visibility: hidden;
 
@@ -45,35 +45,35 @@ const Back = styled(Front)`
 `;
 
 const StyledParagraph = styled.span`
-  font-size: 10px;
-  margin: 0 10px 5px;
+  font-size: 1rem;
+  margin: 0 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const StyledSpan = styled.span`
-  font-size: 12px;
+  font-size: 1.2rem;
   margin: 0;
 `;
 const StyledDateParagraph = styled.span`
-  margin: -5px 10px 0;
+  margin: -5px 1rem 0;
   font-size: 10px;
   padding-top: 0;
 `;
 
 const StyledDate = styled.p`
   text-align: center;
-  font-size: 12px;
+  font-size: 1.2rem;
   margin: 0;
 `;
 
 const StyledHeader = styled.h6`
-  padding: 0 10px 10px;
-  margin-top: 15px;
-  font-size: 11px;
+  padding: 0 1rem 1rem;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
   line-height: 1.4;
-  margin-bottom: 10px;
+  margin-bottom: 1.1rem;
   text-align: center;
   border-bottom: 0.6px solid ${({ theme }) => theme.grey300LowTransparent};
 `;

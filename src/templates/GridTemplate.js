@@ -20,7 +20,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 25px 0 0;
+  margin: 2.5rem 0 0;
 
   ::first-letter {
     text-transform: uppercase;
@@ -33,7 +33,7 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const StyledPageHeader = styled.div`
-  margin: 25px 0 50px;
+  margin: 2.5rem 0 5rem;
 `;
 
 const StyledGrid = styled.div`
@@ -50,16 +50,16 @@ const StyledArticlesGrid = styled(StyledGrid)`
 
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
-  border-radius: 50px;
+  border-radius: 5rem;
 
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 4rem;
+  right: 4rem;
 
   background-size: 40%;
   z-index: 1000000;
 
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 `;
 
 const StyledArticlesPage = styled.div`

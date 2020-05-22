@@ -10,19 +10,19 @@ import Heading from '../../atoms/Heading/Heading';
 import { addItem as addItemAction } from '../../../store/NATitems/NATitems.reducer';
 
 const StyledWrapper = styled.div`
-  border-left: 10px solid ${({ theme, activecolor }) => theme[activecolor]};
-  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+  border-left: 1rem solid ${({ theme, activecolor }) => theme[activecolor]};
+  box-shadow: -0.5rem 0 1.5rem rgba(0, 0, 0, 0.2);
 
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  padding: 100px 90px;
+  padding: 10rem 9rem;
 
   position: fixed;
   right: 0;
   top: 0;
   height: 100vh;
-  width: 680px;
+  width: 68rem;
   background-color: white;
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
@@ -30,8 +30,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledTextArea = styled(Input)`
-  margin: 30px 0 100px;
-  border-radius: 20px;
+  margin: 3rem 0 10rem;
+  border-radius: 2rem;
   height: 30vh;
 `;
 
@@ -40,7 +40,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledInput = styled(Input)`
-  margin-top: 30px;
+  margin-top: 3rem;
 `;
 
 const StyledForm = styled(Form)`
@@ -54,8 +54,8 @@ const StyledForLabel = styled.div`
 `;
 
 const StyledLabel = styled.label`
-  font-size: 11px;
-  margin: 20px 0 -20px 20px;
+  font-size: 1.1rem;
+  margin: 2rem 0 -2rem 2rem;
   color: ${({ theme }) => theme.grey300};
 `;
 

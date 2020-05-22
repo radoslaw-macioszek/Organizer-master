@@ -6,11 +6,12 @@ function* loadArticles(action) {
   const searchResult = action.payload;
   const response = yield call(axios.get, 'https://newsapi.org/v2/everything', {
     params: {
-      apiKey: 'eabc157f46174c408b3a72c93381d0c1',
       q: `${searchResult}`,
+      apiKey: '831ca311c2d945ea8219a6a7abc67f18',
     },
   });
 
+  console.log(response);
   if (response.status === 200) {
     yield put(loadArticlesSuccess(response.data.articles));
     return;

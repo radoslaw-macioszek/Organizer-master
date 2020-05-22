@@ -16,7 +16,7 @@ import UserPageTemplate from './UserPageTemplate';
 import withContext from '../hoc/withContext';
 
 const StyledWrapper = styled.div`
-  margin: 100px 100px;
+  margin: 10rem 10rem;
 
   display: flex;
 `;
@@ -34,26 +34,26 @@ const StyledColumn = styled.div`
 `;
 
 const StyledHeading = styled(Heading)`
-  font-size: 50px;
+  font-size: 5rem;
   font-weight: ${({ theme }) => theme.bold};
-  margin: 0 0 30px;
+  margin: 0 0 3rem;
   max-width: 29vw;
 `;
 
 const StyledDate = styled(Paragraph)`
   text-transform: uppercase;
-  font-size: 15px;
-  margin: 0 0 10px 0;
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
 `;
 
 const StyledParagraph = styled(Paragraph)`
   line-height: 1.6;
-  margin: 0 0 10px 0;
+  margin: 0 0 1rem 0;
   color: ${({ theme }) => theme.grey300};
 `;
 
 const StyledLinkButton = styled.a`
-  height: 47px;
+  height: 4.7rem;
   color: #000;
 `;
 const StyledButtonsWrapper = styled.div`
@@ -62,7 +62,7 @@ const StyledButtonsWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   background-color: ${({ activecolor, theme }) => (activecolor ? theme[activecolor] : 'white')};
-  margin: 50px 100px 20px 0;
+  margin: 5rem 10rem 2rem 0;
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -72,7 +72,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledInput = styled(Input)`
-  margin-top: 30px;
+  margin-top: 3rem;
 `;
 
 const StyledForm = styled(Form)`
@@ -81,8 +81,8 @@ const StyledForm = styled(Form)`
 `;
 
 const StyledTextArea = styled(Input)`
-  margin: 30px 0 100px;
-  border-radius: 20px;
+  margin: 3rem 0 10rem;
+  border-radius: 2rem;
   height: 30vh;
 `;
 

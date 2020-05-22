@@ -43,16 +43,16 @@ const StyledGrid = styled.div`
 
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
-  border-radius: 50px;
+  border-radius: 5rem;
 
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 4rem;
+  right: 4rem;
 
-  width: 180px;
+  width: 18rem;
   font-size: 1.7rem;
   font-weight: bold;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 
   background-size: 40%;
   z-index: 1000000;
@@ -61,11 +61,11 @@ const StyledButtonIcon = styled(ButtonIcon)`
 const StyledLink = styled.a`
   color: black;
   text-decoration: none;
-  font-size: 25px;
-  margin-right: 2px;
+  font-size: 2.5rem;
+  margin-right: 0.2rem;
   background-color: ${({ theme }) => theme.movies};
 
-  padding: 15px 30px;
+  padding: 1.5rem 3rem;
   font-weight: bold;
 
   &:hover {
@@ -74,15 +74,15 @@ const StyledLink = styled.a`
 
     background-color: ${({ theme }) => theme.greyTransparent};
 
-    border-bottom: 4px solid ${({ theme }) => theme.movies};
+    border-bottom: 0.4rem solid ${({ theme }) => theme.movies};
   }
 `;
 
 const StyledCategory = styled.div`
   display: flex;
-  margin: 0px 150px 50px 0;
+  margin: 0px 15rem 5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.movies};
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const MoviesTemplate = ({ pageContext, children }) => {

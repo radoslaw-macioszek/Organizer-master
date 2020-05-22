@@ -14,8 +14,8 @@ const StyledWrapper = styled.div`
   min-height: ${({ activePage }) => (activePage === 'twitters' ? '15.5vh' : '380px')};
   min-width: ${({ activePage }) => (activePage === 'twitters' ? '19.5vw' : '100%')};
 
-  box-shadow: 0 10px 30px -10px hsla(0, 0%, 0%, 0.1);
-  border-radius: 10px;
+  box-shadow: 0 1rem 3rem -1rem hsla(0, 0%, 0%, 0.1);
+  border-radius: 1rem;
   overflow: hidden;
   position: relative;
   display: grid;
@@ -69,47 +69,47 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledAvatar = styled.img`
-  width: 75px;
-  height: 75px;
+  width: 7.5rem;
+  height: 7.5rem;
   border: 4px solid ${({ theme }) => theme.twitters};
-  border-radius: 50px;
+  border-radius: 5rem;
   position: absolute;
-  right: 25px;
-  top: 10px;
+  right: 2.5rem;
+  top: 1rem;
 `;
 
 const StyledSecondAvatar = styled(StyledAvatar)`
-  width: 81px;
-  height: 81px;
+  width: 8.1rem;
+  height: 8.1rem;
   border: 3px solid white;
-  border-radius: 50px;
+  border-radius: 5rem;
   position: absolute;
   background: transparent;
-  right: 22px;
+  right: 2.2rem;
   top: 7px;
 `;
 
 const StyledButton = styled(Button)`
   position: absolute;
   bottom: 5px;
-  left: 20px;
+  left: 2rem;
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  margin-top: 10px;
-  padding-left: 30px;
+  margin-top: 1rem;
+  padding-left: 3rem;
 `;
 
 const StyledLinkButton = styled.a`
   display: block;
-  width: 47px;
-  height: 47px;
-  border-radius: 50px;
+  width: 4.7rem;
+  height: 4.7rem;
+  border-radius: 5rem;
   background: white url(${LinkIcon}) no-repeat;
   background-size: 60%;
   background-position: 50%;
   position: absolute;
-  right: 25px;
+  right: 2.5rem;
   top: 50%;
   transform: translateY(-50%);
 
@@ -126,8 +126,8 @@ const StyledLink = styled.a`
   width: 8vw;
   position: absolute;
   right: 0;
-  bottom: 15px;
-  font-size: 12px;
+  bottom: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
 `;
 

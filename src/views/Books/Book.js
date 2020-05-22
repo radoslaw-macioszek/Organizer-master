@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
 import withContext from '../../hoc/withContext';
@@ -10,34 +11,34 @@ import BooksRead from './BooksRead';
 const StyledGrid = styled.div``;
 
 const FirstColumn = styled.div`
-  margin-top: 100px;
+  margin-top: 12rem;
   grid-row: span 2;
 `;
 
 const StyledContent = styled.div`
-  border-radius: 5px;
+  border-radius: 0.5rem;
 `;
 
 const SecondColumn = styled.div`
   height: 50vh;
   position: absolute;
   top: 43%;
-  right: 45px;
+  right: 4.5rem;
   width: 35%;
 `;
 
 const StyledParagraph = styled.p`
   font-family: serif;
-  margin: 20px 0px 15px 10px;
+  margin: 2rem 0px 1.5rem 1rem;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 2.2rem;
 `;
 
 const StyledSecondContent = styled.div`
   border: 1px solid lightgrey;
-  padding: 10px;
+  padding: 1rem;
   border-radius: 5px;
-  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.16);
+  box-shadow: 1rem 1.5rem 2rem rgba(0, 0, 0, 0.16);
 `;
 
 const ThirdColumn = styled.div`
@@ -49,24 +50,26 @@ const ThirdColumn = styled.div`
 `;
 const StyledThirdParagraph = styled.p`
   font-family: serif;
-  margin: 20px 0px 10px 10px;
+  margin: 2rem 0px 1rem 1rem;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 2.2rem;
 `;
 
 const StyledThirdContent = styled.div`
   overflow: scroll;
   display: flex;
   border: 1px solid ${({ theme }) => theme.books};
-  height: 26vh;
-  padding: 5px;
-  padding-left: 10px;
-  margin-right: 45px;
-  border-radius: 5px;
-  box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.16);
+  height: 27vh;
+  padding: 1.5rem 2rem;
+  margin-right: 4.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 1rem 1.5rem 2rem rgba(0, 0, 0, 0.16);
 `;
 
 const Book = () => {
+  const favLength = useSelector((state) => state.natReducer.favoriteBooks).length;
+  const readedLength = useSelector((state) => state.natReducer.readedBooks).length;
+
   return (
     <StyledGrid>
       <FirstColumn>
@@ -75,14 +78,14 @@ const Book = () => {
         </StyledContent>
       </FirstColumn>
       <SecondColumn>
-        <StyledParagraph>Readed: </StyledParagraph>
+        <StyledParagraph>Readed ({readedLength}) : </StyledParagraph>
         <StyledSecondContent>
           <BooksRead />
         </StyledSecondContent>
       </SecondColumn>
 
       <ThirdColumn>
-        <StyledThirdParagraph>Favorite: </StyledThirdParagraph>
+        <StyledThirdParagraph>Favorite ({favLength}) : </StyledThirdParagraph>
         <StyledThirdContent>
           <BooksFavorite />
         </StyledThirdContent>
