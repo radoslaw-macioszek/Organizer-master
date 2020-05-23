@@ -315,19 +315,17 @@ const INITIAL_STATE = {
   ],
   series: [
     {
-      id: 1000,
+      id: 100,
       title: 'I am not an Animal',
-      path:
-        'https://images.unsplash.com/photo-1509281373149-e957c6296406?ixlib=rb-1.2.1&auto=format&fit=crop&w=738&q=80',
+      path: 'https://image.tmdb.org/t/p/w500/qG59J1Q7rpBc1dvku4azbzcqo8h.jpg',
       rate: 8,
       popularity: 5000,
       date: 13 / 12 / 2019,
     },
     {
-      id: 2735,
+      id: 2734,
       title: '"Law & Order: Special Victims Unit"',
-      path:
-        'https://images.unsplash.com/photo-1467991521834-fb8e202c7074?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80',
+      path: 'https://image.tmdb.org/t/p/w500/6t6r1VGQTTQecN4V0sZeqsmdU9g.jpg',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,
@@ -357,8 +355,7 @@ const INITIAL_STATE = {
     {
       id: 100,
       title: 'I am not an Animal',
-      path:
-        'https://images.unsplash.com/photo-1582189587033-17c59adf24ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80',
+      path: 'https://image.tmdb.org/t/p/w500/qG59J1Q7rpBc1dvku4azbzcqo8h.jpg',
       rate: 8,
       popularity: 5000,
       date: 13 / 12 / 2019,
@@ -366,8 +363,7 @@ const INITIAL_STATE = {
     {
       id: 2734,
       title: '"Law & Order: Special Victims Unit"',
-      path:
-        'https://images.unsplash.com/photo-1576438112307-db9c736ff392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80',
+      path: 'https://image.tmdb.org/t/p/w500/6t6r1VGQTTQecN4V0sZeqsmdU9g.jpg',
       rate: 6,
       popularity: 8000,
       date: 13 / 12 / 2019,

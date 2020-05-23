@@ -14,6 +14,7 @@ const StyledWatchedMovies = styled.div`
 
   align-items: center;
   padding-top: 1rem;
+  margin-bottom: 4rem;
   filter: grayscale(100%);
   transition: all 2s ease;
 
@@ -66,24 +67,27 @@ const Front = styled.div`
   box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
   border-radius: 0.5rem;
   transition: all 0.8s ease;
-  margin-bottom: 2.5rem;
+  /* margin-bottom: 2.5rem; */
 
   &:hover {
     transform: scale(1.2);
+    backface-visibility: hidden;
   }
 `;
 
 const StyledImage = styled.img`
   height: 21vh;
-  width: 9vw;
+  width: 102%;
   border-radius: 0.5rem;
   backface-visibility: hidden;
+
+  /* backface-visibility: hidden; */
 `;
 
 const StyledToolTip = styled.p`
   text-decoration: line-through;
-  background-color: hsl(0, 0%, 0%, 0.4);
   border-radius: 0.3rem;
+  margin: 0;
 
   position: relative;
 
@@ -107,7 +111,7 @@ const StyledToolTip = styled.p`
     transform: scale(1);
     background-color: hsl(0, 0%, 0%, 0.4);
     text-align: center;
-    width: 100%;
+    width: 102%;
     color: white;
 
     border: 1px solid ${({ theme }) => theme.movies};

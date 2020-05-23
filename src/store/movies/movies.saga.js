@@ -76,17 +76,15 @@ function* loadMovies(action) {
 }
 
 function* loadDetail(action) {
+  console.log('action', action);
   const { id, type } = action.payload;
+  console.log('typeeeeee', type);
 
-  const response = yield call(
-    axios.get,
-    `https://api.themoviedb.org/3/${type}/${id === 668203 ? 80167 : id}`,
-    {
-      params: {
-        api_key: '20a84d44425a1770674ac45f99ccc0f4',
-      },
+  const response = yield call(axios.get, `https://api.themoviedb.org/3/${type}/${id}`, {
+    params: {
+      api_key: '20a84d44425a1770674ac45f99ccc0f4',
     },
-  );
+  });
 
   if (response.status === 200) {
     yield put(loadMovieDetailSuccess(response.data));

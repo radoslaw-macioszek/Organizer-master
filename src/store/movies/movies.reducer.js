@@ -100,7 +100,7 @@ const moviesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        id: action.payload.type,
+        id: action.payload.id,
         type: action.payload.type,
       };
     }

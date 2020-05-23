@@ -19,6 +19,7 @@ const StyledMovieColumn = styled.div`
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.movies};
+    border-radius: 5px;
   }
 
   position: relative;
@@ -45,7 +46,6 @@ const StyledImage = styled.img`
 `;
 
 const StyledToolTip = styled.p`
-  background-color: hsl(0, 0%, 0%, 0.4);
   border-radius: 3px;
   margin: 0;
 
@@ -54,13 +54,13 @@ const StyledToolTip = styled.p`
 
   &::after {
     content: attr(data-tool-tip);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     display: block;
     position: absolute;
     padding: 0.5rem 1.5rem;
     color: transparent;
     border-radius: 3px;
-    bottom: 0;
+    bottom: 1rem;
     left: 0;
     transform: scale(0);
     transition: transform ease-out 0, bottom ease-out 150ms;
@@ -73,6 +73,7 @@ const StyledToolTip = styled.p`
     background-color: hsl(0, 0%, 0%, 0.4);
     text-align: center;
     color: white;
+    font-weight: bold;
 
     border: 1px solid ${({ theme }) => theme.movies};
     backface-visibility: hidden;
@@ -104,13 +105,15 @@ const MainColumn = ({ openModal, pageContext }) => {
   const [movieId, setMovieId] = useState(null);
   const [type, setType] = useState('movie');
 
-  const handleClick = (id, type) => {
+  const handleClick = (id, category) => {
+    console.log(id, category);
     setMovieId(id);
-    setType(type);
+    setType(category);
     openModal();
   };
 
   useEffect(() => {
+    console.log('type', type);
     if (movieId && type === 'movie') {
       dispatch(loadMovieDetail(movieId, type));
     } else if (movieId && type === 'tv') {

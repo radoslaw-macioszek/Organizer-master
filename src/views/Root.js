@@ -11,7 +11,6 @@ import Articles from './Articles';
 import Movies from './Movies';
 import routes from '../Routes';
 import BooksContentTemplate from '../templates/BooksContentTemplate';
-import Series from './Series';
 import ToDo from './ToDo';
 
 const Root = () => {
@@ -30,7 +29,7 @@ const Root = () => {
             <Route path={routes.article} component={DetailsPage} />
             <Route path={routes.books} component={BooksContentTemplate} />
             <Route path={routes.movies} component={Movies} />
-            <Route path={routes.series} component={Series} />
+            <Route path={routes.series} component={Movies} />
             <Route path={routes.login} />
           </Switch>
         </MainTemplate>

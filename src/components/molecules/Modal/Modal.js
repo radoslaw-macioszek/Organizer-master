@@ -97,10 +97,11 @@ const StyledGenres = styled.p`
 `;
 
 const StyledBottomWrapper = styled.div`
+  overflow: scroll;
   font-size: 1.6rem;
-  height: 26vh;
+  height: 38vh;
   text-align: justify;
-  padding: 3.2rem 3rem 1rem;
+  padding: 2rem 3rem 1rem;
   line-height: 1.5;
 `;
 

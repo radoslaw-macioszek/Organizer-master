@@ -1,13 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Modal from '../components/molecules/Modal/Modal';
+import withContext from '../hoc/withContext';
 
 import MoviesTemplate from '../templates/MoviesTemplate';
 import Heading from '../components/atoms/Heading/Heading';
-
-import TopRatedMovies from './Movies/TopRatedMovies';
-import MostPopularMovies from './Movies/MostPopularMovies';
-import WeekPopularMovies from './Movies/WeekPopularMovies';
+import MoviesCategoryBar from './Movies/CategoryBar';
 
 import MainColumn from './Movies/MainColumn';
 import WatchedMoviesAndSeries from './Movies/WatchedMoviesAndSeries';
@@ -60,10 +59,7 @@ const StyledBottom = styled.div`
   flex-direction: column;
 `;
 
-const StyledWhole = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+const StyledWhole = styled(StyledBottom)``;
 
 function useOnClickOutside(node, handler) {
   useEffect(() => {
@@ -85,11 +81,23 @@ function useOnClickOutside(node, handler) {
   }, [node, handler]);
 }
 //
-const Movies = () => {
-  const title = 'List of movies to watch';
-  const title2 = 'List of watched movies';
+const Movies = ({ pageContext }) => {
+  const topRatedTitle = 'Top rated';
+  const mostPopularTitle = 'Most popular';
+  const weekPopularTitle = 'Most popular in this week';
+
+  const genre = 'movie';
+  const seriesGenre = 'tv';
 
   const [isModalOpen, setModal] = useState(false);
+
+  const topRatedMovies = useSelector((state) => state.moviesReducer.top);
+  const mostPopularMovies = useSelector((state) => state.moviesReducer.popular);
+  const weekPopularMovies = useSelector((state) => state.moviesReducer.weekMovie);
+
+  const topRatedSeries = useSelector((state) => state.moviesReducer.topSeries);
+  const mostPopularSeries = useSelector((state) => state.moviesReducer.popularSeries);
+  const weekPopularSeries = useSelector((state) => state.moviesReducer.weekSeries);
 
   const openModal = () => {
     setModal(true);
@@ -103,24 +111,70 @@ const Movies = () => {
       <StyledWhole>
         <StyledTop>
           <StyledScroll>
-            <StyledHeading>{title}</StyledHeading>
+            <StyledHeading>{`List of ${pageContext} to watch`}</StyledHeading>
             <StyledLeftSide>
               <MainColumn openModal={openModal} />
             </StyledLeftSide>
           </StyledScroll>
-          <StyledRightSide>
-            <TopRatedMovies openModal={openModal} />
-            <MostPopularMovies openModal={openModal} />
-            <WeekPopularMovies openModal={openModal} />
-            {isModalOpen && (
-              <div ref={node}>
-                <Modal />
-              </div>
-            )}
-          </StyledRightSide>
+          {pageContext === 'movies' && (
+            <StyledRightSide>
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={topRatedMovies}
+                title={topRatedTitle}
+                genre={genre}
+              />
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={mostPopularMovies}
+                title={mostPopularTitle}
+                genre={genre}
+              />
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={weekPopularMovies}
+                title={weekPopularTitle}
+                genre={genre}
+              />
+              {isModalOpen && (
+                <div ref={node}>
+                  <Modal />
+                </div>
+              )}
+            </StyledRightSide>
+          )}
+          {pageContext === 'series' && (
+            <StyledRightSide>
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={topRatedSeries}
+                title={topRatedTitle}
+                genre={seriesGenre}
+              />
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={mostPopularSeries}
+                title={mostPopularTitle}
+                genre={seriesGenre}
+              />
+              <MoviesCategoryBar
+                openModal={openModal}
+                type={weekPopularSeries}
+                title={weekPopularTitle}
+                genre={seriesGenre}
+              />
+              {isModalOpen && (
+                <div ref={node}>
+                  <Modal />
+                </div>
+              )}
+            </StyledRightSide>
+          )}
         </StyledTop>
         <StyledBottom>
-          <StyledHeading style={{ marginTop: '100px' }}>{title2}</StyledHeading>
+          <StyledHeading
+            style={{ marginTop: '100px' }}
+          >{`List of watched ${pageContext}`}</StyledHeading>
           <StyledBottomSide>
             <WatchedMoviesAndSeries openModal={openModal} />
           </StyledBottomSide>
@@ -130,4 +184,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default withContext(Movies);
