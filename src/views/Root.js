@@ -8,6 +8,7 @@ import DetailsPage from './DetailsPage';
 import Notes from './Notes';
 import Twitters from './Twitters';
 import Articles from './Articles';
+import ArticleSearch from './ArticleSearch';
 import Movies from './Movies';
 import routes from '../Routes';
 import BooksContentTemplate from '../templates/BooksContentTemplate';
@@ -26,6 +27,7 @@ const Root = () => {
             <Route exact path={routes.twitters} component={Twitters} />
             <Route path={routes.twitter} component={DetailsPage} />
             <Route exact path={routes.articles} component={Articles} />
+            <Route exact path={routes.articleSearch} component={ArticleSearch} />
             <Route path={routes.article} component={DetailsPage} />
             <Route path={routes.books} component={BooksContentTemplate} />
             <Route path={routes.movies} component={Movies} />

@@ -85,6 +85,7 @@ const StyledFavoriteHeading = styled.div`
   border-top: 4px solid hsla(360, 73%, 60%);
   color: black;
   position: relative;
+  backface-visibility: hidden;
 
   &::after {
     content: attr(data-tool-tip);
@@ -92,14 +93,15 @@ const StyledFavoriteHeading = styled.div`
     font-weight: bold;
     display: block;
     position: absolute;
-    background-color: hsla(360, 73%, 60%, 0.5);
-    padding: 0.5rem 1.5rem;
+    background-color: hsla(360, 73%, 60%, 0.8);
+    padding: 1rem 1.5rem;
     color: white;
     border-radius: 3px;
     bottom: 5%;
     left: 0;
     transform: scale(0);
     transition: transform ease-out 400ms, bottom ease-out 150ms;
+    backface-visibility: hidden;
   }
 
   &:hover::after {
@@ -107,10 +109,11 @@ const StyledFavoriteHeading = styled.div`
     bottom: 5%;
     width: 100%;
     text-align: center;
+    backface-visibility: hidden;
   }
 
   &:hover ${StyledHeading} {
-    background-color: hsla(360, 73%, 60%, 0.8);
+    background-color: hsla(360, 73%, 60%, 1);
     left: -4.5rem;
     z-index: 9999;
   }

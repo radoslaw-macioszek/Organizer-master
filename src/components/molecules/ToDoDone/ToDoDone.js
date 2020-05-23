@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
+import { devices } from '../../../Devices/devices';
+
 const StyledDoneContainer = styled.div`
   position: absolute;
   right: 0;
@@ -12,6 +14,17 @@ const StyledDoneContainer = styled.div`
   border-radius: 1rem;
 
   overflow: scroll;
+
+  @media ${devices.laptop} {
+    top: 3rem;
+    height: 9vh;
+  }
+
+  @media ${devices.tablet} {
+    top: 16rem;
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const StyledDate = styled.span`

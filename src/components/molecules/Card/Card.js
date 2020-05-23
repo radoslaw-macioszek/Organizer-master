@@ -10,6 +10,8 @@ import Paragraph from '../../atoms/Paragraph/Paragraph';
 import LinkIcon from '../../../assets/icons/link.svg';
 import withContext from '../../../hoc/withContext';
 
+import { devices } from '../../../Devices/devices';
+
 const StyledWrapper = styled.div`
   min-height: ${({ activePage }) => (activePage === 'twitters' ? '15.5vh' : '380px')};
   min-width: ${({ activePage }) => (activePage === 'twitters' ? '19.5vw' : '100%')};
@@ -46,6 +48,10 @@ const InnerWrapperHead = styled.div`
       flex-direction: column;
       justify-content: space-between;
     `}
+
+    @media ${devices.mobileM} {
+    padding: 1.2rem 1.5rem;
+  }
 `;
 
 const InnerWrapperBody = styled(InnerWrapperHead)`
@@ -66,6 +72,14 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
   width: ${({ activeColor }) => (activeColor === 'notes' ? '100%' : '80%')};
   overflow-wrap: normal;
+
+  @media ${devices.mobileL} {
+    font-size: 2rem;
+    width: ${({ activeColor }) => (activeColor === 'notes' ? '100%' : '65%')};
+  }
+  @media ${devices.mobileM} {
+    font-size: 1.6rem;
+  }
 `;
 
 const StyledAvatar = styled.img`
@@ -93,6 +107,11 @@ const StyledButton = styled(Button)`
   position: absolute;
   bottom: 5px;
   left: 2rem;
+
+  @media ${devices.mobileM} {
+    width: 6.5rem;
+    left: 1rem;
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -123,12 +142,24 @@ const StyledLinkButton = styled.a`
 `;
 
 const StyledLink = styled.a`
-  width: 8vw;
+  width: 10vw;
   position: absolute;
   right: 0;
   bottom: 1.5rem;
   font-size: 1.2rem;
   cursor: pointer;
+
+  @media ${devices.tablet} {
+    width: 20vw;
+  }
+
+  @media ${devices.mobileL} {
+    width: 34vw;
+  }
+
+  @media ${devices.mobileM} {
+    width: 42vw;
+  }
 `;
 
 const Card = ({ pageContext, id, title, twitterName, articleUrl, content, created }) => {
@@ -189,6 +220,7 @@ Card.propTypes = {
     'movies',
     'series',
     'todos',
+    'articleSearch',
   ]),
   title: PropTypes.string.isRequired,
   id: PropTypes.number,

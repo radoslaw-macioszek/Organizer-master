@@ -2,24 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import styled from 'styled-components';
+import GridTemplate from '../templates/GridTemplate';
+import Input from '../components/atoms/Input/Input';
 
-import { loadArticlesAction } from '../../../store/articles/articles.reducer';
-import Input from '../../atoms/Input/Input';
-import ToolTip from '../../molecules/ToolTip/ToolTip';
+import ToolTip from '../components/molecules/ToolTip/ToolTip';
 
-import { devices } from '../../../Devices/devices';
+import { loadArticlesAction } from '../store/articles/articles.reducer';
 
-const StyledWrapper = styled.div`
-  margin-top: -16vh;
-
-  @media ${devices.laptop} {
-    margin-top: -12vh;
-  }
-
-  @media ${devices.tablet} {
-    display: none;
-  }
-`;
+import { devices } from '../Devices/devices';
 
 const StyledArticlesList = styled.div`
   min-width: 20vw;
@@ -28,9 +18,13 @@ const StyledArticlesList = styled.div`
   border: 2px solid ${({ theme }) => theme.articles};
   border-radius: 1rem;
 
-  @media ${devices.laptop} {
-    max-width: 30vw;
-    margin-left: 3rem;
+  @media ${devices.tablet} {
+    max-width: 60vw;
+    margin-left: 5rem;
+  }
+
+  @media ${devices.mobileL} {
+    margin-left: 2rem;
   }
 `;
 
@@ -51,10 +45,6 @@ const StyledArticle = styled.div`
   &:last-child {
     padding-bottom: 2.5rem;
   }
-  @media ${devices.laptop} {
-    width: 30vw;
-    padding: 2rem 1em 0;
-  }
 `;
 
 const StyledArticleImage = styled.img`
@@ -63,42 +53,17 @@ const StyledArticleImage = styled.img`
   border-radius: 1rem;
 `;
 
-const StyledLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  font-weight: bold;
-  margin-bottom: 0;
-`;
-
-const StyledInput = styled(Input)`
-  margin-top: 0.5rem;
-  margin-left: 3.5rem;
-  width: 70%;
-`;
-
-const StyledSpan = styled.p`
-  font-size: 1.3rem;
-  color: ${({ theme }) => theme.grey300};
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-
-  margin-left: 2.5rem;
-  text-align: center;
-`;
-
 const StyledArticleLink = styled.a`
   color: white;
   text-decoration: none;
-  @media ${devices.tablet} {
-    font-size: 1rem;
-  }
 `;
 
-const ArticlesList = () => {
+const StyledInput = styled(Input)`
+  margin-top: -1rem;
+  width: 70%;
+`;
+
+const ArticleSearch = () => {
   const [articleNameSearch, setArticleNameSearch] = useState('Search');
   const [sendReq, setSendReq] = useState(false);
 
@@ -119,22 +84,16 @@ const ArticlesList = () => {
   }, [dispatch, sendReq, articleNameSearch]);
 
   return (
-    <StyledWrapper>
+    <GridTemplate pageType="articleSearch">
       <form onSubmit={handleSubmit}>
-        <StyledLabel>
-          Articles search:
-          <StyledInput
-            type="text"
-            placeholder="search"
-            value={articleNameSearch}
-            onChange={(event) => setArticleNameSearch(event.target.value)}
-            search
-          />
-        </StyledLabel>
+        <StyledInput
+          type="text"
+          placeholder="search"
+          value={articleNameSearch}
+          onChange={(event) => setArticleNameSearch(event.target.value)}
+          search
+        />
       </form>
-      <StyledSpan>
-        (Find interesting article, read it, copy the link and add to your list!)
-      </StyledSpan>
       <StyledArticlesList>
         {articlesData &&
           articlesData.map((article, i) => (
@@ -146,8 +105,8 @@ const ArticlesList = () => {
             </StyledArticle>
           ))}
       </StyledArticlesList>
-    </StyledWrapper>
+    </GridTemplate>
   );
 };
 
-export default ArticlesList;
+export default ArticleSearch;

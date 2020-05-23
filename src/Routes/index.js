@@ -3,6 +3,7 @@ const routes = {
   notes: '/notes',
   twitters: '/twitters',
   articles: '/articles',
+  articleSearch: '/articleSearch',
   article: '/articles/:id',
   twitter: '/twitters/:id',
   note: '/notes/:id',

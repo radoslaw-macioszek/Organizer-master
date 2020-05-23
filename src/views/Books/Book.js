@@ -11,7 +11,7 @@ import BooksRead from './BooksRead';
 const StyledGrid = styled.div``;
 
 const FirstColumn = styled.div`
-  margin-top: 12rem;
+  margin-top: 30rem;
   grid-row: span 2;
 `;
 
@@ -22,7 +22,7 @@ const StyledContent = styled.div`
 const SecondColumn = styled.div`
   height: 50vh;
   position: absolute;
-  top: 43%;
+  top: 60%;
   right: 4.5rem;
   width: 35%;
 `;
@@ -43,10 +43,11 @@ const StyledSecondContent = styled.div`
 
 const ThirdColumn = styled.div`
   height: 20vh;
-  width: 50vw;
+  /* width: 87vw; */
+  width: 96.5%;
   position: absolute;
   right: 0;
-  top: 0;
+  top: 20rem;
 `;
 const StyledThirdParagraph = styled.p`
   font-family: serif;
@@ -59,7 +60,7 @@ const StyledThirdContent = styled.div`
   overflow: scroll;
   display: flex;
   border: 1px solid ${({ theme }) => theme.books};
-  height: 27vh;
+  height: 26vh;
   padding: 1.5rem 2rem;
   margin-right: 4.5rem;
   border-radius: 0.5rem;
@@ -85,7 +86,7 @@ const Book = () => {
       </SecondColumn>
 
       <ThirdColumn>
-        <StyledThirdParagraph>Favorite ({favLength}) : </StyledThirdParagraph>
+        {/* <StyledThirdParagraph>Favorite ({favLength}) : </StyledThirdParagraph> */}
         <StyledThirdContent>
           <BooksFavorite />
         </StyledThirdContent>

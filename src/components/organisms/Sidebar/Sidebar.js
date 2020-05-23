@@ -16,9 +16,11 @@ import logologo from '../../../assets/icons/logologo.svg';
 import Logo from '../../atoms/Logo/Logo';
 import withContext from '../../../hoc/withContext';
 
+import { devices } from '../../../Devices/devices';
+
 const StyledSidebar = styled.div`
   width: 15.3rem;
-  height: 100vh;
+  height: 100%;
   background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.notes)};
   display: flex;
   flex-direction: column;
@@ -27,10 +29,34 @@ const StyledSidebar = styled.div`
   position: fixed;
   left: 0;
   top: 0;
+
+  @media ${devices.laptop} {
+    width: 12rem;
+  }
+
+  @media ${devices.tablet} {
+    width: 9rem;
+  }
+
+  @media ${devices.mobileM} {
+    width: 7rem;
+  }
 `;
 
 const StyledIcon = styled(ButtonIcon)`
   margin-bottom: 2rem;
+
+  @media ${devices.tablet} {
+    margin-bottom: 3rem;
+  }
+
+  @media ${devices.mobileL} {
+    margin-bottom: 1rem;
+  }
+
+  @media ${devices.mobileM} {
+    margin-bottom: 1rem;
+  }
 `;
 
 const StyledLogo = styled.div`
@@ -39,10 +65,9 @@ const StyledLogo = styled.div`
 
 const StyledLogout = styled.div`
   position: absolute;
-  bottom: 2rem;
+  bottom: 3rem;
   left: 50%;
-  transform: translateX(-50%);
-  height: 10rem;
+  transform: translateX(-60%);
 `;
 
 const StyledButton = styled.button`
@@ -132,6 +157,7 @@ Sidebar.propTypes = {
     'movies',
     'series',
     'todos',
+    'articleSearch',
   ]),
 };
 

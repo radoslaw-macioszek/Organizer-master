@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { devices } from '../../../Devices/devices';
 
 const ButtonIcon = styled.button`
   display: block;
@@ -13,6 +14,16 @@ const ButtonIcon = styled.button`
 
   &.active {
     background-color: white;
+  }
+
+  @media ${devices.tablet} {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  @media ${devices.mobileM} {
+    width: 4rem;
+    height: 4rem;
   }
 `;
 

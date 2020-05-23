@@ -8,6 +8,7 @@ import Button from '../../atoms/Button/Button';
 import withContext from '../../../hoc/withContext';
 import Heading from '../../atoms/Heading/Heading';
 import { addItem as addItemAction } from '../../../store/NATitems/NATitems.reducer';
+import { devices } from '../../../Devices/devices';
 
 const StyledWrapper = styled.div`
   border-left: 1rem solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -27,6 +28,12 @@ const StyledWrapper = styled.div`
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
   transition: transform 0.5s ease-in-out;
+  text-align: center;
+
+  @media ${devices.tablet} {
+    width: 82%;
+    padding: 4rem 2rem;
+  }
 `;
 
 const StyledTextArea = styled(Input)`
@@ -37,6 +44,7 @@ const StyledTextArea = styled(Input)`
 
 const StyledButton = styled(Button)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
+  width: 18rem;
 `;
 
 const StyledInput = styled(Input)`
@@ -57,6 +65,7 @@ const StyledLabel = styled.label`
   font-size: 1.1rem;
   margin: 2rem 0 -2rem 2rem;
   color: ${({ theme }) => theme.grey300};
+  text-align: initial;
 `;
 
 const NewItemBar = ({ pageContext, isVisible, handleClose }) => {

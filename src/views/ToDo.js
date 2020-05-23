@@ -7,6 +7,8 @@ import withContext from '../hoc/withContext';
 import { removeItem, addToDone } from '../store/NATitems/NATitems.reducer';
 import ToolTip from '../components/molecules/ToolTip/ToolTip';
 
+import { devices } from '../Devices/devices';
+
 const StyledColumn = styled.div`
   border-right: 1px solid ${({ theme }) => theme.grey200};
   border-left: 1px solid ${({ theme }) => theme.grey200};
@@ -14,7 +16,11 @@ const StyledColumn = styled.div`
   text-align: center;
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
-  max-width: 12vw;
+  max-width: 13vw;
+
+  @media ${devices.laptop} {
+    max-width: none;
+  }
 `;
 
 const StyledHeader = styled.h3`
@@ -64,7 +70,14 @@ const StyledButtonWrapper = styled.div`
   margin-bottom: 4rem;
 `;
 
-const ToDo = ({ pageContext, actualDate }) => {
+const StyledButton = styled.button`
+  border: 1px solid grey;
+  border-radius: 3px;
+  background-color: white;
+  margin: 0.5rem;
+`;
+
+const ToDo = ({ actualDate }) => {
   const dispatch = useDispatch();
 
   const handleClick = (id) => {
@@ -134,14 +147,14 @@ const ToDo = ({ pageContext, actualDate }) => {
                     )}
                     <StyledContent>{todo.content}</StyledContent>
                     <StyledButtonWrapper>
-                      <button
+                      <StyledButton
                         onClick={() =>
                           handleAdd(todo.id, todo.title, time, todo.content, 'done', fullDate)
                         }
                       >
                         done
-                      </button>
-                      <button onClick={() => handleClick(todo.id)}>remove</button>
+                      </StyledButton>
+                      <StyledButton onClick={() => handleClick(todo.id)}>remove</StyledButton>
                     </StyledButtonWrapper>
                   </StyledWrapper>
                 ) : (

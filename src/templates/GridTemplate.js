@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import UserPageTemplate from './UserPageTemplate';
@@ -12,11 +14,25 @@ import plusIcon from '../assets/icons/plus.svg';
 import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
 import ArticlesList from '../components/organisms/ArticlesList/ArticlesList';
 import TwitterDetail from '../components/molecules/TwitterDetail/TwitterDetail';
+import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
+import StyledLink from '../components/atoms/Link/Link';
+import ArticleSearch from '../views/ArticleSearch';
+
+import { devices } from '../Devices/devices';
 
 const StyledWrapper = styled.div`
   padding: ${({ activePage }) =>
-    activePage === 'articles' ? '25px 80px 25px 70px' : '25px 150px 25px 70px'};
+    activePage === 'articles' ? '25px 80px 25px 70px' : '25px 50px 25px 70px'};
   position: relative;
+
+  @media ${devices.laptop} {
+    padding: 0 2rem 0 0;
+    /* width: 100vw; */
+  }
+
+  @media ${devices.mobileL} {
+    padding: 0 1rem 0 0;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -25,15 +41,34 @@ const StyledHeading = styled(Heading)`
   ::first-letter {
     text-transform: uppercase;
   }
+  width: 40%;
+  text-align: center;
+
+  @media ${devices.tablet} {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
   margin: 0;
   font-weight: ${({ theme }) => theme.bold};
+
+  width: 40%;
+  text-align: center;
+
+  @media ${devices.tablet} {
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 const StyledPageHeader = styled.div`
   margin: 2.5rem 0 5rem;
+
+  @media ${devices.tablet} {
+    margin: ${({ activePage }) => (activePage === 'twitters' ? '2.5rem 0 20rem' : '2.5rem 0 5rem')};
+  }
 `;
 
 const StyledGrid = styled.div`
@@ -42,6 +77,30 @@ const StyledGrid = styled.div`
     activePage === 'twitters' ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
   grid-gap: ${({ activePage }) => (activePage === 'notes' ? '85px' : '40px')};
   height: 100%;
+
+  @media ${devices.desktop} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media ${devices.laptopL} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media ${devices.laptop} {
+    grid-template-columns: ${({ activePage }) =>
+      activePage !== 'notes' ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'};
+    grid-gap: 1.5rem;
+  }
+
+  @media ${devices.tablet} {
+    grid-template-columns: ${({ activePage }) =>
+      activePage === 'articleSearch' || activePage === 'twitters'
+        ? 'repeat(1, 1fr)'
+        : 'repeat(2, 1fr)'};
+  }
+  @media ${devices.mobileL} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const StyledArticlesGrid = styled(StyledGrid)`
@@ -66,6 +125,24 @@ const StyledArticlesPage = styled.div`
   display: flex;
 `;
 
+const StyledOverlap = styled(StyledLink)`
+  background-color: ${({ theme }) => theme.articles};
+
+  &:hover {
+    color: ${({ theme }) => theme.articles};
+    border: 1px solid ${({ theme }) => theme.articles};
+    border-bottom: 0.4rem solid ${({ theme }) => theme.articles};
+  }
+`;
+
+const StyledOverlapCategory = styled(OverlapCategory)`
+  display: none;
+  @media ${devices.tablet} {
+    display: inline-flex;
+    border-bottom: 1px solid ${({ theme }) => theme.articles};
+  }
+`;
+
 const GridTemplate = ({ children, pageContext }) => {
   const [barVisible, setBarVisible] = useState(false);
 
@@ -77,14 +154,25 @@ const GridTemplate = ({ children, pageContext }) => {
   return (
     <UserPageTemplate pageType={pageContext}>
       <StyledWrapper activePage={pageContext}>
-        <StyledPageHeader>
-          <Input search placeholder="Search" />
+        <StyledPageHeader activePage={pageContext}>
+          {(pageContext === 'articles' || pageContext === 'articleSearch') && (
+            <StyledOverlapCategory>
+              <StyledOverlap as={Link} to="/articles">
+                Articles
+              </StyledOverlap>
+              <StyledOverlap as={Link} to="/articleSearch">
+                Search
+              </StyledOverlap>
+            </StyledOverlapCategory>
+          )}
+
           <StyledHeading big as="h1">
             {pageContext}
           </StyledHeading>
           <StyledParagraph>
-            {typeLength[pageContext].length} {pageContext}
+            {pageContext === 'articleSearch' ? '' : typeLength[pageContext].length} {pageContext}
           </StyledParagraph>
+          {pageContext !== 'articleSearch' ? <Input search placeholder="Search" /> : ''}
           {pageContext === 'twitters' ? <TwitterDetail /> : ''}
         </StyledPageHeader>
         {pageContext === 'articles' ? (
@@ -112,6 +200,7 @@ GridTemplate.propTypes = {
     'movies',
     'series',
     'todos',
+    'articleSearch',
   ]),
 };
 

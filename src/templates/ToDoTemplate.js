@@ -13,10 +13,21 @@ import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
 import plusIcon from '../assets/icons/plus.svg';
 import ToDoDone from '../components/molecules/ToDoDone/ToDoDone';
 
+import { devices } from '../Devices/devices';
+
 const StyledWrapper = styled.div`
   padding: 2.5rem 3rem 2.5rem;
-  margin-left: 4rem;
   position: relative;
+
+  @media ${devices.laptop} {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 4rem;
+  }
+
+  @media ${devices.mobileL} {
+    margin-right: 1rem;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -25,16 +36,36 @@ const StyledHeading = styled(Heading)`
   ::first-letter {
     text-transform: uppercase;
   }
+
+  @media ${devices.tablet} {
+    width: 100%;
+    text-align: center;
+  }
+
+  width: 40%;
+  text-align: center;
 `;
 
 const StyledParagraph = styled(Paragraph)`
   margin: 0;
   font-weight: ${({ theme }) => theme.bold};
+
+  @media ${devices.tablet} {
+    width: 100%;
+    text-align: center;
+  }
+
+  width: 40%;
+  text-align: center;
 `;
 
 const StyledPageHeader = styled.div`
   margin: 2.5rem 0 5rem;
   position: relative;
+
+  @media ${devices.tablet} {
+    margin: 2.5rem 0 18rem;
+  }
 `;
 
 const StyledGrid = styled.div`
@@ -42,6 +73,10 @@ const StyledGrid = styled.div`
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 2px;
   height: 100vh;
+
+  @media ${devices.laptop} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
@@ -61,20 +96,54 @@ const StyledButtonIcon = styled(ButtonIcon)`
 const StyledP = styled.p`
   display: flex;
   position: absolute;
+  justify-content: space-between;
   bottom: 100%;
   left: 45%;
   margin-bottom: 0.5rem;
   margin: 0;
   font-weight: bold;
   align-items: center;
+
+  @media ${devices.laptop} {
+    bottom: 78%;
+  }
+
+  @media ${devices.tablet} {
+    bottom: -30%;
+    width: 100%;
+    left: 0;
+  }
+
+  @media ${devices.mobileL} {
+    bottom: -20%;
+  }
+
+  @media ${devices.mobileM} {
+    bottom: -25%;
+  }
 `;
 
 const StyledSpan = styled.p`
   font-size: 1.3rem;
   color: ${({ theme }) => theme.grey300};
 
-  margin-left: 2.5rem;
+  margin-left: 1.5rem;
   text-align: center;
+  width: 100%;
+  margin-bottom: 5px;
+
+  @media ${devices.mobileL} {
+    display: none;
+  }
+`;
+
+const StyledContainerName = styled.span`
+  width: 75%;
+  margin-bottom: -1rem;
+
+  @media ${devices.mobileL} {
+    width: 100%;
+  }
 `;
 
 const ToDoTemplate = ({ children, pageContext }) => {
@@ -86,19 +155,17 @@ const ToDoTemplate = ({ children, pageContext }) => {
       <>
         <StyledWrapper>
           <StyledPageHeader>
-            <Input search placeholder="Search" />
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
             <StyledP>
-              Recently comleted
-              <StyledSpan>
-                (list of completed tasks - here you can see all the tasks you have done)
-              </StyledSpan>
+              <StyledContainerName>Recently comleted</StyledContainerName>
+              <StyledSpan>(here you can see all the tasks you have done)</StyledSpan>
             </StyledP>
 
             <ToDoDone />
             <StyledParagraph>{`${todoLength.length} ${pageContext}`}</StyledParagraph>
+            <Input search placeholder="Search" />
           </StyledPageHeader>
           <StyledGrid>{children}</StyledGrid>
           <NewItemBar isVisible={barVisible} />

@@ -13,6 +13,8 @@ import Heading from '../components/atoms/Heading/Heading';
 import Paragraph from '../components/atoms/Paragraph/Paragraph';
 import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
+import StyledLink from '../components/atoms/Link/Link';
+import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
 
 const StyledWrapper = styled.div`
   padding: 25px 30px 25px;
@@ -58,33 +60,6 @@ const StyledButtonIcon = styled(ButtonIcon)`
   z-index: 1000000;
 `;
 
-const StyledLink = styled.a`
-  color: black;
-  text-decoration: none;
-  font-size: 2.5rem;
-  margin-right: 0.2rem;
-  background-color: ${({ theme }) => theme.movies};
-
-  padding: 1.5rem 3rem;
-  font-weight: bold;
-
-  &:hover {
-    color: ${({ theme }) => theme.movies};
-    border: 1px solid ${({ theme }) => theme.movies};
-
-    background-color: ${({ theme }) => theme.greyTransparent};
-
-    border-bottom: 0.4rem solid ${({ theme }) => theme.movies};
-  }
-`;
-
-const StyledCategory = styled.div`
-  display: flex;
-  margin: 0px 15rem 5rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.movies};
-  border-radius: 0.5rem;
-`;
-
 const MoviesTemplate = ({ pageContext, children }) => {
   const [barVisible, setBarVisibility] = useState(false);
   const moviesLength = useSelector((state) => state.natReducer.movies);
@@ -94,14 +69,14 @@ const MoviesTemplate = ({ pageContext, children }) => {
     <UserPageTemplate>
       <>
         <StyledWrapper>
-          <StyledCategory>
+          <OverlapCategory>
             <StyledLink as={Link} to="/movies">
               Movies
             </StyledLink>
             <StyledLink as={Link} to="/series">
               Series
             </StyledLink>
-          </StyledCategory>
+          </OverlapCategory>
           <StyledPageHeader>
             <Input search placeholder="Search" />
             <StyledHeading big as="h1">
