@@ -1,29 +1,26 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import withContext from '../hoc/withContext';
+import { FaStar } from 'react-icons/fa';
 
-import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
-import RightSearchBar from '../components/organisms/RightSearchBar/RightSearchBar';
+import withContext from '../../hoc/withContext';
 
-import { addItem } from '../store/NATitems/NATitems.reducer';
+import ButtonIcon from '../../components/atoms/ButtonIcon/ButtonIcon';
+import RightSearchBar from '../../components/organisms/RightSearchBar/RightSearchBar';
+import AddButton from '../../components/atoms/AddButton/AddButton';
+import ButtonLink from '../../components/atoms/ButtonLink/ButtonLink';
+import BooksToolTip from '../../components/molecules/ToolTip/BooksToolTip';
+
+import { addItem } from '../../store/NATitems/NATitems.reducer';
+import { devices } from '../../Devices/devices';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   background-color: ${({ activecolor, theme }) => theme[activecolor]};
-  border-radius: 5rem;
 
-  position: fixed;
-  bottom: 4rem;
-  right: 4rem;
-  color: white;
-
-  width: 18rem;
-  font-size: 1.7rem;
-  font-weight: bold;
-  box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
-
-  background-size: 40%;
-  z-index: 1000000;
+  @media ${devices.tablet} {
+    height: 7rem;
+    width: 11rem;
+  }
 `;
 
 const StyledBookWrapper = styled.div`
@@ -40,11 +37,14 @@ const StyledDetails = styled.div`
   height: 15vh;
   width: 100%;
   margin: 1rem 1rem;
+  @media ${devices.mobileL} {
+    font-size: 1.3rem;
+  }
 `;
 
 const StyledImage = styled.img`
   height: 16vh;
-  width: 7vw;
+  width: 100%;
 `;
 
 const StyledDescription = styled.div`
@@ -52,24 +52,7 @@ const StyledDescription = styled.div`
   height: 15vh;
 `;
 
-const StyledToolTip = styled.span`
-  visibility: hidden;
-
-  background-color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-  border-radius: 0.5rem;
-  color: #555;
-  font-weight: 300;
-  padding: 3rem 3rem 6rem;
-  position: absolute;
-  width: 45rem;
-  top: 20rem;
-  left: 35rem;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease;
-  text-align: center;
-
+const StyledToolTip = styled(BooksToolTip)`
   ${StyledDescription}:hover & {
     visibility: visible;
     border: 2px solid ${({ theme }) => theme.books};
@@ -79,6 +62,17 @@ const StyledToolTip = styled.span`
     background-color: white;
     text-align: justify;
     z-index: 999999999999999999;
+  }
+
+  @media ${devices.mobileL} {
+    left: 12rem;
+    width: 25rem;
+    top: 25rem;
+  }
+
+  @media ${devices.mobileL} {
+    left: 10rem;
+    width: 23rem;
   }
 `;
 
@@ -91,43 +85,26 @@ const StyledToolTipTitle = styled.p`
   font-size: 1.6rem;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 `;
 
-const StyledLink = styled.a`
-  display: inline-flex;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  width: 14.2rem;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.2rem;
-  background-color: ${({ theme }) => theme.grey200};
+const StyledAuthor = styled.p`
+  @media ${devices.mobileM} {
+    font-size: 1.2rem;
+  }
+`;
+
+const StyledParagraph = styled.p`
+  margin: 0 0 1.2rem 1rem;
+  margin-bottom: 1.2rem;
+`;
+
+const StyledSpan = styled.span`
   color: ${({ theme }) => theme.grey300};
-  position: absolute;
-  right: 0;
-  bottom: 3.5rem;
-`;
-
-const StyledParagraphT = styled.p`
-  margin: 0;
-  margin-bottom: 0.5rem;
-  position: absolute;
-  bottom: 34%;
-`;
-
-const StyledParagraphB = styled(StyledParagraphT)`
-  bottom: 20%;
-`;
-
-const StyledAddButton = styled.button`
-  position: absolute;
-  top: 40%;
-  right: 0;
-  padding: 0.6rem 0.6rem;
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
+  min-width: 6vw;
+  display: inline-flex;
+  font-size: 1.6rem;
+  margin-right: 0.5rem;
 `;
 
 const Books = ({ pageContext, actualDate }) => {
@@ -166,14 +143,37 @@ const Books = ({ pageContext, actualDate }) => {
 
             return (
               <StyledBookWrapper key={book.id}>
-                <StyledAddButton onClick={() => dispatch(addItem(pageContext, values))}>
+                <AddButton onClick={() => dispatch(addItem(pageContext, values))}>
                   Want to read
-                </StyledAddButton>
+                </AddButton>
 
                 <StyledDescription>
                   <StyledImage src={imageLinks ? imageLinks.smallThumbnail : image} alt="book" />
                   <StyledToolTip>
                     <StyledToolTipTitle>{title}</StyledToolTipTitle>
+                    <div style={{ display: 'flex', marginBottom: '1rem' }}>
+                      <StyledParagraph>
+                        {averageRating ? averageRating : ' - '}
+                        <FaStar color={'#ffc107'} size={13} style={{ marginLeft: '2px' }} />
+                      </StyledParagraph>
+                      <StyledParagraph>
+                        <StyledSpan>pages:</StyledSpan>
+                        {pageCount}
+                      </StyledParagraph>
+                      <StyledParagraph>
+                        <StyledSpan>lang:</StyledSpan>
+                        {language.toUpperCase()}
+                      </StyledParagraph>
+                    </div>
+                    {/* <StyledParagraphT>
+                      category:
+                      {categories ? categories.map((cat) => ` ${cat}, `) : ' '}
+                    </StyledParagraphT>
+                    <StyledParagraphB>
+                      rate:
+                      {averageRating ? averageRating : ' - '}; pages: {pageCount}; lang.{' '}
+                      {language.toUpperCase()}
+                    </StyledParagraphB> */}
                     Description:
                     <hr />
                     {description}
@@ -181,24 +181,21 @@ const Books = ({ pageContext, actualDate }) => {
                 </StyledDescription>
                 <StyledDetails>
                   <StyledTitle>{title}</StyledTitle>
-                  <p>by {authors ? authors.map((auth) => `${auth}, `) : '-'}</p>
+                  <StyledAuthor>
+                    by {authors ? authors.map((auth) => `${auth}, `) : '-'}
+                  </StyledAuthor>
 
-                  <StyledParagraphT>
-                    category:
-                    {categories ? categories.map((cat) => ` ${cat}, `) : ' '}
-                  </StyledParagraphT>
-                  <StyledParagraphB>
-                    rate:
-                    {averageRating ? averageRating : ' - '}; pages: {pageCount}; lang.{' '}
-                    {language.toUpperCase()}
-                  </StyledParagraphB>
-                  <StyledLink href={previewLink}>Check Book</StyledLink>
+                  <ButtonLink href={previewLink}>Check Book</ButtonLink>
                 </StyledDetails>
               </StyledBookWrapper>
             );
           })}
       </RightSearchBar>
-      <StyledButtonIcon onClick={() => setBarVisibility(!barVisible)} activecolor={pageContext}>
+      <StyledButtonIcon
+        onClick={() => setBarVisibility(!barVisible)}
+        activecolor={pageContext}
+        secondary
+      >
         Find new book!
       </StyledButtonIcon>
     </>

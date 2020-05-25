@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { devices } from '../../../Devices/devices';
 
-const StyledLink = styled.a`
+const StyledOverlap = styled.button`
   color: black;
   text-decoration: none;
   font-size: 2.5rem;
@@ -18,16 +18,22 @@ const StyledLink = styled.a`
     border: 1px solid ${({ theme }) => theme.movies};
 
     background-color: ${({ theme }) => theme.greyTransparent};
-
     border-bottom: 0.4rem solid ${({ theme }) => theme.movies};
   }
 
   @media ${devices.tablet} {
-    padding: 1rem 2rem;
-    font-size: 2rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.5rem;
     width: 50%;
+    margin-bottom: 1rem;
+  }
+
+  @media ${devices.mobileM} {
+    padding: 0.2rem 0.2rem;
+    font-size: 1.3rem;
+    width: 40%;
     margin-bottom: 1rem;
   }
 `;
 
-export default StyledLink;
+export default StyledOverlap;

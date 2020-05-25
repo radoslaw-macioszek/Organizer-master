@@ -10,6 +10,7 @@ import MoviesCategoryBar from './Movies/CategoryBar';
 
 import MainColumn from './Movies/MainColumn';
 import WatchedMoviesAndSeries from './Movies/WatchedMoviesAndSeries';
+import { devices } from '../Devices/devices';
 
 const StyledRightSide = styled.div`
   display: flex;
@@ -33,6 +34,12 @@ const StyledLeftSide = styled.div`
 
   box-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.3);
   border-radius: 0.5rem;
+
+  @media ${devices.laptopL} {
+    width: 30vw;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 3.5rem;
+  }
 `;
 
 const StyledBottomSide = styled(StyledLeftSide)`
@@ -40,6 +47,11 @@ const StyledBottomSide = styled(StyledLeftSide)`
   width: 84vw;
   grid-template-columns: repeat(6, 1fr);
   padding: 2rem;
+
+  @media ${devices.laptopL} {
+    width: 74vw;
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 
 const StyledScroll = styled.div`

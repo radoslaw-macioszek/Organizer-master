@@ -30,7 +30,7 @@ const Input = styled.input`
       margin-left: 2%;
 
       @media ${devices.tablet} {
-        width: 100%;
+        width: 95%;
       }
     `}
 `;

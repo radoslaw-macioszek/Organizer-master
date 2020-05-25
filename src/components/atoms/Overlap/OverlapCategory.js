@@ -7,7 +7,7 @@ const OverlapCategory = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.movies};
 
   @media ${devices.tablet} {
-    margin: 0 0 1rem 0;
+    margin: 2rem 0 -3rem 0;
     width: 100%;
     text-align: center;
   }

@@ -8,6 +8,7 @@ import { loadMoviesAction } from '../../../store/movies/movies.reducer';
 
 import Input from '../../atoms/Input/Input';
 import Heading from '../../atoms/Heading/Heading';
+import { devices } from '../../../Devices/devices';
 
 const StyledWrapper = styled.div`
   border-left: 1rem solid ${({ theme, activecolor }) => theme[activecolor]};
@@ -29,6 +30,11 @@ const StyledWrapper = styled.div`
   transition: transform ease-out 0.5s;
 
   overflow: scroll;
+
+  @media ${devices.tablet} {
+    width: 82%;
+    padding: 4rem 2rem;
+  }
 `;
 
 const StyledInput = styled(Input)`
@@ -54,26 +60,32 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
   const [bookLoading, setBookLoading] = useState(true);
 
   const handleChange = (event) => {
-    setSearchPhrase(event.target.value);
+    if (pageContext === 'books') {
+      setSearchBookPhrase(event.target.value);
+    } else {
+      setSearchPhrase(event.target.value);
+    }
   };
 
   const handleSubmit = (event) => {
     setBookLoading(!bookLoading);
     event.preventDefault();
+    if (pageContext === 'books') {
+      setSearchBookPhrase('');
+    } else {
+      setSearchPhrase('');
+    }
   };
 
   useEffect(() => {
     if (pageContext === 'books' && searchBookPhrase !== '') {
       dispatch(loadBooksAction(searchBookPhrase));
-      setSearchBookPhrase('');
     } else if (pageContext === 'movies' && searchPhrase !== '') {
       dispatch(loadMoviesAction(searchPhrase, 'movie'));
-      setSearchPhrase('');
     } else if (pageContext === 'series' && searchPhrase !== '') {
       dispatch(loadMoviesAction(searchPhrase, 'tv'));
-      setSearchPhrase('');
     }
-  }, [dispatch, bookLoading, pageContext, searchPhrase]);
+  }, [dispatch, bookLoading, pageContext, searchPhrase, searchBookPhrase]);
 
   return pageContext === 'books' ? (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>

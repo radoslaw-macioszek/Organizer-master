@@ -7,6 +7,9 @@ import { removeItem, addPosition } from '../../store/NATitems/NATitems.reducer';
 import Input from '../../components/atoms/Input/Input';
 import Button from '../../components/atoms/Button/Button';
 import Heading from '../../components/atoms/Heading/Heading';
+import FavoriteBookHeading from '../../components/atoms/Heading/FavoriteBookHeading';
+
+import { devices } from '../../Devices/devices';
 
 const StyledHeader = styled.div`
   text-align: justify;
@@ -25,12 +28,17 @@ const StyledInput = styled(Input)`
   padding: 0.2rem 0 0.3rem 1.4rem;
   font-size: 1.4rem;
   border-radius: 0.7rem;
-  width: 3vw;
+  width: 4vw;
   border: 1px solid #8080802e;
   box-shadow: 0.2rem -0.2rem 0px #0000002b;
   background-color: transparent;
   margin-right: 1rem;
   outline: none;
+
+  @media ${devices.tablet} {
+    width: 10vw;
+    margin-right: 0.5rem;
+  }
 `;
 
 const StyledSubmit = styled.button`
@@ -48,6 +56,10 @@ const StyledPosition = styled.div`
   display: flex;
   margin-bottom: 2rem;
   position: relative;
+
+  @media ${devices.tablet} {
+    margin-bottom: 6rem;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -75,47 +87,15 @@ const StyledHeading = styled(Heading)`
   transition: all 0.4s ease-out;
 `;
 
-const StyledFavoriteHeading = styled.div`
-  margin: 1rem 2rem;
-  border-radius: 1rem 1rem 0.3rem 0.3rem;
-  background-color: white;
-  border-left: 1px solid hsla(360, 73%, 60%);
-  border-right: 3px solid hsla(360, 73%, 60%);
-  border-bottom: 1px solid hsla(360, 73%, 60%);
-  border-top: 4px solid hsla(360, 73%, 60%);
-  color: black;
-  position: relative;
-  backface-visibility: hidden;
-
-  &::after {
-    content: attr(data-tool-tip);
-    font-size: 1.2rem;
-    font-weight: bold;
-    display: block;
-    position: absolute;
-    background-color: hsla(360, 73%, 60%, 0.8);
-    padding: 1rem 1.5rem;
-    color: white;
-    border-radius: 3px;
-    bottom: 5%;
-    left: 0;
-    transform: scale(0);
-    transition: transform ease-out 400ms, bottom ease-out 150ms;
-    backface-visibility: hidden;
-  }
-
-  &:hover::after {
-    transform: scale(1);
-    bottom: 5%;
-    width: 100%;
-    text-align: center;
-    backface-visibility: hidden;
-  }
-
+const StyledFavoriteHeading = styled(FavoriteBookHeading)`
   &:hover ${StyledHeading} {
     background-color: hsla(360, 73%, 60%, 1);
     left: -4.5rem;
     z-index: 9999;
+  }
+
+  @media ${devices.mobileL} {
+    margin: 1.5rem 0.5rem 1rem 1.5rem;
   }
 `;
 
@@ -125,6 +105,14 @@ const StyledImage = styled.img`
   margin: 0.5rem 1rem;
   border-radius: 2px;
   margin-top: 0.8rem;
+
+  @media ${devices.tablet} {
+    height: 13vh;
+  }
+
+  @media ${devices.mobileL} {
+    height: 12vh;
+  }
 `;
 
 const StyledForm = styled.form`

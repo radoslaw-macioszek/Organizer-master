@@ -13,7 +13,7 @@ import Heading from '../components/atoms/Heading/Heading';
 import Paragraph from '../components/atoms/Paragraph/Paragraph';
 import ButtonIcon from '../components/atoms/ButtonIcon/ButtonIcon';
 import Input from '../components/atoms/Input/Input';
-import StyledLink from '../components/atoms/Link/Link';
+import StyledOverlap from '../components/atoms/OverlapLink/Overlap';
 import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
 
 const StyledWrapper = styled.div`
@@ -70,12 +70,12 @@ const MoviesTemplate = ({ pageContext, children }) => {
       <>
         <StyledWrapper>
           <OverlapCategory>
-            <StyledLink as={Link} to="/movies">
+            <StyledOverlap as={Link} to="/movies">
               Movies
-            </StyledLink>
-            <StyledLink as={Link} to="/series">
+            </StyledOverlap>
+            <StyledOverlap as={Link} to="/series">
               Series
-            </StyledLink>
+            </StyledOverlap>
           </OverlapCategory>
           <StyledPageHeader>
             <Input search placeholder="Search" />

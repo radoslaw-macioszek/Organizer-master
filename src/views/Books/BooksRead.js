@@ -7,6 +7,7 @@ import Button from '../../components/atoms/Button/Button';
 import Heading from '../../components/atoms/Heading/Heading';
 
 import { removeItem } from '../../store/NATitems/NATitems.reducer';
+import { devices } from '../../Devices/devices';
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -16,12 +17,28 @@ const StyledHeader = styled.div`
   margin-bottom: 4rem;
 `;
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.p`
   margin: 0 0.5rem 1rem 3rem;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
   align-items: center;
+
+  @media ${devices.laptopL} {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+
+  @media ${devices.laptop} {
+    margin: 0 0.5rem 1rem 1.5rem;
+  }
+`;
+
+const StyledStars = styled.div`
+  display: inline-flex;
+  align-items: center;
+  margin-left: 1rem;
 `;
 
 const StyledPosition = styled.div`
@@ -44,7 +61,7 @@ const StyledHeading = styled(Heading)`
 
 const StyledReadedHeading = styled(StyledHeading)`
   margin: 0 2rem 0.2rem 1rem;
-  padding-left: 2rem;
+  padding: 2rem 2rem;
   width: 100%;
   font-size: 1.5rem;
   justify-content: flex-start;
@@ -63,6 +80,14 @@ const StyledReadedHeading = styled(StyledHeading)`
     top: 5%;
     transform: scale(0.95);
   }
+
+  @media ${devices.tablet} {
+    width: 90%;
+  }
+
+  @media ${devices.mediaL} {
+    font-size: 1.5rem;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -71,6 +96,15 @@ const StyledButton = styled(Button)`
   right: 8px;
   width: 25px;
   height: 23px;
+
+  @media ${devices.tablet} {
+    top: 40%;
+    right: 7%;
+  }
+`;
+
+const StyledLabelSpan = styled.span`
+  margin: 0 0 1rem 1rem;
 `;
 
 const BooksRead = () => {
@@ -87,11 +121,10 @@ const BooksRead = () => {
         return (
           <StyledHeader key={id}>
             <StyledLabel>
-              Rate this book:
-              <div style={{ margin: '0 50px 0 5px' }}>
-                <Stars />
-              </div>
-              {`Readed: ${readed}`}
+              <StyledLabelSpan>{`Readed: ${readed}`}</StyledLabelSpan>
+              <StyledStars>
+                Rate: <Stars />
+              </StyledStars>
             </StyledLabel>
             <StyledPosition>
               <StyledReadedHeading>{title}</StyledReadedHeading>

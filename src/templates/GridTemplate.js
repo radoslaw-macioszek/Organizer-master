@@ -15,7 +15,7 @@ import NewItemBar from '../components/organisms/NewItemBar/NewItemBar';
 import ArticlesList from '../components/organisms/ArticlesList/ArticlesList';
 import TwitterDetail from '../components/molecules/TwitterDetail/TwitterDetail';
 import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
-import StyledLink from '../components/atoms/Link/Link';
+import StyledOverlap from '../components/atoms/OverlapLink/Overlap';
 import ArticleSearch from '../views/ArticleSearch';
 
 import { devices } from '../Devices/devices';
@@ -125,8 +125,9 @@ const StyledArticlesPage = styled.div`
   display: flex;
 `;
 
-const StyledOverlap = styled(StyledLink)`
-  background-color: ${({ theme }) => theme.articles};
+const StyledOverlapLink = styled(StyledOverlap)`
+  background-color: white;
+  border: 2px solid ${({ theme }) => theme.articles};
 
   &:hover {
     color: ${({ theme }) => theme.articles};
@@ -155,17 +156,6 @@ const GridTemplate = ({ children, pageContext }) => {
     <UserPageTemplate pageType={pageContext}>
       <StyledWrapper activePage={pageContext}>
         <StyledPageHeader activePage={pageContext}>
-          {(pageContext === 'articles' || pageContext === 'articleSearch') && (
-            <StyledOverlapCategory>
-              <StyledOverlap as={Link} to="/articles">
-                Articles
-              </StyledOverlap>
-              <StyledOverlap as={Link} to="/articleSearch">
-                Search
-              </StyledOverlap>
-            </StyledOverlapCategory>
-          )}
-
           <StyledHeading big as="h1">
             {pageContext}
           </StyledHeading>
@@ -174,6 +164,16 @@ const GridTemplate = ({ children, pageContext }) => {
           </StyledParagraph>
           {pageContext !== 'articleSearch' ? <Input search placeholder="Search" /> : ''}
           {pageContext === 'twitters' ? <TwitterDetail /> : ''}
+          {(pageContext === 'articles' || pageContext === 'articleSearch') && (
+            <StyledOverlapCategory>
+              <StyledOverlapLink as={Link} to="/articles">
+                Articles
+              </StyledOverlapLink>
+              <StyledOverlapLink as={Link} to="/articleSearch">
+                Search
+              </StyledOverlapLink>
+            </StyledOverlapCategory>
+          )}
         </StyledPageHeader>
         {pageContext === 'articles' ? (
           <StyledArticlesPage>

@@ -4,10 +4,11 @@ import withContext from '../hoc/withContext';
 import UserPageTemplate from './UserPageTemplate';
 import BookTemplate from './BookTemplate';
 
-import Books from '../views/Books';
+import Books from '../views/Books/BooksBar';
 import Book from '../views/Books/Book';
 
-const BooksContentTemplate = () => {
+const BooksContentTemplate = ({ view }) => {
+  console.log('sssss', view);
   return (
     <UserPageTemplate>
       <>

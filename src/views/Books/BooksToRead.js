@@ -7,6 +7,7 @@ import withContext from '../../hoc/withContext';
 import Paragraph from '../../components/atoms/Paragraph/Paragraph';
 import Heading from '../../components/atoms/Heading/Heading';
 import Button from '../../components/atoms/Button/Button';
+import { devices } from '../../Devices/devices';
 
 import { removeItem, addToFavorite, addToReaded } from '../../store/NATitems/NATitems.reducer';
 
@@ -16,6 +17,19 @@ const DateInfo = styled(Paragraph)`
   font-size: ${({ theme }) => theme.fontSize.xs};
   display: inline-flex;
   align-items: center;
+`;
+
+const StyledWrapper = styled.div`
+  margin-left: 1rem;
+  margin-right: 5rem;
+
+  @media ${devices.laptop} {
+    width: 40vw;
+  }
+
+  @media ${devices.tablet} {
+    width: 60vw;
+  }
 `;
 
 const BookWrapper = styled.div`
@@ -28,14 +42,34 @@ const BookWrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  margin-right: 1rem;
-  margin-top: 0.5rem;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 10px 15px;
+`;
+
+const StyledButton = styled(Button)`
+  margin-right: 10px;
+  width: 12.5rem;
+  font-size: 1.2rem;
+  border: 1px solid grey;
+
+  @media ${devices.laptop} {
+    margin-left: 5px;
+  }
+
+  @media ${devices.mobileL} {
+    font-size: 0.9rem;
+    padding: 0 8px;
+    margin: 0 1px 0 2px;
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  margin: 1rem 2rem 4rem 1.5rem;
+  margin: 1rem 1.5rem 4rem;
   line-height: 1.5;
+  padding: 5px;
 `;
 
 const StyledHeader = styled.div`
@@ -47,14 +81,25 @@ const StyledHeader = styled.div`
 
 const StyledImage = styled.img`
   height: 18vh;
-  min-width: 6vw;
+  min-width: 8vw;
   margin-left: 1rem;
   border-radius: 0.2rem;
   margin-top: 0.8rem;
+
+  float: left;
+  margin: 10px 20px 5px;
+
+  @media ${devices.mobileM} {
+    height: 16vh;
+    float: none;
+    margin: 10px auto;
+    display: flex;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
-  margin: 0 2rem 0.8rem 1rem;
+  padding: 2rem;
+  margin: 0 1rem 0.8rem;
   font-size: 2rem;
   background-color: ${({ theme }) => theme.books};
   padding: 2rem 0;
@@ -62,8 +107,11 @@ const StyledHeading = styled(Heading)`
   text-align: center;
   display: flex;
   color: white;
-
   justify-content: center;
+
+  @media ${devices.mobileM} {
+    font-size: 1.6rem;
+  }
 `;
 
 const BookToRead = ({ pageContext, actualDate }) => {
@@ -79,36 +127,30 @@ const BookToRead = ({ pageContext, actualDate }) => {
       {check.map((book) => {
         const { id, title, image, created, description } = book;
         return (
-          <div key={id}>
+          <StyledWrapper key={id}>
             <DateInfo>Added: {created}</DateInfo>
             <BookWrapper>
-              <StyledImage src={image ? image : randomImage} alt="book" />
-
               <StyledHeader>
                 <StyledHeading>{title}</StyledHeading>
+                <StyledImage src={image ? image : randomImage} alt="book" />
                 <StyledParagraph>{description}</StyledParagraph>
+                <ButtonsWrapper>
+                  <StyledButton
+                    onClick={() => dispatch(addToFavorite(title, image, favoriteBooksLength))}
+                    secondary
+                  >
+                    Add to Favorite
+                  </StyledButton>
+                  <StyledButton onClick={() => dispatch(addToReaded(title, actualDate))} secondary>
+                    Add to Readed
+                  </StyledButton>
+                  <StyledButton onClick={() => dispatch(removeItem(pageContext, id))} secondary>
+                    REMOVE
+                  </StyledButton>
+                </ButtonsWrapper>
               </StyledHeader>
-
-              <ButtonsWrapper>
-                <Button
-                  onClick={() => dispatch(addToFavorite(title, image, favoriteBooksLength))}
-                  secondary
-                >
-                  Add to Favorite
-                </Button>
-                <Button
-                  style={{ margin: '5px 0' }}
-                  onClick={() => dispatch(addToReaded(title, actualDate))}
-                  secondary
-                >
-                  Add to Readed
-                </Button>
-                <Button onClick={() => dispatch(removeItem(pageContext, id))} secondary>
-                  REMOVE
-                </Button>
-              </ButtonsWrapper>
             </BookWrapper>
-          </div>
+          </StyledWrapper>
         );
       })}
     </>

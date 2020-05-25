@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import withContext from '../hoc/withContext';
 
@@ -8,16 +9,30 @@ import Heading from '../components/atoms/Heading/Heading';
 import Input from '../components/atoms/Input/Input';
 import Paragraph from '../components/atoms/Paragraph/Paragraph';
 
+import { devices } from '../Devices/devices';
+
 const StyledPageHeader = styled.div`
-  margin: 2.5rem 0 5rem;
-  width: 30vw;
+  margin: 0 0 5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media ${devices.tablet} {
+    margin: 0;
+    width: 90%;
+  }
 `;
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.5fr 0.9fr;
+  grid-template-columns: 0.8fr 0.5fr;
   grid-gap: 7.5rem;
   height: 60vh;
+
+  @media ${devices.tablet} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -29,8 +44,12 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledWrapper = styled.div`
-  padding: 2.5rem 10rem 2.5rem 7rem;
+  padding: 0 0 0 3.5rem;
   position: relative;
+
+  @media ${devices.laptop} {
+    padding: 0;
+  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
@@ -40,16 +59,17 @@ const StyledParagraph = styled(Paragraph)`
 
 const BookTemplate = ({ pageContext, children }) => {
   const bookCount = useSelector((state) => state.natReducer.books);
+
   return (
     <StyledWrapper>
       <StyledPageHeader>
-        <Input search placeholder="Search" />
         <StyledHeading big as="h1">
           {pageContext}
         </StyledHeading>
         <StyledParagraph>
           {bookCount.length} {pageContext}
         </StyledParagraph>
+        <Input search placeholder="Search" />
       </StyledPageHeader>
       <StyledGrid>{children}</StyledGrid>
     </StyledWrapper>
