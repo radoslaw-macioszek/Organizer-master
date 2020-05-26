@@ -1,10 +1,11 @@
 import styled from 'styled-components';
+import { devices } from '../../../Devices/devices';
 
 const LeftArrowButton = styled.button`
   height: 21vh;
   width: 4vw;
   position: absolute;
-  left: -6.2rem;
+  left: -8.2rem;
   top: 5.1rem;
   background-color: ${({ theme }) => theme.greyTransparent};
   border: none;
@@ -16,6 +17,32 @@ const LeftArrowButton = styled.button`
   &:hover {
     background: ${({ theme }) => theme.grey300Transparent};
     color: white;
+  }
+
+  @media ${devices.laptopL} {
+    left: -5.1rem;
+    width: 4vw;
+  }
+
+  @media ${devices.laptop} {
+    left: -9.1rem;
+    width: 6vw;
+  }
+
+  @media ${devices.tablet} {
+    width: 5rem;
+    height: 5rem;
+    padding-top: 5px;
+    left: 35%;
+    top: 28.1rem;
+  }
+
+  @media ${devices.mobileL} {
+    left: 20%;
+    top: 90%;
+  }
+  @media ${devices.mobileM} {
+    top: 95%;
   }
 `;
 

@@ -16,10 +16,20 @@ import Input from '../components/atoms/Input/Input';
 import StyledOverlap from '../components/atoms/OverlapLink/Overlap';
 import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
 
+import { devices } from '../Devices/devices';
+
 const StyledWrapper = styled.div`
   padding: 25px 30px 25px;
   margin-left: 40px;
   position: relative;
+
+  @media ${devices.laptop} {
+    margin-left: 0;
+  }
+
+  @media ${devices.laptop} {
+    margin-left: -2rem;
+  }
 `;
 
 const StyledHeading = styled(Heading)`
@@ -36,11 +46,20 @@ const StyledParagraph = styled(Paragraph)`
 `;
 
 const StyledPageHeader = styled.div`
-  margin: 25px 0 50px;
+  margin: 0 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const StyledGrid = styled.div`
   display: flex;
+`;
+
+const StyledOverlapCategory = styled(OverlapCategory)`
+  @media ${devices.mobileL} {
+    margin-bottom: -7rem;
+  }
 `;
 
 const StyledButtonIcon = styled(ButtonIcon)`
@@ -58,6 +77,10 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
   background-size: 40%;
   z-index: 1000000;
+
+  @media ${devices.tablet} {
+    width: 11rem;
+  }
 `;
 
 const MoviesTemplate = ({ pageContext, children }) => {
@@ -69,16 +92,7 @@ const MoviesTemplate = ({ pageContext, children }) => {
     <UserPageTemplate>
       <>
         <StyledWrapper>
-          <OverlapCategory>
-            <StyledOverlap as={Link} to="/movies">
-              Movies
-            </StyledOverlap>
-            <StyledOverlap as={Link} to="/series">
-              Series
-            </StyledOverlap>
-          </OverlapCategory>
           <StyledPageHeader>
-            <Input search placeholder="Search" />
             <StyledHeading big as="h1">
               {pageContext}
             </StyledHeading>
@@ -87,7 +101,17 @@ const MoviesTemplate = ({ pageContext, children }) => {
                 ? `${moviesLength.length} ${pageContext}`
                 : `${seriesLength.length} ${pageContext}`}
             </StyledParagraph>
+            <Input search placeholder="Search" />
+            <StyledOverlapCategory>
+              <StyledOverlap as={Link} to="/movies">
+                Movies
+              </StyledOverlap>
+              <StyledOverlap as={Link} to="/series">
+                Series
+              </StyledOverlap>
+            </StyledOverlapCategory>
           </StyledPageHeader>
+
           <StyledGrid>{children}</StyledGrid>
           <RightSearchBar isVisible={barVisible}>
             <SearchedMoviesAndSeries />

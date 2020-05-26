@@ -4,9 +4,12 @@ import styled from 'styled-components';
 import withContext from '../../hoc/withContext';
 
 import Button from '../../components/atoms/Button/Button';
+import MovieToolTip from '../../components/molecules/ToolTip/MovieToolTip';
+import DateInfo from '../../components/atoms/MovieDate/DateInfo';
 
 import { addToWatched, removeItem } from '../../store/NATitems/NATitems.reducer';
 import { loadMovieDetail } from '../../store/movies/movies.reducer';
+import { devices } from '../../Devices/devices';
 
 const StyledMovieColumn = styled.div`
   display: flex;
@@ -23,19 +26,25 @@ const StyledMovieColumn = styled.div`
   }
 
   position: relative;
+
+  @media ${devices.tablet} {
+    width: 34vw;
+  }
 `;
 
-const DateInfo = styled.p`
+const StyledDateInfo = styled(DateInfo)`
   margin: 0 0 0.8rem 1.2rem;
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  display: inline-flex;
-  align-items: center;
 `;
 
 const ButtonsWrapper = styled.div`
   display: flex;
   margin: 1rem 0 2rem;
+
+  @media ${devices.tablet} {
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -43,40 +52,13 @@ const StyledImage = styled.img`
   width: 11vw;
   border-radius: 0.5rem;
   margin-top: 0.5rem;
-`;
 
-const StyledToolTip = styled.p`
-  border-radius: 3px;
-  margin: 0;
-
-  position: relative;
-  backface-visibility: hidden;
-
-  &::after {
-    content: attr(data-tool-tip);
-    font-size: 1.6rem;
-    display: block;
-    position: absolute;
-    padding: 0.5rem 1.5rem;
-    color: transparent;
-    border-radius: 3px;
-    bottom: 1rem;
-    left: 0;
-    transform: scale(0);
-    transition: transform ease-out 0, bottom ease-out 150ms;
-    width: 100%;
-    backface-visibility: hidden;
+  @media ${devices.laptop} {
+    width: 20vw;
   }
 
-  &:hover::after {
-    transform: scale(1);
-    background-color: hsl(0, 0%, 0%, 0.4);
-    text-align: center;
-    color: white;
-    font-weight: bold;
-
-    border: 1px solid ${({ theme }) => theme.movies};
-    backface-visibility: hidden;
+  @media ${devices.mobileL} {
+    width: 30vw;
   }
 `;
 
@@ -84,6 +66,10 @@ const StyledButton = styled(Button)`
   margin-left: 1.5rem;
   width: 8rem;
   height: 2rem;
+
+  @media ${devices.tablet} {
+    margin-top: 0.8rem;
+  }
 `;
 
 const MainColumn = ({ openModal, pageContext }) => {
@@ -129,14 +115,14 @@ const MainColumn = ({ openModal, pageContext }) => {
   return pageContext === 'movies'
     ? checkMovies.map((item) => (
         <StyledMovieColumn key={item.id}>
-          <DateInfo>Added: 13/12/2019</DateInfo>
-          <StyledToolTip data-tool-tip={item.title}>
+          <StyledDateInfo>Added: 13/12/2019</StyledDateInfo>
+          <MovieToolTip data-tool-tip={item.title}>
             <StyledImage
               src={item.path === null ? image : item.path}
               alt="book"
               onClick={() => handleClick(item.id, 'movie')}
             />
-          </StyledToolTip>
+          </MovieToolTip>
           <ButtonsWrapper>
             <input
               type="checkbox"
@@ -156,14 +142,14 @@ const MainColumn = ({ openModal, pageContext }) => {
       ))
     : checkSeries.map((item) => (
         <StyledMovieColumn key={item.id}>
-          <DateInfo>Added: 13/12/2019</DateInfo>
-          <StyledToolTip data-tool-tip={item.title}>
+          <StyledDateInfo>Added: 13/12/2019</StyledDateInfo>
+          <MovieToolTip data-tool-tip={item.title}>
             <StyledImage
               src={item.path === null ? image : item.path}
               alt="book"
               onClick={() => handleClick(item.id, 'tv')}
             />
-          </StyledToolTip>
+          </MovieToolTip>
 
           <ButtonsWrapper>
             <input

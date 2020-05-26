@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FaStar, FaBalanceScale } from 'react-icons/fa';
 
 import { addToMovieList } from '../../../store/NATitems/NATitems.reducer';
+import { devices } from '../../../Devices/devices';
 
 const Animation = keyframes`
   0% {  opacity: 0 ; top: 50%; left: -100%}
@@ -31,6 +32,10 @@ const StyledWrapper = styled.div`
 
   animation: ${Animation} 1s ease-in-out;
   transition: ${Animation};
+
+  @media ${devices.laptop} {
+    width: 75vw;
+  }
 `;
 
 const StyledBackground = styled.div``;
@@ -46,6 +51,10 @@ const StyledDetails = styled.div`
   flex-direction: column;
   width: 100%;
   padding-right: 1rem;
+
+  @media ${devices.mobileL} {
+    padding: 1.5rem;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -54,6 +63,14 @@ const StyledImage = styled.img`
   border-radius: 5px;
   margin: 1rem;
   margin-right: 2rem;
+
+  @media ${devices.tablet} {
+    width: 18vw;
+  }
+
+  @media ${devices.mobileL} {
+    display: none;
+  }
 `;
 
 const StyledTitle = styled.p`
@@ -61,6 +78,10 @@ const StyledTitle = styled.p`
   margin: 1rem 0 2rem;
   text-align: left;
   font-weight: bold;
+
+  @media ${devices.mobileM} {
+    font-size: 2rem;
+  }
 `;
 
 const StyledSeriesTitle = styled(StyledTitle)`
@@ -71,6 +92,9 @@ const StyledSubTitle = styled.p`
   font-size: 1.6rem;
   margin: -1.3rem 0 1rem 0.4rem;
   text-align: left;
+  @media ${devices.mobileM} {
+    font-size: 1.3rem;
+  }
 `;
 
 const StyledVages = styled.div`
@@ -82,6 +106,10 @@ const StyledVages = styled.div`
   p {
     margin: 0.5rem 0;
   }
+
+  @media ${devices.mobileM} {
+    font-size: 1.2rem;
+  }
 `;
 
 const StyledSpan = styled.span`
@@ -89,11 +117,25 @@ const StyledSpan = styled.span`
   min-width: 6vw;
   display: inline-flex;
   font-size: 1.6rem;
+  @media ${devices.laptop} {
+    min-width: 10vw;
+  }
+
+  @media ${devices.mobileL} {
+    min-width: 20vw;
+  }
+
+  @media ${devices.mobileM} {
+    font-size: 1.3rem;
+  }
 `;
 const StyledGenres = styled.p`
   font-size: 1.5rem;
   margin: 1.8rem 0 0.5rem 0;
   display: inline-flex;
+  @media ${devices.mobileM} {
+    font-size: 1.4rem;
+  }
 `;
 
 const StyledBottomWrapper = styled.div`
@@ -103,6 +145,11 @@ const StyledBottomWrapper = styled.div`
   text-align: justify;
   padding: 2rem 3rem 1rem;
   line-height: 1.5;
+
+  @media ${devices.mobileL} {
+    font-size: 1.5rem;
+    padding: 3rem 2rem 1rem;
+  }
 `;
 
 const StyledParagraph = styled.p`
@@ -147,7 +194,7 @@ const Modal = () => {
                     <FaStar color="#ffc107" />
                     {details.vote_average}
                   </p>
-                  <p>${details.popularity} kk</p>
+                  <p>${details.popularity}</p>
                   <p>{details.release_date && details.release_date.slice(0, 4)}</p>
                   <p>
                     {hours}h {minutes} min.

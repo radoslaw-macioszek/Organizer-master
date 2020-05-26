@@ -13,11 +13,9 @@ const StyledMovieRow = styled(MovieRow)`
 `;
 
 const CategoryBar = ({ openModal, type, title, genre }) => {
-  console.log('type', type);
   // paginacja
   const [currentPage, setCurrentPage] = useState(1);
   const [moviesPerPage] = useState(4);
-  console.log(currentPage);
   const page = type;
 
   const indexOfLastMovie = currentPage * moviesPerPage;
@@ -25,7 +23,6 @@ const CategoryBar = ({ openModal, type, title, genre }) => {
   const currentMovies = page.slice(indexOfFirstMovie, indexOfLastMovie);
 
   const allPage = Math.ceil(page.length / moviesPerPage);
-  console.log('all', allPage);
 
   return (
     <StyledMovieRow>

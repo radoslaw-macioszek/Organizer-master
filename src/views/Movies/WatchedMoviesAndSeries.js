@@ -4,8 +4,12 @@ import styled from 'styled-components';
 import withContext from '../../hoc/withContext';
 
 import Button from '../../components/atoms/Button/Button';
+import MovieToolTip from '../../components/molecules/ToolTip/MovieToolTip';
+import DateInfo from '../../components/atoms/MovieDate/DateInfo';
+
 import { loadMovieDetail } from '../../store/movies/movies.reducer';
 import { removeItem } from '../../store/NATitems/NATitems.reducer';
+import { devices } from '../../Devices/devices';
 
 const StyledWatchedMovies = styled.div`
   display: flex;
@@ -23,14 +27,6 @@ const StyledWatchedMovies = styled.div`
   }
 `;
 
-const DateInfo = styled.p`
-  margin: 0 0 0.5rem 1.2rem;
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  display: inline-flex;
-  align-items: center;
-`;
-
 const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -40,12 +36,18 @@ const ButtonsWrapper = styled.div`
 
 const StyledTopButtons = styled.div`
   display: flex;
+
+  @media ${devices.tablet} {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const StyledButton = styled(Button)`
   background-color: white;
   color: ${({ theme }) => theme.movies};
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   border: 1px solid ${({ theme }) => theme.movies};
   border-radius: 0.5rem;
@@ -59,6 +61,18 @@ const StyledButton = styled(Button)`
     border: 1px solid ${({ theme }) => theme.moviesBold};
     color: ${({ theme }) => theme.moviesBold};
   }
+
+  @media ${devices.tablet} {
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media ${devices.mobileL} {
+    font-size: 0.8rem;
+  }
 `;
 
 const Front = styled.div`
@@ -67,11 +81,19 @@ const Front = styled.div`
   box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
   border-radius: 0.5rem;
   transition: all 0.8s ease;
-  /* margin-bottom: 2.5rem; */
+  z-index: 1;
 
   &:hover {
     transform: scale(1.2);
     backface-visibility: hidden;
+    z-index: 93290909;
+  }
+  @media ${devices.laptop} {
+    width: 15vw;
+  }
+
+  @media ${devices.tablet} {
+    width: 26vw;
   }
 `;
 
@@ -80,41 +102,20 @@ const StyledImage = styled.img`
   width: 102%;
   border-radius: 0.5rem;
   backface-visibility: hidden;
-
-  /* backface-visibility: hidden; */
 `;
 
-const StyledToolTip = styled.p`
-  text-decoration: line-through;
-  border-radius: 0.3rem;
-  margin: 0;
-
-  position: relative;
-
+const StyledToolTip = styled(MovieToolTip)`
   &::after {
     content: attr(data-tool-tip);
     font-size: 1.2rem;
-    display: block;
-    position: absolute;
     background-color: transparent;
-    color: transparent;
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.3rem;
     bottom: 5%;
-    left: 0;
-    transform: scale(0);
     transition: transform ease 0.7s, bottom ease-out 150ms;
     backface-visibility: hidden;
   }
 
   &:hover::after {
-    transform: scale(1);
-    background-color: hsl(0, 0%, 0%, 0.4);
-    text-align: center;
     width: 102%;
-    color: white;
-
-    border: 1px solid ${({ theme }) => theme.movies};
   }
 `;
 
@@ -141,9 +142,6 @@ const WatchedMoviesAndSeries = ({ openModal, pageContext }) => {
     }
   }, [dispatch, movieId, type]);
 
-  //   const image =
-  //     'https://www.ohgizmo.com/wp-content/uploads/2014/11/gifts-for-men-who-love-movies.jpg';
-
   return pageContext === 'movies'
     ? check.map((item) => (
         <StyledWatchedMovies key={item.id}>
@@ -158,7 +156,7 @@ const WatchedMoviesAndSeries = ({ openModal, pageContext }) => {
           <ButtonsWrapper>
             <StyledTopButtons>
               <StyledButton secondary onClick={() => handleClick(item.id, 'movie')}>
-                See more details
+                Details
               </StyledButton>
 
               <StyledButton
@@ -184,7 +182,7 @@ const WatchedMoviesAndSeries = ({ openModal, pageContext }) => {
           <ButtonsWrapper>
             <StyledTopButtons>
               <StyledButton secondary onClick={() => handleClick(item.id, 'tv')}>
-                See more details
+                Details
               </StyledButton>
               <StyledButton
                 secondary

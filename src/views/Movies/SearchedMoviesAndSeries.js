@@ -5,6 +5,8 @@ import { FaStar } from 'react-icons/fa';
 import withContext from '../../hoc/withContext';
 
 import { addToMovieList } from '../../store/NATitems/NATitems.reducer';
+import { devices } from '../../Devices/devices';
+import MovieSearchToolTip from '../../components/molecules/ToolTip/SearchMovieToolTip';
 
 const StyledBookWrapper = styled.div`
   display: flex;
@@ -27,12 +29,27 @@ const StyledDetails = styled.div`
 const StyledImage = styled.img`
   height: 20vh;
   width: 9vw;
+  @media ${devices.tablet} {
+    width: 15vw;
+  }
+
+  @media ${devices.mobileL} {
+    width: 20vw;
+  }
 `;
 
 const StyledToolTipImage = styled.img`
   height: 16vh;
   width: 7vw;
   margin-right: 1.5rem;
+
+  @media ${devices.tablet} {
+    width: 11vw;
+  }
+
+  @media ${devices.mobileL} {
+    display: none;
+  }
 `;
 
 const StyledDescription = styled.div`
@@ -41,24 +58,7 @@ const StyledDescription = styled.div`
   padding: 1rem;
 `;
 
-const StyledToolTip = styled.span`
-  visibility: hidden;
-
-  background-color: #fff;
-  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.16);
-  border-radius: 0.5rem;
-  color: #555;
-  font-weight: 300;
-  padding: 3rem 3rem 6rem;
-  position: absolute;
-  width: 25vw;
-  top: 100%;
-  left: 200%;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  transition: all 0.4s ease;
-  text-align: center;
-
+const StyledToolTip = styled(MovieSearchToolTip)`
   ${StyledDescription}:hover & {
     visibility: visible;
     border: 2px solid ${({ theme }) => theme.movies};
@@ -70,17 +70,53 @@ const StyledToolTip = styled.span`
     display: flex;
     box-shadow: 4rem 6rem 2rem -1rem rgba(0, 0, 0, 0.3);
   }
+
+  @media ${devices.laptopL} {
+    width: 35vw;
+    left: 250%;
+  }
+
+  @media ${devices.laptop} {
+    width: 40vw;
+    left: 290%;
+  }
+
+  @media ${devices.tablet} {
+    width: 55vw;
+    left: 235%;
+  }
+
+  @media ${devices.mobileL} {
+    width: 74vw;
+    padding: 3rem 1rem 6rem;
+    left: 141%;
+  }
+
+  @media ${devices.mobileM} {
+    width: 69vw;
+  }
 `;
 
 const StyledTitle = styled.h3`
   font-size: 2.5rem;
   margin-top: 3px;
   margin-bottom: 2rem;
+
+  @media ${devices.mobileL} {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const StyledParagraph = styled.p`
   margin: 0 0 1.2rem 1rem;
   margin-bottom: 1.2rem;
+
+  @media ${devices.mobileL} {
+    margin: 0 0 1.2rem 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
 `;
 
 const StyledAddButton = styled.button`
@@ -90,6 +126,11 @@ const StyledAddButton = styled.button`
   padding: 0.6rem 0.6rem;
   font-size: 1.1rem;
   border-radius: 0.5rem;
+
+  @media ${devices.mobileM} {
+    bottom: -15%;
+    left: -9.5rem;
+  }
 `;
 
 const StyledVages = styled.div`
@@ -108,7 +149,6 @@ const StyledVages = styled.div`
 const StyledColumn = styled.p`
   display: flex;
   flex-direction: column;
-
   font-size: 1rem;
 
   span {
@@ -127,6 +167,10 @@ const StyledSpan = styled.span`
   min-width: 6vw;
   display: inline-flex;
   font-size: 1.6rem;
+
+  @media ${devices.mobileL} {
+    font-size: 1.1rem;
+  }
 `;
 
 const SearchedMoviesAndSeries = ({ pageContext }) => {
@@ -168,7 +212,7 @@ const SearchedMoviesAndSeries = ({ pageContext }) => {
                   </p>
                   <StyledColumn>
                     Votes:
-                    <span>{item.vote_count}</span>
+                    <StyledSpan>{item.vote_count}</StyledSpan>
                   </StyledColumn>
                   <p>
                     {pageContext === 'movies'
@@ -177,7 +221,7 @@ const SearchedMoviesAndSeries = ({ pageContext }) => {
                   </p>
                   <StyledColumn>
                     Popularity:
-                    <span>{item.popularity}</span>
+                    <StyledSpan>{item.popularity}</StyledSpan>
                   </StyledColumn>
                   <p>{item.original_language.toUpperCase()}</p>
                 </StyledVages>

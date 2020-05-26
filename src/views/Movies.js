@@ -17,6 +17,10 @@ const StyledRightSide = styled.div`
   flex-direction: column;
   width: 35vw;
   margin-left: 6vw;
+
+  @media ${devices.laptop} {
+    width: 60vw;
+  }
 `;
 
 const StyledLeftSide = styled.div`
@@ -36,9 +40,31 @@ const StyledLeftSide = styled.div`
   border-radius: 0.5rem;
 
   @media ${devices.laptopL} {
-    width: 30vw;
+    width: 36vw;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 3.5rem;
+    grid-gap: 0.5rem;
+  }
+
+  @media ${devices.laptop} {
+    width: 104%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5rem;
+  }
+  @media ${devices.tablet} {
+    margin-left: -2rem;
+  }
+
+  @media ${devices.mobileL} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${devices.mobileM} {
+    width: 100%;
+
+    margin-left: -1rem;
+  }
+  @media ${devices.mobileS} {
+    margin-left: -0.5rem;
   }
 `;
 
@@ -52,6 +78,17 @@ const StyledBottomSide = styled(StyledLeftSide)`
     width: 74vw;
     grid-template-columns: repeat(6, 1fr);
   }
+
+  @media ${devices.laptop} {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media ${devices.tablet} {
+    grid-gap: 2rem;
+    margin-left: -1rem;
+
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const StyledScroll = styled.div`
@@ -60,10 +97,27 @@ const StyledScroll = styled.div`
 const StyledHeading = styled(Heading)`
   font-size: 2.4rem;
   text-align: center;
+
+  @media ${devices.mobileL} {
+    margin-top: 5rem;
+    width: 87%;
+    font-size: 2rem;
+  }
 `;
 
 const StyledTop = styled.div`
   display: flex;
+  @media ${devices.laptop} {
+    flex-direction: column-reverse;
+  }
+
+  @media ${devices.mobileM} {
+    margin-left: -2rem;
+  }
+
+  @media ${devices.mobileS} {
+    margin-left: -1rem;
+  }
 `;
 
 const StyledBottom = styled.div`
