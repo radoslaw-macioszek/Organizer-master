@@ -160,7 +160,7 @@ const BooksFavorite = () => {
 
   useEffect(() => {
     if (value !== null) {
-      dispatch(addPosition(ajdi, value));
+      dispatch(addPosition(ajdi, value, favoriteBooks));
     }
   }, [dispatch, value, ajdi]);
 

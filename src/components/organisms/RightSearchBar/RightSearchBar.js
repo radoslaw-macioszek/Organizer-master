@@ -95,7 +95,6 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
           type="text"
           placeholder="Find book"
           autoComplete="off"
-          value={searchBookPhrase}
           onChange={handleChange}
           onClick={() => setSearchBookPhrase('')}
         />
@@ -110,7 +109,6 @@ const RightSearchBar = ({ pageContext, isVisible, children }) => {
           type="text"
           placeholder="Search movie"
           autoComplete="off"
-          value={searchPhrase}
           onChange={handleChange}
           onClick={() => setSearchPhrase('')}
         />

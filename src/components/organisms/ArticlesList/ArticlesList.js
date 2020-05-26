@@ -111,10 +111,8 @@ const ArticlesList = () => {
   };
 
   useEffect(() => {
-    if (articleNameSearch === 'Search' || sendReq) {
+    if (articleNameSearch !== '' || sendReq) {
       dispatch(loadArticlesAction(articleNameSearch));
-      setSendReq(false);
-      setArticleNameSearch('');
     }
   }, [dispatch, sendReq, articleNameSearch]);
 
@@ -126,7 +124,6 @@ const ArticlesList = () => {
           <StyledInput
             type="text"
             placeholder="search"
-            value={articleNameSearch}
             onChange={(event) => setArticleNameSearch(event.target.value)}
             search
           />

@@ -93,7 +93,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.3);
 `;
 
-const StyledP = styled.p`
+const StyledP = styled.div`
   display: flex;
   position: absolute;
   justify-content: space-between;

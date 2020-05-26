@@ -92,14 +92,12 @@ const MainColumn = ({ openModal, pageContext }) => {
   const [type, setType] = useState('movie');
 
   const handleClick = (id, category) => {
-    console.log(id, category);
     setMovieId(id);
     setType(category);
     openModal();
   };
 
   useEffect(() => {
-    console.log('type', type);
     if (movieId && type === 'movie') {
       dispatch(loadMovieDetail(movieId, type));
     } else if (movieId && type === 'tv') {

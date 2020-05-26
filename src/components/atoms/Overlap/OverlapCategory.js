@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { devices } from '../../../Devices/devices';
 
 const OverlapCategory = styled.div`
   display: flex;

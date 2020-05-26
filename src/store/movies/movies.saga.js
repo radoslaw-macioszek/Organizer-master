@@ -76,9 +76,7 @@ function* loadMovies(action) {
 }
 
 function* loadDetail(action) {
-  console.log('action', action);
   const { id, type } = action.payload;
-  console.log('typeeeeee', type);
 
   const response = yield call(axios.get, `https://api.themoviedb.org/3/${type}/${id}`, {
     params: {

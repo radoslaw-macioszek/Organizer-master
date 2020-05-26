@@ -27,7 +27,7 @@ const StyledDoneContainer = styled.div`
   }
 `;
 
-const StyledP = styled.p`
+const StyledP = styled.div`
   display: flex;
   position: absolute;
   top: 2.5rem;
@@ -118,7 +118,7 @@ const TwitterDetail = () => {
                 </StyledParagraf>
                 <StyledParagraf>
                   <StyledSpan>account:</StyledSpan>
-                  {item.name}
+                  {item.names}
                 </StyledParagraf>
                 <StyledParagraf>
                   <StyledSpan>title:</StyledSpan>

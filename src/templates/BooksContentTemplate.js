@@ -7,8 +7,7 @@ import BookTemplate from './BookTemplate';
 import Books from '../views/Books/BooksBar';
 import Book from '../views/Books/Book';
 
-const BooksContentTemplate = ({ view }) => {
-  console.log('sssss', view);
+const BooksContentTemplate = () => {
   return (
     <UserPageTemplate>
       <>

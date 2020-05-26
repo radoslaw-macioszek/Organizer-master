@@ -16,7 +16,6 @@ import ArticlesList from '../components/organisms/ArticlesList/ArticlesList';
 import TwitterDetail from '../components/molecules/TwitterDetail/TwitterDetail';
 import OverlapCategory from '../components/atoms/Overlap/OverlapCategory';
 import StyledOverlap from '../components/atoms/OverlapLink/Overlap';
-import ArticleSearch from '../views/ArticleSearch';
 
 import { devices } from '../Devices/devices';
 
@@ -27,7 +26,6 @@ const StyledWrapper = styled.div`
 
   @media ${devices.laptop} {
     padding: 0 2rem 0 0;
-    /* width: 100vw; */
   }
 
   @media ${devices.mobileL} {

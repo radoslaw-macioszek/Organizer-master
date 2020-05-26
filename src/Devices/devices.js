@@ -1,5 +1,3 @@
-import React from 'react';
-
 const size = {
   mobileS: '320px',
   mobileM: '375px',

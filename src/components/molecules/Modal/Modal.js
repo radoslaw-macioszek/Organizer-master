@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
-import { FaStar, FaBalanceScale } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 
 import { addToMovieList } from '../../../store/NATitems/NATitems.reducer';
 import { devices } from '../../../Devices/devices';

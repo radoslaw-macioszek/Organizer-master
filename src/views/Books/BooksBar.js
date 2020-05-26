@@ -122,7 +122,6 @@ const Books = ({ pageContext, actualDate }) => {
               imageLinks,
               title,
               authors,
-              categories,
               description,
               averageRating,
               pageCount,

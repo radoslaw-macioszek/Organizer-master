@@ -86,8 +86,6 @@ const NewItemBar = ({ pageContext, isVisible, handleClose }) => {
           date: '',
         }}
         onSubmit={(values) => {
-          console.log(values);
-          console.log(pageContext);
           dispatch(addItemAction(pageContext, values));
           handleClose();
         }}

@@ -7,17 +7,10 @@ import withContext from '../../hoc/withContext';
 import Paragraph from '../../components/atoms/Paragraph/Paragraph';
 import Heading from '../../components/atoms/Heading/Heading';
 import Button from '../../components/atoms/Button/Button';
+import DateInfo from '../../components/atoms/MovieDate/DateInfo';
 import { devices } from '../../Devices/devices';
 
 import { removeItem, addToFavorite, addToReaded } from '../../store/NATitems/NATitems.reducer';
-
-const DateInfo = styled(Paragraph)`
-  margin: 0 0 0.5rem 1.2rem;
-  font-weight: ${({ theme }) => theme.bold};
-  font-size: ${({ theme }) => theme.fontSize.xs};
-  display: inline-flex;
-  align-items: center;
-`;
 
 const StyledWrapper = styled.div`
   margin-left: 1rem;
@@ -115,12 +108,13 @@ const StyledHeading = styled(Heading)`
 `;
 
 const BookToRead = ({ pageContext, actualDate }) => {
+  const favorite = 'favoriteBooks';
+  const readed = 'readedBooks';
   const dispatch = useDispatch();
   const randomImage =
     'https://img.favpng.com/17/8/9/book-cattle-leather-png-favpng-4NxiJw1fkY1X791YDumsrAvvE.jpg';
   const check = useSelector((state) => state.natReducer.books);
   const favoriteBooksLength = useSelector((state) => state.natReducer.favoriteBooks).length;
-  console.log(favoriteBooksLength);
 
   return (
     <>
@@ -136,12 +130,17 @@ const BookToRead = ({ pageContext, actualDate }) => {
                 <StyledParagraph>{description}</StyledParagraph>
                 <ButtonsWrapper>
                   <StyledButton
-                    onClick={() => dispatch(addToFavorite(title, image, favoriteBooksLength))}
+                    onClick={() =>
+                      dispatch(addToFavorite(title, image, favoriteBooksLength, favorite))
+                    }
                     secondary
                   >
                     Add to Favorite
                   </StyledButton>
-                  <StyledButton onClick={() => dispatch(addToReaded(title, actualDate))} secondary>
+                  <StyledButton
+                    onClick={() => dispatch(addToReaded(title, actualDate, readed))}
+                    secondary
+                  >
                     Add to Readed
                   </StyledButton>
                   <StyledButton onClick={() => dispatch(removeItem(pageContext, id))} secondary>

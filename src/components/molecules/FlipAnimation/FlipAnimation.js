@@ -189,8 +189,6 @@ const FlipAnimation = ({ id, title, path, rate, popularity, date, openModal, nam
 
   useEffect(() => {
     if (movieId) {
-      console.log(movieId);
-      console.log(name);
       dispatch(loadMovieDetail(movieId, name));
     }
   }, [dispatch, movieId, name]);

@@ -33,30 +33,30 @@ export const addItem = (itemType, itemContent) => {
   };
 };
 
-export const addToFavorite = (title, image, favoriteLength) => {
+export const addToFavorite = (title, image, favoriteLength, type) => {
   const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
   const position = favoriteLength + 1;
   return {
     type: 'ADD_TO_FAVORITE',
     payload: {
-      item: { id: getId(), title, position, image },
+      item: { id: getId(), title, position, image, type },
     },
   };
 };
-export const addToReaded = (title, readed) => {
+export const addToReaded = (title, readed, type) => {
   const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
   return {
     type: 'ADD_TO_READED',
     payload: {
-      item: { id: getId(), title, readed },
+      item: { id: getId(), title, readed, type },
     },
   };
 };
 
-export const addPosition = (id, position) => {
+export const addPosition = (id, position, type) => {
   return {
     type: 'ADD_POSITION',
-    payload: { id, position },
+    payload: { id, position, type },
   };
 };
 
@@ -87,11 +87,11 @@ export const addToDone = (id, title, date, content, type, fullDate) => {
   };
 };
 
-export const twitterDetails = (id, title, date, content, type, name) => {
+export const twitterDetails = (id, title, date, content, type, names) => {
   return {
     type: 'TWITTER_DETAILS',
     payload: {
-      item: { id, title, date, content, type, name },
+      item: { id, title, date, content, type, names },
     },
   };
 };
@@ -106,7 +106,6 @@ export const noteDetails = (id, title, date, content, type) => {
 };
 
 export const noteEdit = (id, title, date, content, edited, type) => {
-  console.log('result', id);
   return {
     type: 'NOTE_EDIT',
     payload: {
@@ -388,19 +387,19 @@ const natReducer = (state = INITIAL_STATE, action) => {
     case 'ADD_TO_FAVORITE':
       return {
         ...state,
-        ['favoriteBooks']: [...state['favoriteBooks'], action.payload.item],
+        [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
       };
     case 'ADD_TO_READED':
       return {
         ...state,
-        ['readedBooks']: [...state['readedBooks'], action.payload.item],
+        [action.payload.item.type]: [...state[action.payload.item.type], action.payload.item],
       };
 
     case 'ADD_POSITION':
       return {
         ...state,
-        ['favoriteBooks']: [
-          ...state['favoriteBooks'].filter((item) =>
+        [action.payload.type]: [
+          ...state[action.payload.type].filter((item) =>
             item.id === action.payload.id ? (item.position = action.payload.position) : ' ',
           ),
         ],

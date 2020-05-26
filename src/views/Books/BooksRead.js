@@ -17,7 +17,7 @@ const StyledHeader = styled.div`
   margin-bottom: 4rem;
 `;
 
-const StyledLabel = styled.p`
+const StyledLabel = styled.div`
   margin: 0 0.5rem 1rem 3rem;
   font-weight: ${({ theme }) => theme.bold};
   font-size: ${({ theme }) => theme.fontSize.xs};
@@ -104,7 +104,10 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledLabelSpan = styled.span`
-  margin: 0 0 1rem 1rem;
+  margin: 0 0 0 1rem;
+  @media ${devices.tablet} {
+    margin: 0 0 1rem 1rem;
+  }
 `;
 
 const BooksRead = () => {

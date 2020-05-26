@@ -11,7 +11,6 @@ function* loadArticles(action) {
     },
   });
 
-  console.log(response);
   if (response.status === 200) {
     yield put(loadArticlesSuccess(response.data.articles));
     return;

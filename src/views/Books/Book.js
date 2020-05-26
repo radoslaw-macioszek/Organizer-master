@@ -141,9 +141,7 @@ function useWindowDimensions() {
 
 const Book = ({ pageContext }) => {
   const [view, setView] = useState('books');
-  const { height, width } = useWindowDimensions();
-
-  console.log('window', width);
+  const { width } = useWindowDimensions();
 
   const favLength = useSelector((state) => state.natReducer.favoriteBooks).length;
   const readedLength = useSelector((state) => state.natReducer.readedBooks).length;
