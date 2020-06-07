@@ -19,7 +19,6 @@ const StyledBookWrapper = styled.div`
 `;
 
 const StyledDetails = styled.div`
-  flex-direction: column;
   width: 100%;
   margin: 1rem 1rem;
 
@@ -126,6 +125,11 @@ const StyledAddButton = styled.button`
   padding: 0.6rem 0.6rem;
   font-size: 1.1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    transform: translateY(-0.2rem);
+  }
 
   @media ${devices.mobileM} {
     bottom: -15%;
@@ -165,7 +169,7 @@ const StyledColumn = styled.p`
 const StyledSpan = styled.span`
   color: ${({ theme }) => theme.grey300};
   min-width: 6vw;
-  display: inline-flex;
+  display: block;
   font-size: 1.6rem;
 
   @media ${devices.mobileL} {
@@ -232,62 +236,63 @@ const SearchedMoviesAndSeries = ({ pageContext }) => {
           </StyledDescription>
           <StyledDetails>
             <StyledTitle>{pageContext === 'movies' ? item.title : item.name}</StyledTitle>
-
-            <StyledParagraph>
-              <StyledSpan>
-                <FaStar color={'#ffc107'} /> rate:
-              </StyledSpan>
-              {item.vote_average}
-            </StyledParagraph>
-            <StyledParagraph>
-              <StyledSpan>votes:</StyledSpan>
-              {item.vote_count}
-            </StyledParagraph>
-            <StyledParagraph>
-              <StyledSpan>popularity:</StyledSpan>
-              {item.popularity}
-            </StyledParagraph>
-            <StyledParagraph>
-              <StyledSpan>language:</StyledSpan>
-              {item.original_language.toUpperCase()}
-            </StyledParagraph>
-            {pageContext === 'movies' ? (
-              <StyledAddButton
-                onClick={() =>
-                  dispatch(
-                    addToMovieList(
-                      item.id,
-                      item.title,
-                      `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                      item.vote_average,
-                      item.popularity,
-                      item.release_date,
-                      movies,
-                    ),
-                  )
-                }
-              >
-                + Add to your movie list
-              </StyledAddButton>
-            ) : (
-              <StyledAddButton
-                onClick={() =>
-                  dispatch(
-                    addToMovieList(
-                      item.id,
-                      item.name,
-                      `https://image.tmdb.org/t/p/w500${item.poster_path}`,
-                      item.vote_average,
-                      item.popularity,
-                      item.first_air_date,
-                      series,
-                    ),
-                  )
-                }
-              >
-                + Add to your movie list
-              </StyledAddButton>
-            )}
+            <StyledVages>
+              <StyledParagraph>
+                <StyledSpan>
+                  <FaStar color={'#ffc107'} /> rate:
+                </StyledSpan>
+                {item.vote_average}
+              </StyledParagraph>
+              <StyledParagraph>
+                <StyledSpan>votes:</StyledSpan>
+                {item.vote_count}
+              </StyledParagraph>
+              <StyledParagraph>
+                <StyledSpan>popularity:</StyledSpan>
+                {item.popularity}
+              </StyledParagraph>
+              <StyledParagraph>
+                <StyledSpan>language:</StyledSpan>
+                {item.original_language.toUpperCase()}
+              </StyledParagraph>
+              {pageContext === 'movies' ? (
+                <StyledAddButton
+                  onClick={() =>
+                    dispatch(
+                      addToMovieList(
+                        item.id,
+                        item.title,
+                        `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                        item.vote_average,
+                        item.popularity,
+                        item.release_date,
+                        movies,
+                      ),
+                    )
+                  }
+                >
+                  + Add to your movie list
+                </StyledAddButton>
+              ) : (
+                <StyledAddButton
+                  onClick={() =>
+                    dispatch(
+                      addToMovieList(
+                        item.id,
+                        item.name,
+                        `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+                        item.vote_average,
+                        item.popularity,
+                        item.first_air_date,
+                        series,
+                      ),
+                    )
+                  }
+                >
+                  + Add to your movie list
+                </StyledAddButton>
+              )}
+            </StyledVages>
           </StyledDetails>
         </StyledBookWrapper>
       ))}

@@ -47,6 +47,12 @@ const StyledButton = styled(Button)`
   width: 12.5rem;
   font-size: 1.2rem;
   border: 1px solid grey;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkgray;
+    color: white;
+  }
 
   @media ${devices.laptop} {
     margin-left: 5px;

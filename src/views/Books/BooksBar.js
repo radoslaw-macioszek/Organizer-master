@@ -164,15 +164,6 @@ const Books = ({ pageContext, actualDate }) => {
                         {language.toUpperCase()}
                       </StyledParagraph>
                     </div>
-                    {/* <StyledParagraphT>
-                      category:
-                      {categories ? categories.map((cat) => ` ${cat}, `) : ' '}
-                    </StyledParagraphT>
-                    <StyledParagraphB>
-                      rate:
-                      {averageRating ? averageRating : ' - '}; pages: {pageCount}; lang.{' '}
-                      {language.toUpperCase()}
-                    </StyledParagraphB> */}
                     Description:
                     <hr />
                     {description}

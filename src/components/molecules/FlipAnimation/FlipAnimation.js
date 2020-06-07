@@ -119,21 +119,6 @@ const StyledSpan = styled.span`
   font-size: 1.2rem;
   margin: 0;
 `;
-const StyledDateParagraph = styled.span`
-  margin: -5px 1rem 0;
-  font-size: 10px;
-  padding-top: 0;
-
-  @media ${devices.tablet} {
-    display: none;
-  }
-`;
-
-const StyledDate = styled.p`
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 0;
-`;
 
 const StyledHeader = styled.h6`
   padding: 0 1rem 1rem;
@@ -158,6 +143,12 @@ const StyledCardButton = styled.button`
   padding: 8px 10px;
   font-size: 1rem;
   border: 1px solid lightgray;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent;
+    color: white;
+  }
 `;
 
 const StyledImage = styled.img`
@@ -205,14 +196,7 @@ const FlipAnimation = ({ id, title, path, rate, popularity, date, openModal, nam
             Average rate:
             <StyledSpan>{rate}</StyledSpan>
           </StyledParagraph>
-          <StyledParagraph>
-            Popularity:
-            <StyledSpan>{popularity}</StyledSpan>
-          </StyledParagraph>
-          <StyledDateParagraph>
-            Release date:
-            <StyledDate>{date}</StyledDate>
-          </StyledDateParagraph>
+
           <StyledCardButton onClick={() => handleClick(id)}>see more details</StyledCardButton>
         </Back>
       </Flipper>

@@ -8,6 +8,12 @@ const AddButton = styled.button`
   padding: 0.6rem 0.6rem;
   font-size: 1.1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-0.2rem);
+  }
 
   @media ${devices.tablet} {
     top: 85%;

@@ -122,7 +122,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '13/12/2019',
-      date: '2020-05-27T02:00',
+      date: '2020-06-09T02:00',
     },
     {
       id: 2,
@@ -130,7 +130,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '1 day',
-      date: '2020-05-29T12:00',
+      date: '2020-06-09T12:00',
     },
     {
       id: 3,
@@ -138,7 +138,7 @@ const INITIAL_STATE = {
       content:
         'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, tempora quibusdam natus modi tempore esse adipisci, dolore odit animi',
       created: '5 days',
-      date: '2020-05-26T13:00',
+      date: '2020-06-12T13:00',
     },
   ],
   done: [],

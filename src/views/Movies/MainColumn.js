@@ -39,10 +39,12 @@ const StyledDateInfo = styled(DateInfo)`
 const ButtonsWrapper = styled.div`
   display: flex;
   margin: 1rem 0 2rem;
+  font-size: 1.3rem;
+  align-items: center;
+  cursor: pointer;
 
   @media ${devices.tablet} {
     flex-flow: wrap;
-    align-items: center;
     justify-content: center;
   }
 `;
@@ -66,6 +68,12 @@ const StyledButton = styled(Button)`
   margin-left: 1.5rem;
   width: 8rem;
   height: 2rem;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.movies};
+    color: white;
+  }
 
   @media ${devices.tablet} {
     margin-top: 0.8rem;

@@ -15,6 +15,11 @@ const ButtonLink = styled.a`
   position: absolute;
   right: 0;
   bottom: 3.5rem;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-0.2rem);
+  }
 
   @media ${devices.tablet} {
     padding: 1.3rem 0;
