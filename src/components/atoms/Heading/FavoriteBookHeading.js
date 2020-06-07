@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const FavoriteBookHeading = styled.div`
-  margin: 1rem 2rem;
+  margin: 0 2rem;
   border-radius: 1rem 1rem 0.3rem 0.3rem;
   background-color: white;
   border-left: 1px solid hsla(360, 73%, 60%);

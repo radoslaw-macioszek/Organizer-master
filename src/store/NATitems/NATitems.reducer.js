@@ -105,11 +105,11 @@ export const noteDetails = (id, title, date, content, type) => {
   };
 };
 
-export const noteEdit = (id, title, date, content, edited, type) => {
+export const noteEdit = (id, title, created, content, edited, type) => {
   return {
     type: 'NOTE_EDIT',
     payload: {
-      item: { id, title, date, content, edited, type },
+      item: { id, title, created, content, edited, type },
     },
   };
 };

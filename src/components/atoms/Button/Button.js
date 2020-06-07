@@ -9,7 +9,7 @@ const Button = styled.button`
   border-radius: 5rem;
   font-family: 'Montserrat';
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
 
   ${({ secondary }) =>

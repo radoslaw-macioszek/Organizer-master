@@ -30,7 +30,7 @@ const StyledContent = styled.div`
 const SecondColumn = styled.div`
   height: 50vh;
   position: absolute;
-  top: 60%;
+  top: 74%;
   right: 4.5rem;
   width: 35%;
 
@@ -76,7 +76,7 @@ const StyledThirdContent = styled.div`
   overflow: scroll;
   display: flex;
   border: 1px solid ${({ theme }) => theme.books};
-  height: 26vh;
+  height: 27vh;
   padding: 1.5rem 2rem;
   margin-right: 4.5rem;
   border-radius: 0.5rem;

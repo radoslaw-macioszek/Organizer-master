@@ -96,30 +96,21 @@ const StyledButtonIcon = styled(ButtonIcon)`
 const StyledP = styled.div`
   display: flex;
   position: absolute;
-  justify-content: space-between;
+  width: 50%;
   bottom: 100%;
   left: 45%;
-  margin-bottom: 0.5rem;
-  margin: 0;
   font-weight: bold;
   align-items: center;
-
-  @media ${devices.laptop} {
-    bottom: 78%;
-  }
+  margin-bottom: -2rem;
 
   @media ${devices.tablet} {
-    bottom: -30%;
+    bottom: -15%;
     width: 100%;
     left: 0;
   }
 
   @media ${devices.mobileL} {
-    bottom: -20%;
-  }
-
-  @media ${devices.mobileM} {
-    bottom: -25%;
+    bottom: -5%;
   }
 `;
 
@@ -129,7 +120,6 @@ const StyledSpan = styled.p`
 
   margin-left: 1.5rem;
   text-align: center;
-  width: 100%;
   margin-bottom: 5px;
 
   @media ${devices.mobileL} {
@@ -138,8 +128,8 @@ const StyledSpan = styled.p`
 `;
 
 const StyledContainerName = styled.span`
-  width: 75%;
   margin-bottom: -1rem;
+  margin-right: 2rem;
 
   @media ${devices.mobileL} {
     width: 100%;

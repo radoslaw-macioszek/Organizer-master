@@ -53,10 +53,6 @@ const StyledIcon = styled(ButtonIcon)`
   @media ${devices.mobileL} {
     margin-bottom: 1rem;
   }
-
-  @media ${devices.mobileM} {
-    margin-bottom: 1rem;
-  }
 `;
 
 const StyledLogo = styled.div`

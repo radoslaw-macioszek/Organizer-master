@@ -18,7 +18,7 @@ const StyledMovieColumn = styled.div`
   align-items: center;
   padding-top: 1rem;
 
-  height: 35vh;
+  height: 37vh;
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.movies};

@@ -8,8 +8,16 @@ const Notes = () => {
   const notes = useSelector((state) => state.natReducer.notes);
   return (
     <GridTemplate pageType="notes">
-      {notes.map(({ title, created, content, id }) => (
-        <Card cardType="notes" id={id} title={title} created={created} content={content} key={id} />
+      {notes.map(({ title, created, content, id, edited }) => (
+        <Card
+          cardType="notes"
+          id={id}
+          title={title}
+          created={created}
+          content={content}
+          edited={edited}
+          key={id}
+        />
       ))}
     </GridTemplate>
   );

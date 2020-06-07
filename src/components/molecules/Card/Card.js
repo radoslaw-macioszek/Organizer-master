@@ -83,8 +83,8 @@ const StyledHeading = styled(Heading)`
 `;
 
 const StyledAvatar = styled.img`
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 6.5rem;
+  height: 6.5rem;
   border: 4px solid ${({ theme }) => theme.twitters};
   border-radius: 5rem;
   position: absolute;
@@ -93,8 +93,8 @@ const StyledAvatar = styled.img`
 `;
 
 const StyledSecondAvatar = styled(StyledAvatar)`
-  width: 8.1rem;
-  height: 8.1rem;
+  width: 7.1rem;
+  height: 7.1rem;
   border: 3px solid white;
   border-radius: 5rem;
   position: absolute;
@@ -115,7 +115,7 @@ const StyledButton = styled(Button)`
 `;
 
 const StyledParagraph = styled(Paragraph)`
-  margin-top: 1rem;
+  margin: 2rem 0 6rem;
   padding-left: 3rem;
 `;
 
@@ -142,11 +142,11 @@ const StyledLinkButton = styled.a`
 `;
 
 const StyledLink = styled.a`
-  width: 10vw;
+  width: 8vw;
   position: absolute;
   right: 0;
   bottom: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
 
   @media ${devices.tablet} {
@@ -162,7 +162,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Card = ({ pageContext, id, title, twitterName, articleUrl, content, created }) => {
+const Card = ({ pageContext, id, title, twitterName, articleUrl, content, created, edited }) => {
   const dispatch = useDispatch();
   const [redirect, setRedirect] = useState(false);
 
@@ -182,7 +182,9 @@ const Card = ({ pageContext, id, title, twitterName, articleUrl, content, create
     <StyledWrapper activePage={pageContext}>
       <InnerWrapperHead onClick={handleCardClick} activeColor={pageContext}>
         <StyledHeading>{pageContext === 'twitters' ? twitterName : title}</StyledHeading>
-        <DateInfo>{created}</DateInfo>
+        <DateInfo>
+          {created} {edited !== undefined ? '  ed. ' + edited : ''}
+        </DateInfo>
         {pageContext === 'twitters' && (
           <>
             <StyledSecondAvatar />

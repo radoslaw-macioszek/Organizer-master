@@ -7,7 +7,7 @@ const StyledDoneContainer = styled.div`
   position: absolute;
   right: 4%;
   top: 5rem;
-  height: 35%;
+  height: 30%;
   width: 50%;
   border: 3px solid ${({ theme }) => theme.twitters};
   border-radius: 1rem;

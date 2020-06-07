@@ -3,8 +3,8 @@ import { devices } from '../../../Devices/devices';
 
 const ButtonIcon = styled.button`
   display: block;
-  width: 6.7rem;
-  height: 6.7rem;
+  width: 4.7rem;
+  height: 4.7rem;
   border-radius: 2rem;
   background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;
@@ -34,7 +34,7 @@ const ButtonIcon = styled.button`
       z-index: 1000000;
     `}
 
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     width: 6rem;
     height: 6rem;
   }

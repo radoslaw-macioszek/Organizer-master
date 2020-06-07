@@ -24,7 +24,7 @@ const StyledColumn = styled.div`
 `;
 
 const StyledHeader = styled.h3`
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   border-bottom: 1px solid grey;
   padding: 1.5rem 0 1rem;
   margin-top: 0;
@@ -100,7 +100,7 @@ const ToDo = ({ actualDate }) => {
   const currentDate = new Date().toLocaleDateString();
   const currentDay = currentDate.toString().slice(0, 2) * 1;
   const currentMonth = currentDate.toString().slice(3, 5);
-  const currentYear = currentDate.toString().slice(6) * 1;
+  const currentYear = currentDate.toString().slice(5) * 1;
   const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
 
   //
@@ -115,7 +115,9 @@ const ToDo = ({ actualDate }) => {
           const bottomHeaderDate =
             currentDay + i > daysInMonth ? currentDay + i - daysInMonth : currentDay + i;
 
-          const fullDayDate = `${bottomHeaderDate}.${currentMonth}.${currentYear}`;
+          const fullDayDate = `${
+            bottomHeaderDate < 10 ? '0' + bottomHeaderDate : bottomHeaderDate
+          }.${currentMonth < 10 ? '0' + currentMonth : currentMonth}${currentYear}`;
           return (
             <StyledColumn key={i}>
               <StyledHeader>

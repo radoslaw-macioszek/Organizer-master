@@ -51,10 +51,7 @@ const StyledDetails = styled.div`
   flex-direction: column;
   width: 100%;
   padding-right: 1rem;
-
-  @media ${devices.mobileL} {
-    padding: 1.5rem;
-  }
+  overflow: scroll;
 `;
 
 const StyledImage = styled.img`
@@ -74,14 +71,10 @@ const StyledImage = styled.img`
 `;
 
 const StyledTitle = styled.p`
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   margin: 1rem 0 2rem;
   text-align: left;
   font-weight: bold;
-
-  @media ${devices.mobileM} {
-    font-size: 2rem;
-  }
 `;
 
 const StyledSeriesTitle = styled(StyledTitle)`
@@ -89,7 +82,7 @@ const StyledSeriesTitle = styled(StyledTitle)`
 `;
 
 const StyledSubTitle = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   margin: -1.3rem 0 1rem 0.4rem;
   text-align: left;
   @media ${devices.mobileM} {
@@ -102,13 +95,10 @@ const StyledVages = styled.div`
   justify-content: space-between;
   font-weight: bold;
   align-items: center;
+  font-size: 1.2rem;
 
   p {
     margin: 0.5rem 0;
-  }
-
-  @media ${devices.mobileM} {
-    font-size: 1.2rem;
   }
 `;
 
@@ -116,7 +106,7 @@ const StyledSpan = styled.span`
   color: ${({ theme }) => theme.grey300};
   min-width: 6vw;
   display: inline-flex;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   @media ${devices.laptop} {
     min-width: 10vw;
   }
@@ -130,17 +120,15 @@ const StyledSpan = styled.span`
   }
 `;
 const StyledGenres = styled.p`
-  font-size: 1.5rem;
-  margin: 1.8rem 0 0.5rem 0;
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem 0;
   display: inline-flex;
-  @media ${devices.mobileM} {
-    font-size: 1.4rem;
-  }
 `;
 
 const StyledBottomWrapper = styled.div`
   overflow: scroll;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+
   height: 38vh;
   text-align: justify;
   padding: 2rem 3rem 1rem;
@@ -156,7 +144,7 @@ const StyledParagraph = styled.p`
   display: inline-flex;
   width: 100%;
   margin: 0.7rem 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 `;
 
 const StyledAddButton = styled.button`

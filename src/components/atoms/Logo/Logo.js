@@ -11,7 +11,6 @@ const Logo = styled.div`
   background-position: 50% 50%;
   background-size: 90%;
   border: none;
-  margin-bottom: 5rem;
 
   @media ${devices.laptop} {
     background-size: 75%;
@@ -21,7 +20,7 @@ const Logo = styled.div`
     background-size: 90%;
     transform: rotateZ(90deg);
     margin-left: -2.5rem;
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
     margin-top: 5rem;
   }
 

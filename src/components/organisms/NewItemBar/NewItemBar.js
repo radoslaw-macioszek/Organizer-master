@@ -17,13 +17,13 @@ const StyledWrapper = styled.div`
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  padding: 10rem 9rem;
+  padding: 4rem 9rem;
 
   position: fixed;
   right: 0;
   top: 0;
   height: 100vh;
-  width: 68rem;
+  width: 55rem;
   background-color: white;
 
   transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
@@ -31,13 +31,13 @@ const StyledWrapper = styled.div`
   text-align: center;
 
   @media ${devices.tablet} {
-    width: 82%;
+    width: 80%;
     padding: 4rem 2rem;
   }
 `;
 
 const StyledTextArea = styled(Input)`
-  margin: 3rem 0 10rem;
+  margin: 3rem 0 6rem;
   border-radius: 2rem;
   height: 30vh;
 `;
@@ -75,7 +75,7 @@ const NewItemBar = ({ pageContext, isVisible, handleClose }) => {
 
   return (
     <StyledWrapper isVisible={isVisible} activecolor={pageContext}>
-      <Heading big>Create new {pageContext}</Heading>
+      <Heading>Create new {pageContext}</Heading>
       <Formik
         initialValues={{
           title: '',

@@ -21,7 +21,7 @@ import { devices } from '../Devices/devices';
 
 const StyledWrapper = styled.div`
   padding: ${({ activePage }) =>
-    activePage === 'articles' ? '25px 80px 25px 70px' : '25px 50px 25px 70px'};
+    activePage === 'articles' ? '25px 80px 25px 70px' : '25px 50px 25px 60px'};
   position: relative;
 
   @media ${devices.laptop} {
@@ -72,17 +72,9 @@ const StyledPageHeader = styled.div`
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: ${({ activePage }) =>
-    activePage === 'twitters' ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
+    activePage === 'twitters' ? 'repeat(auto-fit, minmax(25rem, 1fr));' : 'repeat(3, 1fr)'};
   grid-gap: ${({ activePage }) => (activePage === 'notes' ? '85px' : '40px')};
   height: 100%;
-
-  @media ${devices.desktop} {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  @media ${devices.laptopL} {
-    grid-template-columns: repeat(3, 1fr);
-  }
 
   @media ${devices.laptop} {
     grid-template-columns: ${({ activePage }) =>

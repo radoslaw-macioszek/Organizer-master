@@ -6,8 +6,11 @@ const withContext = (Component) => {
     const currentDate = new Date().toLocaleDateString();
     const currentDay = currentDate.toString().slice(0, 2) * 1;
     const currentMonth = currentDate.toString().slice(3, 5);
-    const currentYear = currentDate.toString().slice(6) * 1;
-    const actualDate = `${currentDay}.${currentMonth}.${currentYear}`;
+    const currentYear = currentDate.toString().slice(5, 10);
+
+    const actualDate = `${currentDay < 10 ? '0' + currentDay : currentDay}.${
+      currentMonth < 10 ? '0' + currentMonth : currentMonth
+    }${currentYear}`;
 
     return (
       <PageContext.Consumer>

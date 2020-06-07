@@ -7,18 +7,13 @@ import { devices } from '../../../Devices/devices';
 const StyledDoneContainer = styled.div`
   position: absolute;
   right: 0;
-  top: 0;
-  height: 14vh;
+  top: 2rem;
+  height: 11vh;
   width: 55%;
   border: 3px solid ${({ theme }) => theme.todos};
   border-radius: 1rem;
 
   overflow: scroll;
-
-  @media ${devices.laptop} {
-    top: 3rem;
-    height: 9vh;
-  }
 
   @media ${devices.tablet} {
     top: 16rem;

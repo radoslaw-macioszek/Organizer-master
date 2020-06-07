@@ -3,7 +3,7 @@ import { devices } from '../../../Devices/devices';
 
 const AddButton = styled.button`
   position: absolute;
-  top: 40%;
+  top: 30%;
   right: 0;
   padding: 0.6rem 0.6rem;
   font-size: 1.1rem;

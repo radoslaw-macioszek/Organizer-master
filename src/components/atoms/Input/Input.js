@@ -4,7 +4,7 @@ import { devices } from '../../../Devices/devices';
 
 const Input = styled.input`
   padding: 1.5rem 3rem;
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.xs};
   font-weight: ${({ theme }) => theme.regular};
   background-color: ${({ theme }) => theme.grey100};
   border: 1px solid ${({ theme }) => theme.grey200};
